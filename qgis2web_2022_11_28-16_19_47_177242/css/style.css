@@ -1,0 +1,122 @@
+html,
+body {
+  background-color: #30b5a500;
+}
+.ol-control button {
+  background-color: #f8f8f8 !important;
+  color: #000000 !important;
+  border-radius: 0px !important;
+}
+.ol-zoom,
+.geolocate,
+.gcd-gl-control .ol-control {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+  padding: 3px !important;
+}
+.ol-scale-line {
+  background: none !important;
+}
+.ol-scale-line-inner {
+  border: 2px solid #f8f8f8 !important;
+  border-top: none !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  color: black !important;
+}
+#map {
+  width: 1739px;
+  height: 879px;
+}
+.search-layer {
+  top: 65px;
+  left: 0.5em;
+}
+
+.ol-touch .search-layer {
+  top: 80px;
+}
+
+/* Split the screen in half */
+.split {
+  height: 100%;
+  width: 30%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  background-color: #111;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: red;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+
+/* The sidebar menu */
+.sidenav {
+  height: auto; /* Full-height: remove this if you want "auto" height */
+  width: auto; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 500; /* Stay at the top */
+  left: 10;
+  right: 10;
+  background-color: rgba(255, 255, 255, 0); /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 80px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Style page content */
+.main {
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+.navbar-brand {
+  text-align: center;
+}
+

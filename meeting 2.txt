@@ -1,0 +1,13 @@
+Strava 
+github 
+qgis
+
+BING: http://ecn.t3.tiles.virtualearth.net/tiles/a{q}.jpeg?g=1
+Google Stellite: https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}
+
+Create 3D map
+https://www.youtube.com/watch?v=eyl8rt-vqlI
+https://www.youtube.com/watch?v=hSZSVQqX80k
+
+Elevation profile:
+https://www.youtube.com/watch?v=jwbsdLuxyAY
