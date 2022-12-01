@@ -1,23 +1,124 @@
 html,
 body {
   background-color: #40b4a600;
+  position: relative;
 }
-.homebackground{
-    width: 100%;
-    height: 60%;
-    object-fit: fill;
-
-} 
+.homebackground {
+  width: 100%;
+  height: 50px;
+  object-fit: cover;
+  /* position: absolute; */
+}
 
 .fixbar {
-    height:30px;
-    position: fixed;
-    left: 25%;
-    border: 5px;
-    border-radius: 20px;
-    align-items: center;
-    top: 12px;
-    /* right:0 height: 30px; */
-    background: rgb(231, 212, 212);
-    /* z-index: 1; */
+  height: 30px;
+  position: fixed;
+  left: 25%;
+  border: 5px;
+  border-radius: 20px;
+  align-items: center;
+  top: 12px;
+  /* right:0 height: 30px; */
+  background: rgb(231, 212, 212);
+  /* z-index: 1; */
+}
+
+.bgimage {
+  object-fit: ;
+}
+
+.slider {
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  /* transform: translate(-50%,-50%); */
+  width: 500px;
+  height: 60px;
+  padding: 30px;
+  padding-left: 40px;
+  transform: rotate(270deg);
+  background: transparent;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 15px 40px #7e6d5766;
+}
+.slider label {
+  font-size: 24px;
+  font-weight: 400;
+  font-family: Open Sans;
+  padding-left: 10px;
+  color: rgb(0, 0, 0);
+}
+.slider input[type="range"] {
+  width: 420px;
+  height: 2px;
+  background: rgb(238, 0, 0);
+  border: none;
+  outline: none;
+}
+
+.cn1 {
+  position: ;
+}
+.mapmarker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.fader{
+  transform: rotate(90deg);
+}
+
+.btn1 {
+  background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  
+}
+
+/* Darker background on mouse-over */
+.btn1:hover {
+  
+}
+.btn2 {
+  background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  position: absolute;
+  top: 40%;
+  left: 70%;
+}
+
+/* Darker background on mouse-over */
+.btn2:hover {
+  background-color: rgba(59, 152, 214, 0.541);
+
+}
+.btn3 {
+  background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  position: absolute;
+  top: 70%;
+  left: 40%;
+}
+
+/* Darker background on mouse-over */
+.btn3:hover {
+  background-color: rgba(59, 152, 214, 0.541);
+}
+
+.card1{
+  background-color: transparent;
 }
