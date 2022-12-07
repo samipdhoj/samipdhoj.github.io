@@ -42,18 +42,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href=' http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
     <style>
-        body{
-            background-color: lavender;
+        * {
+            font-size: 18px;
+            font-family: 'Roboto Condensed';
         }
+
+        body {
+            background-color: lavender;
+            /* position: relative; */
+        }
+
         #map {
             width: 100%;
-            height: 900px;
+            height: 800px;
+            /* position: relative; */
         }
-        .butn1{
-            position: static;
-            /* background-color: cornflowerblue; */
+
+        .butn1 {
             width: 100%;
-            margin-left: 40%;
+            text-align: center;
+            top: 10%;
+            background-color: transparent;
+            /* position: absolute; */
         }
     </style>
     <title></title>
@@ -66,26 +76,26 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse px-5" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="#"><img src="/FrontEnd//images/images1.png" height="   20" alt="MDB Logo"
+            <a class="navbar-brand" href="../index.html"><img src="../images/images1.png" height="40" alt="MDB Logo"
                     loading="lazy" /></a>
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-1">
-                <li class="nav-item active">
-                    <a class="nav-link text-white px-3 px-sm-0" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-            <!-- <a class="nav-link nav-item active bg-dark" href="#">Home </a> -->
-            <a class="nav-link text-white px-3" href="#">About us </a>
-            <a class="nav-link text-white px-3" href="#">Offerings </a>
-            <a class="nav-link text-white px-3" href="#">Login </a>
+            <div class="butn1" id="butn1">
+                <div class="btn-group content-center" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-secondary "><a
+                            href="../qgis2web_2022_12_05-01_16_00_030020/index.html"
+                            class="text-light">Beginner</a></button>
+                    <button type="button" class="btn btn-secondary"><a
+                            href="../qgis2web_2022_12_05-01_16_00_030020/index.html"
+                            class="text-light">Advanced</a></button>
+                    <button type="button" class="btn btn-secondary"><a
+                            href="/FrontEnd/qgis2web_2022_12_05-19_36_22_477542/index.html"
+                            class="text-dark">Expert</a></button>
+                </div>
+            </div>
+        </div>
+        <a class="nav-link text-white px-3" href="../login.html">Login </a>
         </div>
     </nav>
-    <div class="container butn1">
-        <div class="btn-group " role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-secondary "><a href="/FrontEnd/qgis2web_2022_12_05-01_16_00_030020/index.html" class="text-light">Beginner</a></button>
-            <button type="button" class="btn btn-secondary"><a href="/pratice.html" class="text-light">Advanced</a></button>
-            <button type="button" class="btn btn-secondary"><a href="/FrontEnd/qgis2web_2022_12_05-19_36_22_477542/index.html" class="text-dark">Expert</a></button>
-          </div>
-        </div>
+
     <div id="map">
     </div>
     <script src="js/qgis2web_expressions.js"></script>
@@ -313,7 +323,14 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2"><strong>id</strong><br />' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row" class="text-center"><h3>Hotel Himalyan<h3></th>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row"><img src="https://pix10.agoda.net/hotelImages/9820752/-1/548705e1ca2fec38bb0893cdc66d2bb9.jpg?ca=14&ce=1&s=1024x768" width="250" height="150" /></th>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, { maxHeight: 400 });

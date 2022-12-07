@@ -115,6 +115,9 @@ body {
   .sidenav a {
     font-size: 18px;
   }
+  .btn-group{
+    font-size: 12px;
+  }
 }
 .navbar-brand {
   text-align: center;
