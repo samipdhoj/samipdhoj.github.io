@@ -23,18 +23,84 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href=' http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $(".openModal").click(function () {
+                setTimeout(function () {
+                    var h = $(".modal-body .first-content p").height();
+                    $(".modal-body").css('height', h + 80 + 'px');
+                    $(".modal-body .first-content p").css('height', h + 'px');
+                }, 250);
+            });
+            $('.first-button').on('click', function () {
+                $('.first-content').animate({ width: "toggle" }, function () {
+                    $('.second-content').animate({ width: "toggle" });
+                    var h = $(".modal-body .second-content p").height();
+                    $(".modal-body").css('height', h + 80 + 'px');
+                    $(".modal-body .second-content p").css('height', h + 'px');
+                });
+            });
+            $('.second-button').on('click', function () {
+                $('.second-content').animate({ width: "toggle" }, function () {
+                    $('.first-content').animate({ width: "toggle" });
+                    var h = $(".modal-body .first-content p").height();
+                    $(".modal-body").css('height', h + 80 + 'px');
+                    $(".modal-body .first-content p").css('height', h + 'px');
+                });
+            });
+        });
+    </script>
+    <style>
+        .modal-body div p {
+            overflow: hidden;
+        }
+
+        .first-content {
+            width: 100%;
+            float: left;
+        }
+
+        .second-content {
+            width: 100%;
+            float: right;
+        }
+    </style>
+
 </head>
+
 
 <body>
     <div class="container ">
-        <a href="qgis2web_2022_12_05-01_16_00_030020/index.html">
-            <button class="btn btn1 mapmarker data-too" data-toggle="tooltip" data-placement="top"
-                title="Anapurna Base Camp"><i class="fa fa-map-marker fa-3x"></i></button>
+        <a>
+            <button class="btn btn1 mapmarker data-too" data-toggle="modal" data-target="#myModal"><i
+                    class="fa fa-map-marker fa-3x " style='color: rgba(43, 40, 40, 0.712)'></i></button>
         </a>
+        <!-- <a href="qgis2web_2022_12_05-01_16_00_030020/index.html">
+            <button class="btn btn1 mapmarker data-too" data-toggle="tooltip" data-placement="top"
+                title="Anapurna Base Camp" data-img="https://mdbootstrap.com/img/logo/mdb192x192.webp"><i
+                    class="fa fa-map-marker fa-3x " style='color: rgba(43, 40, 40, 0.712)'></i></button>
+        </a> -->
         <a href="qgis2web_2022_12_05-01_16_00_030020/index.html">
-            <button class="btn btn2 mapmarker"><i class="fa fa-map-marker fa-3x"></i></button>
-        </a href="qgis2web_2022_12_05-01_16_00_030020/index1.html">
-        <button class="btn btn3 mapmarker"><i class="fa fa-map-marker fa-3x"></i></button>
+            <button class="btn btn2 mapmarker"><i class="fa fa-map-marker fa-3x "
+                    style='color: rgba(43, 40, 40, 0.712)'></i></button>
+        </a>
+        <a href="qgis2web_2022_12_05-01_16_00_030020/index1.html">
+            <button class="btn btn3 mapmarker"><i class="fa fa-map-marker fa-3x"
+                    style='color: rgba(43, 40, 40, 0.712)'></i></button>
+        </a>
+        <a href="qgis2web_2022_12_05-01_16_00_030020/index1.html">
+            <button class="btn btn4 mapmarker"><i class="fa fa-map-marker fa-3x"
+                    style='color: rgba(43, 40, 40, 0.712)'></i></button>
+        </a>
+        <a href="qgis2web_2022_12_05-01_16_00_030020/index1.html">
+            <button class="btn btn5 mapmarker"><i class="fa fa-map-marker fa-3x"
+                    style='color: rgba(43, 40, 40, 0.712)'></i></button>
+        </a>
+        <a href="qgis2web_2022_12_05-01_16_00_030020/index1.html">
+            <button class="btn btn6 mapmarker"><i class="fa fa-map-marker fa-3x"
+                    style='color: rgba(43, 40, 40, 0.712)'></i></button>
+        </a>
     </div>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-dark ">
@@ -47,7 +113,8 @@
                     loading="lazy" /></a>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-1">
                 <li class="nav-item active">
-                    <a class="nav-link text-white px-3 px-sm-0" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white px-3 px-sm-0" href="index.html">Home <span
+                            class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <!-- <a class="nav-link nav-item active bg-dark" href="#">Home </a> -->
@@ -57,13 +124,13 @@
         </div>
     </nav>
     <!-- Navbar -->
-    <div class="homebackground ">
+    <div class="homebackground  ">
         <div class="form-outline justify-content-center container-fluid">
             <input type="search" id="form1"
-                class="fixbar form-control text-center border-info w-50 mx-auto bg-light my-5"
+                class="fixbar form-control text-center border-info w-50 mx-auto bg-light my-lg-5 my-sm-5"
                 placeholder="Do You Know Where you want to go?" aria-label="Search" />
         </div>
-        <img class="bgimage justify-content-center w-100" src="images/pic2.jpg">
+        <img class="bgimage justify-content-center w-100 h-" src="images/pic2.jpg">
     </div>
     <div class="row container justify-content-center">
     </div>
@@ -72,7 +139,47 @@
         <!-- <img src="images/1.avif" class="card-img-top" alt="..."> -->
 
     </div>
+
     <!-- <a href="qgis2web_2022_11_24-13_59_17_103484/index.html">Click Here</a> -->
+
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header modal-dialog-scrollable">
+                    <h4 class="modal-title text-center">Tour Slider</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="first-content text-center">
+                        <div>
+                            <img src="https://www.guideinhimalaya.com/uploads/img/Annapurna-Base-Camp-Trek-Photo.jpg"
+                                style="width: 400px;" class="text-center">
+                        </div>
+                        <p>Annapurna-Base-Camp-Trek-Photo.</p>
+                        <a href="qgis2web_2022_12_05-01_16_00_030020/index.html">
+                            <button class="btn">Location</button>
+                        </a>
+                        <button type="button" class="btn btn-info first-button">Next</button>
+                    </div>
+                    <div class="second-content" style="display:none">
+                        <p>Some text in the modal.</p>
+                        <a href="qgis2web_2022_12_05-01_16_00_030020/index1.html">
+                            <button class="btn">Location</button>
+                        </a>
+                        <button type="button" class="btn btn-info first-button">Previous</button>
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </body>
 
 </html>

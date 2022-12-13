@@ -22,7 +22,7 @@ body {
   border: 5px;
   border-radius: 20px;
   align-items: center;
-  top: 12px;
+  top: 22px;
   /* right:0 height: 30px; */
   background: rgb(231, 212, 212);
   /* z-index: 1; */
@@ -82,12 +82,17 @@ body {
   padding: 12px 16px; /* Some padding */
   font-size: 16px; /* Set a font size */
   cursor: pointer; /* Mouse pointer on hover */
+  animation: 1s ease-out 0s 1 slideInFromUp;
+
 }
 
 /* Darker background on mouse-over */
 .btn1:hover {
   background-color: rgba(255, 255, 255, 0.329);
+  color: rgba(243, 30, 30, 0.938);
 }
+
+
 .btn2 {
   background-color: DodgerBlue; /* Blue background */
   border: none; /* Remove borders */
@@ -96,12 +101,14 @@ body {
   font-size: 16px; /* Set a font size */
   cursor: pointer; /* Mouse pointer on hover */
   position: absolute;
+  animation: 1s ease-out 0s 1 slideInFromUp;
   top: 40%;
   left: 70%;
 }
 
 /* Darker background on mouse-over */
 .btn2:hover {
+  color: rgb(0, 0, 0);
   background-color: rgba(255, 255, 255, 0.329);
 }
 .btn3 {
@@ -112,74 +119,86 @@ body {
   font-size: 16px; /* Set a font size */
   cursor: pointer; /* Mouse pointer on hover */
   position: absolute;
+  animation: 1s ease-out 0s 1 slideInFromUp;
   top: 60%;
   left: 40%;
 }
 
 /* Darker background on mouse-over */
 .btn3:hover {
+  color: black;
   background-color: rgba(255, 255, 255, 0.329);
 }
+.btn4 {
+  background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  position: absolute;
+  animation: 1s ease-out 0s 1 slideInFromUp;
+  top: 60%;
+  left: 10%;
+}
 
-.card1 {
-  background-color: transparent;
+/* Darker background on mouse-over */
+.btn4:hover {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.329);
+}
+.btn5 {
+  background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  position: absolute;
+  animation: 1s ease-out 0s 1 slideInFromUp;
+  top: 50%;
+  left: 25%;
+}
+
+/* Darker background on mouse-over */
+.btn5:hover {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.329);
+}
+.btn6 {
+  background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  position: absolute;
+  animation: 1s ease-out 0s 1 slideInFromUp;
+  top: 55%;
+  left: 85%;
+}
+
+/* Darker background on mouse-over */
+.btn6:hover {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.329);
 }
 
 @media only screen and (max-width: 750px) {
   .fixbar {
+    display: none;
     height: 10px;
     position: fixed;
     /* left: 25%; */
     border: 2px;
     border-radius: 20px;
     align-items: center;
-    /* top: 12px; */
+    top: 8px;
     /* right:0 height: 30px; */
     background: rgb(231, 212, 212);
     /* z-index: 1; */
   }
-  .btn1:hover {
-    background-color: rgba(255, 255, 255, 0.329);
-  }
-  .btn1 {
-    background-color: DodgerBlue; /* Blue background */
-    border: none; /* Remove borders */
-    color: white; /* White text */
-    padding: 12px 16px; /* Some padding */
-    font-size: 16px; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
-    position: absolute;
-    top: 25%;
-    left: 10%;
-  }
-  .btn2:hover {
-    background-color: rgba(255, 255, 255, 0.329);
-  }
-  .btn2 {
-    background-color: DodgerBlue; /* Blue background */
-    border: none; /* Remove borders */
-    color: white; /* White text */
-    padding: 12px 16px; /* Some padding */
-    font-size: 16px; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
-    position: absolute;
-    top: 25%;
-    left: 30%;
-  }
-  .btn3:hover {
-    background-color: rgba(255, 255, 255, 0.329);
-  }
-  .btn3{
-    background-color: DodgerBlue; /* Blue background */
-    border: none; /* Remove borders */
-    color: white; /* White text */
-    padding: 12px 16px; /* Some padding */
-    font-size: 16px; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
-    position: absolute;
-    top: 20%;
-    left: 60%;
-  }
+
   .homebackground {
     width: 100%;
     height: 30px;
@@ -190,6 +209,29 @@ body {
     object-fit: fill;
     width: 100%;
     height: 600px;
+    margin: 0;
   }
-  
+}
+
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.navbar{
+  /* animation: 1s ease-out 0s 1 slideInFromUp;8 */
+}
+
+@keyframes slideInFromUp {
+  0% {
+    transform: translateY(-200%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
