@@ -235,3 +235,8 @@ body {
     transform: translateY(0);
   }
 }
+
+.myModal{
+  color: blue;
+  background-color: rgba(0, 0, 0, 0.7);
+}
