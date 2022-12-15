@@ -51,29 +51,12 @@
             });
         });
     </script>
-    <style>
-        .modal-body div p {
-            overflow: hidden;
-        }
-
-        .first-content {
-            width: 100%;
-            float: left;
-        }
-
-        .second-content {
-            width: 100%;
-            float: right;
-        }
-    </style>
-
 </head>
-
 
 <body>
     <div class="container ">
         <a>
-            <button class="btn btn1 mapmarker data-too" data-toggle="modal" data-target="#myModal"><i
+            <button class="btn btn1 mapmarker data-too" data-toggle="modal" data-target="#largeModal"><i
                     class="fa fa-map-marker fa-3x " style='color: rgba(43, 40, 40, 0.712)'></i></button>
         </a>
         <!-- <a href="qgis2web_2022_12_05-01_16_00_030020/index.html">
@@ -97,10 +80,10 @@
             <button class="btn btn5 mapmarker"><i class="fa fa-map-marker fa-3x"
                     style='color: rgba(43, 40, 40, 0.712)'></i></button>
         </a>
-        <a href="qgis2web_2022_12_05-01_16_00_030020/index1.html">
+        <a">
             <button class="btn btn6 mapmarker"><i class="fa fa-map-marker fa-3x"
                     style='color: rgba(43, 40, 40, 0.712)'></i></button>
-        </a>
+            </a>
     </div>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-dark ">
@@ -122,6 +105,8 @@
         </div>
     </nav>
     <!-- Navbar -->
+
+    <!-- search -->
     <div class="homebackground  ">
         <div class="form-outline justify-content-center container-fluid">
             <input type="search" id="form1"
@@ -130,6 +115,8 @@
         </div>
         <img class="bgimage justify-content-center w-100 h-" src="images/pic2.jpg">
     </div>
+
+    <!--  -->
     <div class="row container justify-content-center">
     </div>
     <div class="card1" style="width: 18rem; height: 550px;">
@@ -174,6 +161,7 @@
 
         </div>
     </div>
+
     <!-- login form -->
     <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
@@ -197,7 +185,6 @@
                         <input type="password" id="defaultForm-pass" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
                     </div>
-
                 </div>
                 <div class="modal-footer d-flex justify-content-center ">
                     <button class="btn btn-dark">Login</button>
@@ -206,10 +193,88 @@
         </div>
     </div>
 
-    <!-- <div class="text-center">
-  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Launch
-    Modal Login Form</a>
-</div> -->
+    <div class="container">
+        <!-- modal -->
+        <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="basicModal"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <!-- carousel -->
+                        <div id='carouselExampleIndicators' class='carousel slide align-content-center'
+                            data-ride='carousel'>
+                            <ol class='carousel-indicators'>
+                                <li data-target='#carouselExampleIndicators' data-slide-to='0' class='active'></li>
+                                <li data-target='#carouselExampleIndicators' data-slide-to='1'></li>
+                                <li data-target='#carouselExampleIndicators' data-slide-to='2'></li>
+                            </ol>
+                            <div class='carousel-inner'>
+                                <div class='carousel-item active text-center'>
+                                    <img class='img-size align-self-center'
+                                        src='https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1391&q=80'
+                                        alt='First slide' />
+                                    <h6>Annapurna-Base-Camp-Trek-Photo</h6>
+                                    <h6>Annapurna-Base-Camp-Trek-Photo</h6>
+                                    <h6>Annapurna-Base-Camp-Trek-Photo</h6>
+                                    <h6>Annapurna-Base-Camp-Trek-Photo</h6>
+                                    <h6>Annapurna-Base-Camp-Trek-Photo</h6>
+                                </div>
+                                <div class='carousel-item text-center'>
+                                    <img class='img-size'
+                                        src='https://images.unsplash.com/photo-1491555103944-7c647fd857e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
+                                        alt='Second slide' />
+                                    <h6>Annapurna-Base-Camp-Trek-Photo</h6>
+                                    <h6>Annapurna-Base-Camp-Trek-Photo</h6>
+                                    <h6>Annapurna-Base-Camp-Trek-Photo</h6>
+                                    <h6>Annapurna-Base-Camp-Trek-Photo</h6>
+                                    <h6>Annapurna-Base-Camp-Trek-Photo</h6>
+                                </div>
+                                <div class='carousel-item text-center'>
+                                    <img class='img-size'
+                                        src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
+                                        alt='Second slide' />
+                                    <h6>Annapurna-Base-Camp-Trek-Photo</h6>
+                                    <h6>Annapurna-Base-Camp-Trek-Photo</h6>
+                                    <h6>Annapurna-Base-Camp-Trek-Photo</h6>
+                                    <h6>Annapurna-Base-Camp-Trek-Photo</h6>
+                                </div>
+                            </div>
+                            <a class='carousel-control-prev' href='#carouselExampleIndicators' role='button'
+                                data-slide='prev'>
+                                <span class='carousel-control-prev-icon' aria-hidden='true'></span>
+                                <span class='sr-only'>Previous</span>
+                            </a>
+                            <a class='carousel-control-next' href='#carouselExampleIndicators' role='button'
+                                data-slide='next'>
+                                <span class='carousel-control-next-icon' aria-hidden='true'></span>
+                                <span class='sr-only'>Next</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <button type="button" class="collapsible">Open Collapsible</button> -->
+        
+        <!-- <div class="card" id="card">
+            <div class="content">
+                <div class="card-header">
+                    Featured
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <img src="https://cdn.kimkim.com/files/a/content_articles/featured_photos/b2fad5b6b2052164dd9da75efacb304d4f211fa5/big-d5d878b029bbeaedaab673aee4a4ec04.jpg"
+                        class="rounded float-right w-25" alt="...">
+                </div>
+            </div>
+        </div> -->
+
+
 </body>
 
 </html>

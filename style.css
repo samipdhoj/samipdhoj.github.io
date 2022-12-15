@@ -66,7 +66,7 @@ body {
 
 .mapmarker {
   position: absolute;
-  top: 40%;
+  top: 20%;
   left: 50%;
   color: blue;
 }
@@ -102,7 +102,7 @@ body {
   cursor: pointer; /* Mouse pointer on hover */
   position: absolute;
   animation: 1s ease-out 0s 1 slideInFromUp;
-  top: 40%;
+  top: 30%;
   left: 70%;
 }
 
@@ -120,7 +120,7 @@ body {
   cursor: pointer; /* Mouse pointer on hover */
   position: absolute;
   animation: 1s ease-out 0s 1 slideInFromUp;
-  top: 60%;
+  top: 40%;
   left: 40%;
 }
 
@@ -138,7 +138,7 @@ body {
   cursor: pointer; /* Mouse pointer on hover */
   position: absolute;
   animation: 1s ease-out 0s 1 slideInFromUp;
-  top: 60%;
+  top: 40%;
   left: 10%;
 }
 
@@ -156,7 +156,7 @@ body {
   cursor: pointer; /* Mouse pointer on hover */
   position: absolute;
   animation: 1s ease-out 0s 1 slideInFromUp;
-  top: 50%;
+  top: 20%;
   left: 25%;
 }
 
@@ -174,7 +174,7 @@ body {
   cursor: pointer; /* Mouse pointer on hover */
   position: absolute;
   animation: 1s ease-out 0s 1 slideInFromUp;
-  top: 55%;
+  top: 35%;
   left: 85%;
 }
 
@@ -236,7 +236,38 @@ body {
   }
 }
 
-.myModal{
-  color: blue;
-  background-color: rgba(0, 0, 0, 0.7);
-}
+
+
+.img-size{
+  /* 	padding: 0;
+    margin: 0; */
+    height: 450px;
+    width: 100%;
+    background-size: cover;
+    overflow: hidden;
+  }
+  .modal-content {
+     width: 900px;
+    border:none;
+  }
+  .modal-body {
+     padding: 0;
+  }
+  
+  .carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23009be1' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+    width: 30px;
+    height: 48px;
+  }
+  .carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23009be1' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+    width: 30px;
+    height: 48px;
+  }
+
+  .card{
+    top: 50% !important;
+    position: absolute;
+    background-color: rgba(127, 255, 212, 0.132);
+  }
+
