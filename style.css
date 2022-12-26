@@ -181,7 +181,10 @@ body {
   color: black;
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 850px) {
+  h3{
+    font-size: 8px;
+  }
   .fixbar {
     display: none;
     height: 10px;
