@@ -1,78 +1,48 @@
 * {
   font-size: 18px;
-  font-family: "Roboto Condensed";
+  font-family: "Segoe UI";
 }
 
 html,
 body {
   background-color: #40b4a600;
-  position: relative;
+  position: static;
 }
 .homebackground {
-  width: 100%;
-  height: 50px;
+  /* width: 100%; */
+  height: 1px;
   object-fit: cover;
   position: static;
 }
 
 .fixbar {
-  height: 30px;
   position: absolute;
   left: 25%;
   border: 5px;
   border-radius: 20px;
   align-items: center;
-  top: 22px;
+  top: 20px;
   /* right:0 height: 30px; */
-  background: rgb(231, 212, 212);
+  background: rgb(233, 44, 44);
   /* z-index: 1; */
+}
+
+.img-size {
+  height: 32vh !important;
+  width: 30vw !important;
+  overflow: hidden;
 }
 
 .bgimage {
   object-fit: fill;
-  /* width: 100%;
-  height: 95vh;
-   */
+  width: 100%;
   height: 100vh;
-  width: 99vw;
-}
-
-.slider {
-  position: absolute;
-  top: 40%;
-  left: 10%;
-  /* transform: translate(-50%,-50%); */
-  width: 500px;
-  height: 60px;
-  padding: 30px;
-  padding-left: 40px;
-  transform: rotate(270deg);
-  background: transparent;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  box-shadow: 0px 15px 40px #7e6d5766;
-}
-.slider label {
-  font-size: 24px;
-  font-weight: 400;
-  font-family: Open Sans;
-  padding-left: 10px;
-  color: rgb(0, 0, 0);
-}
-.slider input[type="range"] {
-  width: 420px;
-  height: 2px;
-  background: rgb(238, 0, 0);
-  border: none;
-  outline: none;
 }
 
 .mapmarker {
   position: absolute;
   top: 40%;
   left: 50%;
-  color: blue;
 }
 
 .fader {
@@ -103,7 +73,7 @@ body {
   cursor: pointer; /* Mouse pointer on hover */
   position: absolute;
   animation: 1s ease-out 0s 1 slideInFromUp;
-  top: 60%;
+  top: 50%;
   left: 70%;
 }
 
@@ -181,22 +151,15 @@ body {
   color: black;
 }
 
-@media only screen and (max-width: 850px) {
-  h3{
-    font-size: 8px;
+@media only screen and (max-width: 1200px) {
+  .bgimage {
+    object-fit: fill;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
   }
-  .fixbar {
-    display: none;
-    height: 10px;
-    position: fixed;
-    /* left: 25%; */
-    border: 2px;
-    border-radius: 20px;
-    align-items: center;
-    top: 8px;
-    /* right:0 height: 30px; */
-    background: rgb(231, 212, 212);
-    /* z-index: 1; */
+  h3{
+    font-size: 22px !important;
   }
 
   .homebackground {
@@ -205,12 +168,7 @@ body {
     object-fit: fill;
     /* position: absolute; */
   }
-  .bgimage {
-    object-fit: fill;
-    width: 100%;
-    height: 600px;
-    margin: 0;
-  }
+  
   h6 {
     font-size: 12px !important;
   }
@@ -218,38 +176,14 @@ body {
     font-size: 14px !important;
   }
   .img-size {
-    height: 450px;
-    width: 100%;
-    background-size: contain;
+    /* height: 22vh; */
+    background-size: cover;
     overflow: hidden;
-    width: 55vw;
-    height: 20vh;
+    width: 55vw !important;
+    height: 18vh;
   }
 }
 
-.navbar {
-  /* animation: 1s ease-out 0s 1 slideInFromUp;8 */
-}
-
-/* @keyframes slideInFromUp {
-  0% {
-    transform: translateY(-60%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-} */
-
-.img-size {
-  /* 	padding: 0;
-    margin: 0; */
-  height: 450px;
-  width: 100%;
-  background-size: cover;
-  overflow: hidden;
-  width: 35vw;
-  height: 30vh;
-}
 .modal-content {
   width: 900px;
   border: none;
@@ -300,6 +234,7 @@ body {
   height: 200px;
   position: relative;
   border: 3px solid black;
+  align-items: center;
 }
 
 .modal-dialog {
@@ -308,6 +243,8 @@ body {
   top: 5%;
   /* -ms-transform: translateY(-50%);
   transform: translateY(-50%); */
+  width: 60vw !important;
+
 }
 
 .modal-content{
