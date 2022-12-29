@@ -191,6 +191,44 @@ body {
   }
 }
 
+@media only screen and (max-height: 700px ) {
+  .bgimage {
+    object-fit: fill;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+  }
+  h3{
+    font-size: 22px !important;
+  }
+
+  .homebackground {
+    width: 100%;
+    height: 30px;
+    object-fit: fill;
+  }
+  
+  h6 {
+    font-size: 12px !important;
+  }
+  h5 {
+    font-size: 14px !important;
+  }
+  .img-size {
+    background-size: cover;
+    overflow: hidden;
+    width: 55vw !important;
+    height: 18vh;
+  }
+  .modal-dialog {
+    width: 70vw !important;
+    margin: 0;
+    position: absolute;
+    top: 1%;
+    /* -ms-transform: translateY(-50%);
+    transform: translateY(-50%); */
+  }
+}
 
 .carousel-control-prev-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#0f0000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
