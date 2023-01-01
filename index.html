@@ -55,30 +55,30 @@
 
 <body>
     <div>
-        <a href="qgis2web_2022_12_05-01_16_00_030020/index.html">
+        <a>
             <button class="btn btn1 mapmarker data-too" data-toggle="modal" data-target="#largeModal"><i
                     class="fa fa-map-marker fa-3x " style='color: rgba(0, 0,
                         0, 0.699)'></i></button>
         </a>
         <a>
-            <button class="btn btn2 mapmarker" data-toggle="modal" data-target="#largeModal"><i class="fa fa-map-marker
+            <button class="btn btn2 mapmarker" data-toggle="modal" data-target="#largeModal1"><i class="fa fa-map-marker
                         fa-3x " style='color: rgba(0, 0, 0, 0.712)'></i></button>
         </a>
         <a>
-            <button class="btn btn3 mapmarker" data-toggle="modal" data-target="#largeModal"><i class="fa fa-map-marker
+            <button class="btn btn3 mapmarker" data-toggle="modal" data-target="#largeModal1"><i class="fa fa-map-marker
                         fa-3x" style='color: rgba(0, 0, 0, 0.692)'></i></button>
         </a>
         <a>
-            <button class="btn btn4 mapmarker" data-toggle="modal" data-target="#largeModal"><i class="fa fa-map-marker
+            <button class="btn btn4 mapmarker" data-toggle="modal" data-target="#largeModal1"><i class="fa fa-map-marker
                         fa-3x" style='color: rgba(0, 0, 0, 0.637)'></i></button>
         </a>
         <a>
-            <button class="btn btn5 mapmarker"><i class="fa fa-map-marker
+            <button class="btn btn5 mapmarker" data-target="#largeModal1" data-toggle="modal"><i class="fa fa-map-marker
                         fa-3x" style='color: rgba(0, 0, 0, 0.726)'></i></button>
         </a>
     </div>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark ">
+    <nav class="navbar navbar-expand navbar-light bg-dark ">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
             aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -91,8 +91,8 @@
                 </li>
             </ul>
             <!-- <a class="nav-link nav-item active bg-dark" href="#">Home </a> -->
-            <a class="nav-link text-white px-3" href="#">About us </a>
-            <a class="nav-link text-white px-3" href="#">Offerings </a>
+            <!-- <a class="nav-link text-white px-3" href="#">About us </a>
+            <a class="nav-link text-white px-3" href="#">Offerings </a> -->
             <a class="nav-link text-white px-3" href="" data-toggle="modal" data-target="#modalLoginForm">Login </a>
         </div>
     </nav>
@@ -100,10 +100,6 @@
 
     <!-- search -->
     <div class="homebackground">
-        <div class="form-outline justify-content-center container-fluid">
-            <input type="search" id="form1" class="fixbar form-control text-center border-info w-50
-                    mx-auto bg-light my-lg-5" placeholder="Do You Know Where you want to go?" aria-label="Search" />
-        </div>
         <div class=" ">
             <img class="bgimage justify-content-center w-100" src="images/Everest_View.jpg">
         </div>
@@ -145,7 +141,7 @@
         <div class="modal-dialog modal-xl my-5 p-2">
             <div class="modal-content align-center">
                 <div class="modal-header py-1" style="height:25px !important">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>   
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
                     <!-- carousel -->
@@ -154,7 +150,7 @@
                         <div class='carousel-inner text-center'>
                             <div class='carousel-item active text-center'>
                                 <div style="position: relative; ">
-                                    <img class='img-size w-100'
+                                    <img class='img-size w-90'
                                         src='https://i.ytimg.com/vi/GoMPDzt2LGE/maxresdefault.jpg' alt='First slide'
                                         style="position:
                                             relative;" />
@@ -162,7 +158,7 @@
                             </div>
                             <div class='carousel-item text-center'>
                                 <div style="position: relative;">
-                                    <img class='img-size w-100'
+                                    <img class='img-size w-90'
                                         src='https://images.unsplash.com/photo-1491555103944-7c647fd857e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
                                         alt='First slide' style="position:
                                             relative;" />
@@ -170,7 +166,7 @@
                             </div>
                             <div class='carousel-item text-center'>
                                 <div style="position: relative; ">
-                                    <img class='img-size w-100'
+                                    <img class='img-size w-90'
                                         src='https://www.muchbetteradventures.com/magazine/content/images/2019/05/30084755/Everest-Base-Camp-Trek-1.jpeg'
                                         alt='First slide' style="position:
                                             relative;" />
@@ -188,34 +184,24 @@
                             </a>
                         </div>
                         <div class="transparent-text text-center w-100
-                                container p-2" style="top:0px; ">
+                                container p-2 bg-dark" style="top:0px; ">
                             <h3 style="top:0px; left: 0px;" class="text-left ">Tour:
                                 Everest Base Camp</h3>
                         </div>
                         <div class="p-2">
                             <p>
-                            <h6>The Everest Base Camp Trek, also known
-                                as
-                                the
-                                EBC Trek, is an all-inclusive 14-day
-                                trekking
-                                package from Kathmandu, Nepal, to the
-                                base
-                                camp
+                            <h6>
+                                The Everest Base Camp Trek, also known as the
+                                EBC Trek, is an all-inclusive 14-day trekking
+                                package from Kathmandu, Nepal, to the base camp
                                 of the highest mountain in the world.
-                                The walking tour is high on the bucket
-                                list
-                                of
-                                things to do for adventurers around the
-                                globe.
-                                It’s because the hike to Everest Base
-                                Camp
-                                allows you to see a magnificent close-up
-                                view of
-                                towering Mount Everest, the highest peak
-                                in
-                                the
-                                world, from every angle. </h6>
+                                The walking tour is high on the bucket list of
+                                things to do for adventurers around the globe.
+                                It’s because the hike to Everest Base Camp
+                                allows you to see a magnificent close-up view of
+                                towering Mount Everest, the highest peak in the
+                                world, from every angle.
+                            </h6>
                             </p>
                         </div>
                         <link rel="stylesheet"
@@ -241,8 +227,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center"><a href="EBC-Beginner/index.html"><button
-                                    type="button" class="btn btn-success ">Explore</button></a>
+                        <div class="text-center"><a href="EBC-Beginner/index.html"><button type="button"
+                                    class="btn btn-success ">Explore</button></a>
                         </div>
                     </div>
                 </div>
@@ -252,13 +238,12 @@
 
     <!-- Next Modal -->
 
-    <div class="modal fade " id="largeModal" tabindex="-1" role="dialog" aria-labelledby="basicModal"
+    <div class="modal fade " id="largeModal1" tabindex="-1" role="dialog" aria-labelledby="basicModal"
         aria-hidden="true">
         <div class="modal-dialog modal-xl my-5 ">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modal Header</h4>
                 </div>
                 <div class="modal-body">
                     <!-- carousel -->
@@ -272,7 +257,6 @@
                                         src='https://explorerspassage.com/wp-content/uploads/2021/12/everest-base-camp-trek-1-scaled.jpg'
                                         alt='First slide' style="position:
                                             relative;" />
-
                                 </div>
                             </div>
                             <div class='carousel-item text-center'>
@@ -305,19 +289,16 @@
                         <div class="transparent-text text-center w-100
                                 " style="top:0px; bottom: 0px; ">
                             <h3 style="top:0px; left: 0px;" class="text-left">Tour:
-                                Everest Base Camp Trek</h3>
+                                Dhaulagiri Base Camp</h3>
                         </div>
                         <p>
-                        <h6>The Everest Base Camp Trek, also known as the
-                            EBC Trek, is an all-inclusive 14-day trekking
-                            package from Kathmandu, Nepal, to the base camp
-                            of the highest mountain in the world.
-                            The walking tour is high on the bucket list of
-                            things to do for adventurers around the globe.
-                            It’s because the hike to Everest Base Camp
-                            allows you to see a magnificent close-up view of
-                            towering Mount Everest, the highest peak in the
-                            world, from every angle. </h6>
+                        <h6>
+                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+                            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+                            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+                            sadipscing elitr, sed diam
+                        </h6>
                         </p>
                         <link rel="stylesheet"
                             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -341,9 +322,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="float-right"><a href="qgis2web_2022_12_05-01_16_00_030020/index.html"><button
-                                    type="button" class="btn btn-success ">Explore</button></a>
-                        </div>
+                        <!-- <div class="float-right"><a href="#"><button
+                                    type="button" class="btn btn-light">Explore</button></a>
+                        </div> -->
                     </div>
                     <!-- <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

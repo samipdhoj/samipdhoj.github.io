@@ -242,7 +242,7 @@ body {
   width: 60vw !important;
   margin: 0;
   position: absolute;
-  top: 2%;
+  top: 5%;
   /* -ms-transform: translateY(-50%);
   transform: translateY(-50%); */
 }
@@ -251,4 +251,8 @@ body {
   height: 50% !important;
   /* width: 80% !important; */
   align-items: center ;
+}
+
+.hidden-mobile {
+  display: none;
 }
