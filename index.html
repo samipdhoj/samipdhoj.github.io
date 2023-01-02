@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link rel="icon" href="./images/images1.png">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +23,7 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href=' http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
-    <title>Document</title>
+    <title>Laliguras</title>
     <script src="https://code.jquery.com/jquery.min.js"></script>
     <script>
         $(function () {
@@ -65,15 +66,15 @@
                         fa-3x " style='color: rgba(0, 0, 0, 0.712)'></i></button>
         </a>
         <a>
-            <button class="btn btn3 mapmarker" data-toggle="modal" data-target="#largeModal1"><i class="fa fa-map-marker
+            <button class="btn btn3 mapmarker" data-toggle="modal" data-target="#largeModal2"><i class="fa fa-map-marker
                         fa-3x" style='color: rgba(0, 0, 0, 0.692)'></i></button>
         </a>
         <a>
-            <button class="btn btn4 mapmarker" data-toggle="modal" data-target="#largeModal1"><i class="fa fa-map-marker
+            <button class="btn btn4 mapmarker" data-toggle="modal" data-target="#largeModal3"><i class="fa fa-map-marker
                         fa-3x" style='color: rgba(0, 0, 0, 0.637)'></i></button>
         </a>
         <a>
-            <button class="btn btn5 mapmarker" data-target="#largeModal1" data-toggle="modal"><i class="fa fa-map-marker
+            <button class="btn btn5 mapmarker" data-target="#largeModal4" data-toggle="modal"><i class="fa fa-map-marker
                         fa-3x" style='color: rgba(0, 0, 0, 0.726)'></i></button>
         </a>
     </div>
@@ -108,7 +109,7 @@
     <div class="modal fade text-right" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content text-center">
                 <div class="modal-header text-center">
                     <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -117,13 +118,15 @@
                 </div>
                 <div class="modal-body mx-3">
                     <div class="md-form mb-5">
-                        <i class="fas fa-mail-forward prefix grey-text"></i>
+                        Email
+                        <i class="fa fa-envelope"></i>
                         <input type="email" id="defaultForm-email" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
                     </div>
 
                     <div class="md-form mb-4">
-                        <i class="fas fa-lock prefix grey-text"></i>
+                        Password
+                        <i class="fa fa-lock"></i>
                         <input type="password" id="defaultForm-pass" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
                     </div>
@@ -140,8 +143,8 @@
         aria-hidden="true">
         <div class="modal-dialog modal-xl my-5 p-2">
             <div class="modal-content align-center">
-                <div class="modal-header py-1" style="height:25px !important">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="modal-header py-1"">
+                    <button type=" button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
                     <!-- carousel -->
@@ -150,7 +153,7 @@
                         <div class='carousel-inner text-center'>
                             <div class='carousel-item active text-center'>
                                 <div style="position: relative; ">
-                                    <img class='img-size w-90'
+                                    <img class='img-size w-100'
                                         src='https://i.ytimg.com/vi/GoMPDzt2LGE/maxresdefault.jpg' alt='First slide'
                                         style="position:
                                             relative;" />
@@ -158,7 +161,7 @@
                             </div>
                             <div class='carousel-item text-center'>
                                 <div style="position: relative;">
-                                    <img class='img-size w-90'
+                                    <img class='img-size w-100'
                                         src='https://images.unsplash.com/photo-1491555103944-7c647fd857e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
                                         alt='First slide' style="position:
                                             relative;" />
@@ -166,7 +169,7 @@
                             </div>
                             <div class='carousel-item text-center'>
                                 <div style="position: relative; ">
-                                    <img class='img-size w-90'
+                                    <img class='img-size w-100'
                                         src='https://www.muchbetteradventures.com/magazine/content/images/2019/05/30084755/Everest-Base-Camp-Trek-1.jpeg'
                                         alt='First slide' style="position:
                                             relative;" />
@@ -236,7 +239,7 @@
         </div>
     </div>
 
-    <!-- Next Modal -->
+    <!-- Next Modal FOR DBC-->
 
     <div class="modal fade " id="largeModal1" tabindex="-1" role="dialog" aria-labelledby="basicModal"
         aria-hidden="true">
@@ -247,7 +250,7 @@
                 </div>
                 <div class="modal-body">
                     <!-- carousel -->
-                    <div id='carouselExampleIndicators' class='carousel
+                    <div id='carouselExampleIndicators' class='carouse
                             slide align-content-center' data-ride='carousel'>
 
                         <div class='carousel-inner text-center'>
@@ -322,13 +325,274 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="float-right"><a href="#"><button
-                                    type="button" class="btn btn-light">Explore</button></a>
-                        </div> -->
+                        <div class="float-right"><a href="#"><button type="button" title="Feature Comming Soon......"
+                                    class="btn btn-light">Explore</button></a>
+                        </div>
                     </div>
                     <!-- <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Next Modal For ABC -->
+    <div class="modal fade " id="largeModal2" tabindex="-1" role="dialog" aria-labelledby="basicModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl my-5 ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <!-- carousel -->
+                    <div id='carouselExampleIndicators' class='carouse
+                            slide align-content-center' data-ride='carousel'>
+
+                        <div class='carousel-inner text-center'>
+                            <div class='carousel-item active text-center'>
+                                <div style="">
+                                    <img class='img-size w-100'
+                                        src='https://www.guideinhimalaya.com/uploads/img/Annapurna-Base-Camp-Trek-Photo.jpg'
+                                        alt='First slide' style="position:
+                                            relative;" />
+                                </div>
+                            </div>
+                            <div class='carousel-item text-center'>
+                                <div style="">
+                                    <img class='img-size w-100'
+                                        src='https://www.trekking-in-nepal.net/website/var/tmp/image-thumbnails/0/4859/thumb__gallerypopup/Karbu-Peak-Kanchenjunga-Base-Camp-Trek-12.JPG.jpeg'
+                                        alt='First slide' style="position:
+                                            relative;" />
+                                </div>
+                            </div>
+                            <a class='carousel-control-prev' href='#carouselExampleIndicators' role='button'
+                                data-slide='prev'>
+                                <span class='carousel-control-prev-icon' aria-hidden='true'></span>
+                                <span class='sr-only'>Previous</span>
+                            </a>
+                            <a class='carousel-control-next' href='#carouselExampleIndicators' role='button'
+                                data-slide='next'>
+                                <span class='carousel-control-next-icon' aria-hidden='true'></span>
+                                <span class='sr-only'>Next</span>
+                            </a>
+                        </div>
+                        <div class="transparent-text text-center w-100
+                                " style="top:0px; bottom: 0px; ">
+                            <h3 style="top:0px; left: 0px;" class="text-left">Tour:
+                                Annapurna Base Camp</h3>
+                        </div>
+                        <p>
+                        <h6>
+                            Annapurna Base Camp Trek probably the best legendary and classical treks in the world offers
+                            breathe stopping Mountain View, give opportunity to experience the typical Nepali village,
+                            local people and their way of living traditional life in Himalaya of Nepal. The Annapurna
+                            Base Camp route goes passing through spectacular and tranquil landscapes, charming Gurung
+                            and Magar villages, lush green Rhododendron, bamboo and alpine forests to the trip’s last
+                            and final destination, Annapurna Base Camp at the height of 4130m (13546ft.)
+                        </h6>
+                        </p>
+                        <link rel="stylesheet"
+                            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col text-left">
+                                    <h6>
+                                        Estimated days of hiking: 7 days
+                                        <br>
+                                        Difficulty: Hard <br>
+                                        Maximum elevation: 5200 mts <br>
+                                    </h6>
+                                </div>
+                                <div class="col text-right">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>(155)
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="float-right"><a href="#"><button type="button" title="Feature Comming Soon......"
+                                    class="btn btn-light">Explore</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Next Modal For KBC -->
+    <div class="modal fade " id="largeModal3" tabindex="-1" role="dialog" aria-labelledby="basicModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl my-5 ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <!-- carousel -->
+                    <div id='carouselExampleIndicators' class='carouse
+                            slide align-content-center' data-ride='carousel'>
+
+                        <div class='carousel-inner text-center'>
+                            <div class='carousel-item active text-center'>
+                                <div style="">
+                                    <img class='img-size w-100'
+                                        src='https://www.trekkingtrail.com/uploads/img/kbc-trekking.jpg'
+                                        alt='First slide' style="position:
+                                            relative;" />
+                                </div>
+                            </div>
+                            <div class='carousel-item text-center'>
+                                <div style="">
+                                    <img class='img-size w-100'
+                                        src='https://www.trekking-in-nepal.net/website/var/tmp/image-thumbnails/0/4859/thumb__gallerypopup/Karbu-Peak-Kanchenjunga-Base-Camp-Trek-12.JPG.jpeg'
+                                        alt='First slide' style="position:
+                                            relative;" />
+                                </div>
+                            </div>
+                            <a class='carousel-control-prev' href='#carouselExampleIndicators' role='button'
+                                data-slide='prev'>
+                                <span class='carousel-control-prev-icon' aria-hidden='true'></span>
+                                <span class='sr-only'>Previous</span>
+                            </a>
+                            <a class='carousel-control-next' href='#carouselExampleIndicators' role='button'
+                                data-slide='next'>
+                                <span class='carousel-control-next-icon' aria-hidden='true'></span>
+                                <span class='sr-only'>Next</span>
+                            </a>
+                        </div>
+                        <div class="transparent-text text-center w-100
+                                " style="top:0px; bottom: 0px; ">
+                            <h3 style="top:0px; left: 0px;" class="text-left">Tour:
+                                Kanchenjunga Base Camp</h3>
+                        </div>
+                        <p>
+                        <h6>
+                            The Kanchenjunga Base Camp Trek provides the most varied trekking experience of the major
+                            8,000 m peak trekking in Nepal. Straddling the border with Sikkim, Kanchenjunga at 8,586m is
+                            the worlds third highest mountain, while its base camp trekking also known as KBC Trekking
+                            is only for off the beaten adventurous trekkers. This world third highest mountain has a
+                            tremendous mass with 5 major peaks ridge. This 5 ridge creates different five icy mass
+                            glaciers radiating away from the main ridge of Kanchenjunga.
+                        </h6>
+                        </p>
+                        <link rel="stylesheet"
+                            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col text-left">
+                                    <h6>
+                                        Estimated days of hiking: 4 days
+                                        <br>
+                                        Difficulty: Normal <br>
+                                        Maximum elevation: 3200 mts <br>
+                                    </h6>
+                                </div>
+                                <div class="col text-right">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>(42)
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="float-right"><a href="#"><button type="button" title="Feature Comming Soon......"
+                                    class="btn btn-light">Explore</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Next Modal For MBC -->
+    <div class="modal fade " id="largeModal4" tabindex="-1" role="dialog" aria-labelledby="basicModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl my-5 ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <!-- carousel -->
+                    <div id='carouselExampleIndicators' class='carouse
+                            slide align-content-center' data-ride='carousel'>
+
+                        <div class='carousel-inner text-center'>
+                            <div class='carousel-item active text-center'>
+                                <div style="">
+                                    <img class='img-size w-100'
+                                        src='https://nepalhikingadventure.com/wp-content/uploads/2019/07/Machhapuchhre-Himal-805x400.jpg'
+                                        alt='First slide' style="position:
+                                            relative;" />
+                                </div>
+                            </div>
+                            <div class='carousel-item text-center'>
+                                <div style="">
+                                    <img class='img-size w-100'
+                                        src='https://www.trekkingtrail.com/uploads/img/kbc-trekking.jpg'
+                                        alt='First slide' style="position:
+                                            relative;" />
+                                </div>
+                            </div>
+                            <a class='carousel-control-prev' href='#carouselExampleIndicators' role='button'
+                                data-slide='prev'>
+                                <span class='carousel-control-prev-icon' aria-hidden='true'></span>
+                                <span class='sr-only'>Previous</span>
+                            </a>
+                            <a class='carousel-control-next' href='#carouselExampleIndicators' role='button'
+                                data-slide='next'>
+                                <span class='carousel-control-next-icon' aria-hidden='true'></span>
+                                <span class='sr-only'>Next</span>
+                            </a>
+                        </div>
+                        <div class="transparent-text text-center w-100
+                                " style="top:0px; bottom: 0px; ">
+                            <h3 style="top:0px; left: 0px;" class="text-left">Tour:
+                                Machhapuchhre Base Camp</h3>
+                        </div>
+                        <p>
+                        <h6>
+                            Machhapuchhre Base Camp Trekking is a newly popular trekking trail in Annapurna Region. This
+                            trek offers wilderness experience and captivating views of Annapurna massif; that includes
+                            Machhapuchhre, Gangapurna, Himal Chuli, and others. If you want to sink yourself into nature
+                            and cultural lifestyle of Nepal. Then, this trek will be a perfect choice for you.
+                            TAAN, Pokhara identified and developed trails for MBC Trekking. The vision is to promote
+                            Pokhara and its surrounding rural areas.
+                        </h6>
+                        </p>
+                        <link rel="stylesheet"
+                            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col text-left">
+                                    <h6>
+                                        Estimated days of hiking: 6 days
+                                        <br>
+                                        Difficulty: Normal <br>
+                                        Maximum elevation: 2200 mts <br>
+                                    </h6>
+                                </div>
+                                <div class="col text-right">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>(42)
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="float-right"><a href="#"><button type="button" title="Feature Comming Soon......"
+                                    class="btn btn-light">Explore</button></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
