@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
+
+<head>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
     <meta name="mobile-web-app-capable" content="yes">
@@ -55,76 +56,97 @@
         }
     </style>
     <title></title>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark ">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
-                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse px-5" id="navbarTogglerDemo01">
-                <a class="navbar-brand" href="../index.html"><img src="images/images1.png" height="40" alt="MDB Logo"
-                        loading="lazy" /></a>
-                <div class="butn1" id="butn1">
-                    <div class="btn-group content-center" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-secondary "><a href="#"
-                                class="text-dark">Beginner</a></button>
-                        <button type="button" class="btn btn-secondary"><a href="../EBC-Advance/index.html"
-                                class="text-light">Advanced</a></button>
-                        <button type="button" class="btn btn-secondary"><a
-                                href="../EBC-Expert/index.html"
-                                class="text-light">Expert</a></button>
-                    </div>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="../index.html"><img src="images/images1.png" height="40" alt="MDB Logo"
+                loading="lazy" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="butn1" id="butn1">
+                <div class="btn-group content-center" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-secondary "><a href="#" class="text-dark">Beginner</a></button>
+                    <button type="button" class="btn btn-secondary"><a href="../EBC-Advance/index.html"
+                            class="text-light">Advanced</a></button>
+                    <button type="button" class="btn btn-secondary"><a href="../EBC-Expert/index.html"
+                            class="text-light">Expert</a></button>
                 </div>
             </div>
-            <a class="nav-link text-white px-3" href="../login.html">Login </a>
+            <div class="navbar-nav">
+                <a class="nav-link text-white px-3" href="../login.html">Login </a>
             </div>
-        </nav>
-        <div id="map">
         </div>
-        <script src="js/qgis2web_expressions.js"></script>
-        <script src="js/leaflet.js"></script>
-        <script src="js/multi-style-layer.js"></script>
-        <script src="js/leaflet.rotatedMarker.js"></script>
-        <script src="js/leaflet.pattern.js"></script>
-        <script src="js/leaflet-hash.js"></script>
-        <script src="js/Autolinker.min.js"></script>
-        <script src="js/rbush.min.js"></script>
-        <script src="js/labelgun.min.js"></script>
-        <script src="js/labels.js"></script>
-        <script src="data/EBC_Village_Chhuthawa_1.js"></script>
-        <script src="data/EBC_Village_Deboche_2.js"></script>
-        <script src="data/EBC_Village_Chaurikharika_3.js"></script>
-        <script src="data/EBC_Village_Lukla_4.js"></script>
-        <script src="data/EBC_Village_NuringGhat_5.js"></script>
-        <script src="data/EBC_Village_Cheplung_6.js"></script>
-        <script src="data/EBC_Village_Benkar_7.js"></script>
-        <script src="data/EBC_Village_Chumoa_8.js"></script>
-        <script src="data/EBC_Village_Jorsalle_9.js"></script>
-        <script src="data/EBC_Village_Tashinga_10.js"></script>
-        <script src="data/EBC_Village_Shomare_11.js"></script>
-        <script src="data/EBC_Village_Dukla_12.js"></script>
-        <script src="data/EBC_Village_Lobuche_13.js"></script>
-        <script src="data/EBC_Village_GorakShep_14.js"></script>
-        <script src="data/RoutingResult_15.js"></script>
-        <script src="data/RoutingResult_16.js"></script>
-        <script src="data/RoutingResult_17.js"></script>
-        <script src="data/EBC_Village_Monjo_18.js"></script>
-        <script src="data/EBC_Village_Namche_19.js"></script>
-        <script src="data/RoutingResult_20.js"></script>
-        <script src="data/EBC_Village_Phakding_21.js"></script>
-        <script src="data/EBC_Village_Pheriche_22.js"></script>
-        <script src="data/EBC_Village_Rangding_23.js"></script>
-        <script src="data/EBC_Village_Tengoche_24.js"></script>
-        <script src="data/EBC_Village_TocToc_25.js"></script>
-        <script src="data/EBC_Village_Zamphuti_26.js"></script>
-        <script>
+    </nav>
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-dark ">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse px-5" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="../index.html"><img src="images/images1.png" height="40" alt="MDB Logo"
+                    loading="lazy" /></a>
+            <div class="butn1" id="butn1">
+                <div class="btn-group content-center" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-secondary "><a href="#" class="text-dark">Beginner</a></button>
+                    <button type="button" class="btn btn-secondary"><a href="../EBC-Advance/index.html"
+                            class="text-light">Advanced</a></button>
+                    <button type="button" class="btn btn-secondary"><a href="../EBC-Expert/index.html"
+                            class="text-light">Expert</a></button>
+                </div>
+            </div>
+        </div>
+        <a class="nav-link text-white px-3" href="../login.html">Login </a>
+        </div>
+    </nav> -->
+    <div id="map">
+    </div>
+    <script src="js/qgis2web_expressions.js"></script>
+    <script src="js/leaflet.js"></script>
+    <script src="js/multi-style-layer.js"></script>
+    <script src="js/leaflet.rotatedMarker.js"></script>
+    <script src="js/leaflet.pattern.js"></script>
+    <script src="js/leaflet-hash.js"></script>
+    <script src="js/Autolinker.min.js"></script>
+    <script src="js/rbush.min.js"></script>
+    <script src="js/labelgun.min.js"></script>
+    <script src="js/labels.js"></script>
+    <script src="data/EBC_Village_Chhuthawa_1.js"></script>
+    <script src="data/EBC_Village_Deboche_2.js"></script>
+    <script src="data/EBC_Village_Chaurikharika_3.js"></script>
+    <script src="data/EBC_Village_Lukla_4.js"></script>
+    <script src="data/EBC_Village_NuringGhat_5.js"></script>
+    <script src="data/EBC_Village_Cheplung_6.js"></script>
+    <script src="data/EBC_Village_Benkar_7.js"></script>
+    <script src="data/EBC_Village_Chumoa_8.js"></script>
+    <script src="data/EBC_Village_Jorsalle_9.js"></script>
+    <script src="data/EBC_Village_Tashinga_10.js"></script>
+    <script src="data/EBC_Village_Shomare_11.js"></script>
+    <script src="data/EBC_Village_Dukla_12.js"></script>
+    <script src="data/EBC_Village_Lobuche_13.js"></script>
+    <script src="data/EBC_Village_GorakShep_14.js"></script>
+    <script src="data/RoutingResult_15.js"></script>
+    <script src="data/RoutingResult_16.js"></script>
+    <script src="data/RoutingResult_17.js"></script>
+    <script src="data/EBC_Village_Monjo_18.js"></script>
+    <script src="data/EBC_Village_Namche_19.js"></script>
+    <script src="data/RoutingResult_20.js"></script>
+    <script src="data/EBC_Village_Phakding_21.js"></script>
+    <script src="data/EBC_Village_Pheriche_22.js"></script>
+    <script src="data/EBC_Village_Rangding_23.js"></script>
+    <script src="data/EBC_Village_Tengoche_24.js"></script>
+    <script src="data/EBC_Village_TocToc_25.js"></script>
+    <script src="data/EBC_Village_Zamphuti_26.js"></script>
+    <script>
         var map = L.map('map', {
-            zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[27.678581439798894,86.6245947739832],[27.781380896008198,86.85099368219046]]);
+            zoomControl: true, maxZoom: 28, minZoom: 1
+        }).fitBounds([[27.678581439798894, 86.6245947739832], [27.781380896008198, 86.85099368219046]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
-        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var autolinker = new Autolinker({ truncate: { length: 30, location: 'smart' } });
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
@@ -153,7 +175,7 @@
                         <td colspan="2">' + (feature.properties['Tour'] !== null ? autolinker.link(feature.properties['Tour'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_Chhuthawa_1_0() {
@@ -164,7 +186,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -197,7 +219,7 @@
                         <td colspan="2">' + (feature.properties['Tour'] !== null ? autolinker.link(feature.properties['Tour'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_Deboche_2_0() {
@@ -208,7 +230,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -235,7 +257,7 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_Chaurikharika_3_0() {
@@ -246,7 +268,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -279,7 +301,7 @@
                         <td colspan="2">' + (feature.properties['TOUR'] !== null ? autolinker.link(feature.properties['TOUR'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_Lukla_4_0() {
@@ -290,7 +312,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -317,7 +339,7 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_NuringGhat_5_0() {
@@ -328,7 +350,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -355,7 +377,7 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_Cheplung_6_0() {
@@ -366,7 +388,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -393,7 +415,7 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_Benkar_7_0() {
@@ -404,7 +426,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -431,7 +453,7 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_Chumoa_8_0() {
@@ -442,7 +464,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -469,7 +491,7 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_Jorsalle_9_0() {
@@ -480,7 +502,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -507,7 +529,7 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_Tashinga_10_0() {
@@ -518,7 +540,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -545,7 +567,7 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_Shomare_11_0() {
@@ -556,7 +578,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -583,7 +605,7 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_Dukla_12_0() {
@@ -594,7 +616,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -621,7 +643,7 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_Lobuche_13_0() {
@@ -632,7 +654,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,158,23,1.0)',
@@ -659,7 +681,7 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_GorakShep_14_0() {
@@ -670,7 +692,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -748,7 +770,7 @@
             layerName: 'layer_RoutingResult_15',
             pane: 'pane_RoutingResult_15',
             onEachFeature: pop_RoutingResult_15,
-            styles: [style_RoutingResult_15_0,style_RoutingResult_15_1,style_RoutingResult_15_2,style_RoutingResult_15_3,style_RoutingResult_15_4,]
+            styles: [style_RoutingResult_15_0, style_RoutingResult_15_1, style_RoutingResult_15_2, style_RoutingResult_15_3, style_RoutingResult_15_4,]
         });
         bounds_group.addLayer(layer_RoutingResult_15);
         map.addLayer(layer_RoutingResult_15);
@@ -809,7 +831,7 @@
             layerName: 'layer_RoutingResult_16',
             pane: 'pane_RoutingResult_16',
             onEachFeature: pop_RoutingResult_16,
-            styles: [style_RoutingResult_16_0,style_RoutingResult_16_1,style_RoutingResult_16_2,style_RoutingResult_16_3,style_RoutingResult_16_4,]
+            styles: [style_RoutingResult_16_0, style_RoutingResult_16_1, style_RoutingResult_16_2, style_RoutingResult_16_3, style_RoutingResult_16_4,]
         });
         bounds_group.addLayer(layer_RoutingResult_16);
         map.addLayer(layer_RoutingResult_16);
@@ -870,7 +892,7 @@
             layerName: 'layer_RoutingResult_17',
             pane: 'pane_RoutingResult_17',
             onEachFeature: pop_RoutingResult_17,
-            styles: [style_RoutingResult_17_0,style_RoutingResult_17_1,style_RoutingResult_17_2,style_RoutingResult_17_3,style_RoutingResult_17_4,]
+            styles: [style_RoutingResult_17_0, style_RoutingResult_17_1, style_RoutingResult_17_2, style_RoutingResult_17_3, style_RoutingResult_17_4,]
         });
         bounds_group.addLayer(layer_RoutingResult_17);
         map.addLayer(layer_RoutingResult_17);
@@ -886,7 +908,7 @@
                         <td colspan="2">' + (feature.properties['Tour'] !== null ? autolinker.link(feature.properties['Tour'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_Monjo_18_0() {
@@ -897,7 +919,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -930,7 +952,7 @@
                         <td colspan="2">' + (feature.properties['Tour'] !== null ? autolinker.link(feature.properties['Tour'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_Namche_19_0() {
@@ -941,7 +963,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -1019,7 +1041,7 @@
             layerName: 'layer_RoutingResult_20',
             pane: 'pane_RoutingResult_20',
             onEachFeature: pop_RoutingResult_20,
-            styles: [style_RoutingResult_20_0,style_RoutingResult_20_1,style_RoutingResult_20_2,style_RoutingResult_20_3,style_RoutingResult_20_4,]
+            styles: [style_RoutingResult_20_0, style_RoutingResult_20_1, style_RoutingResult_20_2, style_RoutingResult_20_3, style_RoutingResult_20_4,]
         });
         bounds_group.addLayer(layer_RoutingResult_20);
         map.addLayer(layer_RoutingResult_20);
@@ -1035,7 +1057,7 @@
                         <td colspan="2">' + (feature.properties['TOUR'] !== null ? autolinker.link(feature.properties['TOUR'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_Phakding_21_0() {
@@ -1046,7 +1068,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -1076,7 +1098,7 @@
                         <td colspan="2">' + (feature.properties['Place'] !== null ? autolinker.link(feature.properties['Place'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_Pheriche_22_0() {
@@ -1087,7 +1109,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -1120,7 +1142,7 @@
                         <td colspan="2">' + (feature.properties['Tour'] !== null ? autolinker.link(feature.properties['Tour'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_Rangding_23_0() {
@@ -1131,7 +1153,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -1164,7 +1186,7 @@
                         <td colspan="2">' + (feature.properties['Tour'] !== null ? autolinker.link(feature.properties['Tour'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_Tengoche_24_0() {
@@ -1175,7 +1197,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -1208,7 +1230,7 @@
                         <td colspan="2">' + (feature.properties['Tour'] !== null ? autolinker.link(feature.properties['Tour'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_TocToc_25_0() {
@@ -1219,7 +1241,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -1252,7 +1274,7 @@
                         <td colspan="2">' + (feature.properties['Tour'] !== null ? autolinker.link(feature.properties['Tour'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_EBC_Village_Zamphuti_26_0() {
@@ -1263,7 +1285,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -1285,6 +1307,7 @@
         bounds_group.addLayer(layer_EBC_Village_Zamphuti_26);
         map.addLayer(layer_EBC_Village_Zamphuti_26);
         setBounds();
-        </script>
-    </body>
+    </script>
+</body>
+
 </html>
