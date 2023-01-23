@@ -59,6 +59,33 @@
         }
     </style>
     <title></title>
+    <script>
+        $(function () {
+            $(".openModal").click(function () {
+                setTimeout(function () {
+                    var h = $(".modal-body .first-content p").height();
+                    $(".modal-body").css('height', h + 80 + 'px');
+                    $(".modal-body .first-content p").css('height', h + 'px');
+                }, 250);
+            });
+            $('.first-button').on('click', function () {
+                $('.first-content').animate({ width: "toggle" }, function () {
+                    $('.second-content').animate({ width: "toggle" });
+                    var h = $(".modal-body .second-content p").height();
+                    $(".modal-body").css('height', h + 80 + 'px');
+                    $(".modal-body .second-content p").css('height', h + 'px');
+                });
+            });
+            $('.second-button').on('click', function () {
+                $('.second-content').animate({ width: "toggle" }, function () {
+                    $('.first-content').animate({ width: "toggle" });
+                    var h = $(".modal-body .first-content p").height();
+                    $(".modal-body").css('height', h + 80 + 'px');
+                    $(".modal-body .first-content p").css('height', h + 'px');
+                });
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -73,13 +100,17 @@
             <div class="butn1" id="butn1">
                 <div class="btn-group content-center" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-secondary "><a href="../MBC-Beginner/index.html"
-                            class="text-light">Beginner</a></button>
+                            class="text-dark">Beginner</a></button>
                     <button type="button" class="btn btn-secondary"><a href="../MBC-Advance/index.html"
-                            class="text-dark">Advanced</a></button>
+                            class="text-light">Advanced</a></button>
                     <button type="button" class="btn btn-secondary"><a href="../MBC-Expert/index.html"
                             class="text-light">Expert</a></button>
                 </div>
+                
             </div>
+            <a>
+                <button class="text-dark" data-toggle="modal" data-target="#largeModal"><b>3D</b></button>
+            </a>
             <div class="navbar-nav">
                 <a class="nav-link text-white px-3" href="../login.html">Login </a>
             </div>
@@ -120,7 +151,7 @@
     <script src="data/HotelsBegnnier_20.js"></script>
     <script>
         var map = L.map('map', {
-            zoomControl: true, maxZoom: 28, minZoom: 1
+            zoomControl: true, maxZoom: 28, minZoom: 1,
         }).fitBounds([[27.758043881215837, 86.63239911477335], [27.82806384312464, 86.78669593880451]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
@@ -137,7 +168,7 @@
             minZoom: 1,
             maxZoom: 28,
             minNativeZoom: 0,
-            maxNativeZoom: 19
+            maxNativeZoom: 19,
         });
         layer_OpenStreetMap_0;
         map.addLayer(layer_OpenStreetMap_0);
@@ -956,7 +987,7 @@
         function pop_HotelsBegnnier_20(feature, layer) {
             var popupContent = '<div class="card rounded shadow-sm border-0 align-content-center">\
                 <div class="card-body p-4"><img src="https://media-cdn.tripadvisor.com/media/photo-m/1280/16/23/bb/54/hotel-white-himal.jpg" alt="" class="img-fluid d-block mx-auto mb-3"/>\
-                    <h2> <a href="#" class="text-dark"><br />' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</a></h2>\
+                    <h2><b> <a href="#" class="text-dark">' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</a></b></h2>\
                     <p class="font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>\
                     <ul class="list-inline small">\
                         <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
@@ -1014,6 +1045,21 @@
         cluster_HotelsBegnnier_20.addTo(map);
         setBounds();
     </script>
+    <div class="modal fade mt-6" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="basicModal"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content align-center">
+            <div class="modal-header py-1">
+                <button type=" button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- <iframe class="w-100" height="600" frameBorder="0" src="https://fatmap.com/routeid/79390/lukla-to-everest-base-camp-and-return-via-cho-la-and-gokyo?fmid=em"></iframe> -->
+                <iframe frameBorder="0" class="w-100 w-100" height="600" src="https://fatmap.com/routeid/2829207/everest-high-passes?fmid=em"></iframe>
+                <!-- <iframe class="w-100 mt-2" height="600" frameBorder="0" src="https://fatmap.com/routeid/42973/everest-base-camp-trek-gorak-shep-to-everest-base-camp?fmid=em"></iframe> -->
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>
