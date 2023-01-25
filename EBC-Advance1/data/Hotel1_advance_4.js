@@ -1,0 +1,1 @@
+var json_Hotel1_advance_4 = {"type":"FeatureCollection","name":"Hotel1_advance_4","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"2","name":"Aashika hotel","des":"9851138549","image":"2.png","price":"1500"},"geometry":{"type":"Point","coordinates":[86.728838130413209,27.692164485165961]}}]}

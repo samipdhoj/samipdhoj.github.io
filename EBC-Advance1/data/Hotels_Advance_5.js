@@ -1,0 +1,1 @@
+var json_Hotels_Advance_5 = {"type":"FeatureCollection","name":"Hotels_Advance_5","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"1","name":"Anjali Homestay","des":"9801835801","image":"1.png","price":"1000"},"geometry":{"type":"Point","coordinates":[86.730243157402839,27.688728202614829]}}]}
