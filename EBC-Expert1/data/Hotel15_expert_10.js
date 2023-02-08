@@ -1,0 +1,1 @@
+var json_Hotel15_expert_10 = {"type":"FeatureCollection","name":"Hotel15_expert_10","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"15","name":"rai hotel","desc":"974569879","image":"15.png","price":"1600"},"geometry":{"type":"Point","coordinates":[86.72329964293418,27.770995890404279]}}]}

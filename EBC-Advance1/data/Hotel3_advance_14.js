@@ -1,0 +1,1 @@
+var json_Hotel3_advance_14 = {"type":"FeatureCollection","name":"Hotel3_advance_14","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"4","name":"manoj hotel","desc":"9845667788","image":"4.png","price":"1800"},"geometry":{"type":"Point","coordinates":[86.712896401174959,27.74109181329586]}}]}

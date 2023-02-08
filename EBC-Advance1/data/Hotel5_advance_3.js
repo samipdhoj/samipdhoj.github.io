@@ -1,0 +1,1 @@
+var json_Hotel5_advance_3 = {"type":"FeatureCollection","name":"Hotel5_advance_3","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"6","name":"sherpa hotel","desc":"982345998","image":"6.png","price":"2000"},"geometry":{"type":"Point","coordinates":[86.713886036188356,27.805317222990411]}}]}

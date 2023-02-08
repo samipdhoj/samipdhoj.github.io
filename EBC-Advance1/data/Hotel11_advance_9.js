@@ -1,0 +1,1 @@
+var json_Hotel11_advance_9 = {"type":"FeatureCollection","name":"Hotel11_advance_9","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"12","name":"sharma hotel","desc":"984128998","image":"12.png","price":"2100"},"geometry":{"type":"Point","coordinates":[86.810009715320049,27.948725846682954]}}]}

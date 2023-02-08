@@ -1,0 +1,1 @@
+var json_Hotel2_advance_13 = {"type":"FeatureCollection","name":"Hotel2_advance_13","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"3","name":"sapkota hotel","desc":"9803900941","image":"3.png","price":"2000"},"geometry":{"type":"Point","coordinates":[86.712121904207919,27.738349873589879]}}]}

@@ -1,0 +1,1458 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="css/leaflet.css">
+    <link rel="stylesheet" href="css/L.Control.Locate.min.css">
+    <link rel="stylesheet" href="css/qgis2web.css">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="css/MarkerCluster.css">
+    <link rel="stylesheet" href="css/MarkerCluster.Default.css">
+    <link href="/dist/output.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script src="myscripts.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="/dist/output.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href=' http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./index.css">
+    <style>
+        * {
+            font-size: 18px;
+            font-family: 'Roboto Condensed';
+        }
+
+        body {
+            background-color: lavender;
+            /* position: relative; */
+        }
+
+        #map {
+            width: 100%;
+            height: 90vh;
+            /* position: relative; */
+        }
+
+        .butn1 {
+            width: 100%;
+            text-align: center;
+            top: 10%;
+            background-color: transparent;
+            /* position: absolute; */
+        }
+    </style>
+    <title></title>
+    <script>
+        $(function () {
+            $(".openModal").click(function () {
+                setTimeout(function () {
+                    var h = $(".modal-body .first-content p").height();
+                    $(".modal-body").css('height', h + 80 + 'px');
+                    $(".modal-body .first-content p").css('height', h + 'px');
+                }, 250);
+            });
+            $('.first-button').on('click', function () {
+                $('.first-content').animate({ width: "toggle" }, function () {
+                    $('.second-content').animate({ width: "toggle" });
+                    var h = $(".modal-body .second-content p").height();
+                    $(".modal-body").css('height', h + 80 + 'px');
+                    $(".modal-body .second-content p").css('height', h + 'px');
+                });
+            });
+            $('.second-button').on('click', function () {
+                $('.second-content').animate({ width: "toggle" }, function () {
+                    $('.first-content').animate({ width: "toggle" });
+                    var h = $(".modal-body .first-content p").height();
+                    $(".modal-body").css('height', h + 80 + 'px');
+                    $(".modal-body .first-content p").css('height', h + 'px');
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="../index.html"><img src="images/images1.png" height="40" alt="MDB Logo"
+                loading="lazy" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="butn1" id="butn1">
+                <div class="btn-group content-center" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-secondary "><a href="../EBC-Begineer/index.html"
+                            class="text-light">Beginner</a></button>
+                    <button type="button" class="btn btn-secondary"><a href="../EBC-Advance1/index.html"
+                            class="text-dark">Advanced</a></button>
+                    <button type="button" class="btn btn-secondary"><a href="../EBC-Expert1/index.html"
+                            class="text-light">Expert</a></button>
+                </div>
+
+            </div>
+            <a>
+                <button class="text-dark" data-toggle="modal" data-target="#largeModal"><b>3D</b></button>
+            </a>
+            <div class="navbar-nav">
+                <a class="nav-link text-white px-3" href="../login.html">Login </a>
+            </div>
+        </div>
+    </nav>
+    <div id="map">
+    </div>
+    <script src="js/qgis2web_expressions.js"></script>
+    <script src="js/leaflet.js"></script>
+    <script src="js/multi-style-layer.js"></script>
+    <script src="js/leaflet.rotatedMarker.js"></script>
+    <script src="js/leaflet.pattern.js"></script>
+    <script src="js/leaflet-hash.js"></script>
+    <script src="js/Autolinker.min.js"></script>
+    <script src="js/rbush.min.js"></script>
+    <script src="js/labelgun.min.js"></script>
+    <script src="js/labels.js"></script>
+    <script src="data/EBC_Village_Lukla_1.js"></script>
+    <script src="data/Hotel4_advance_2.js"></script>
+    <script src="data/Hotel5_advance_3.js"></script>
+    <script src="data/Hotel1_advance_4.js"></script>
+    <script src="data/Hotels_Advance_5.js"></script>
+    <script src="data/EBC_Village_Lobuche_6.js"></script>
+    <script src="data/EBC_Village_GorakShep_7.js"></script>
+    <script src="data/Hotel10_advance_8.js"></script>
+    <script src="data/Hotel11_advance_9.js"></script>
+    <script src="data/Hotel12_advance_10.js"></script>
+    <script src="data/Hotel13_advance_11.js"></script>
+    <script src="data/EBC_Village_Namche_12.js"></script>
+    <script src="data/Hotel2_advance_13.js"></script>
+    <script src="data/Hotel3_advance_14.js"></script>
+    <script src="data/EBC_Village_Phakding_15.js"></script>
+    <script src="data/EBC_Village_Pheriche_16.js"></script>
+    <script src="data/Hotel8_advance_17.js"></script>
+    <script src="data/Hotel9_advance_18.js"></script>
+    <script src="data/EBC_Village_Tengoche_19.js"></script>
+    <script src="data/Hotel6_advance_20.js"></script>
+    <script src="data/Hotel7_advance_21.js"></script>
+    <script src="data/LuklatoPhakdingAdvanced_22.js"></script>
+    <script src="data/PhakdingtoNamcheBazarAdvanced_23.js"></script>
+    <script src="data/NamcheBazartoTengboche_24.js"></script>
+    <script src="data/TengbochetoPhericheAdvanced_25.js"></script>
+    <script src="data/PherichetoLobucheAdvanced_26.js"></script>
+    <script src="data/LobuchetoGorakShep_27.js"></script>
+    <script>
+        var map = L.map('map', {
+            zoomControl: true, maxZoom: 28, minZoom: 1
+        }).fitBounds([[27.679953038895935, 86.7037315203984], [27.69576479130067, 86.73854085630573]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({ truncate: { length: 30, location: 'smart' } });
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_OpenStreetMap_0');
+        map.getPane('pane_OpenStreetMap_0').style.zIndex = 400;
+        var layer_OpenStreetMap_0 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            pane: 'pane_OpenStreetMap_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 19
+        });
+        layer_OpenStreetMap_0;
+        map.addLayer(layer_OpenStreetMap_0);
+        function pop_EBC_Village_Lukla_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Place'] !== null ? autolinker.link(feature.properties['Place'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TOUR'] !== null ? autolinker.link(feature.properties['TOUR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+        }
+
+        function style_EBC_Village_Lukla_1_0() {
+            return {
+                pane: 'pane_EBC_Village_Lukla_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,127,0,0.49019607843137253)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_EBC_Village_Lukla_1');
+        map.getPane('pane_EBC_Village_Lukla_1').style.zIndex = 401;
+        map.getPane('pane_EBC_Village_Lukla_1').style['mix-blend-mode'] = 'normal';
+        var layer_EBC_Village_Lukla_1 = new L.geoJson(json_EBC_Village_Lukla_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_EBC_Village_Lukla_1',
+            layerName: 'layer_EBC_Village_Lukla_1',
+            pane: 'pane_EBC_Village_Lukla_1',
+            onEachFeature: pop_EBC_Village_Lukla_1,
+            style: style_EBC_Village_Lukla_1_0,
+        });
+        bounds_group.addLayer(layer_EBC_Village_Lukla_1);
+        map.addLayer(layer_EBC_Village_Lukla_1);
+        function pop_Hotel4_advance_2(feature, layer) {
+            var popupContent = '<div class="card rounded shadow-sm border-0 align-content-center">\
+                <div class="card-body p-4"><img src="https://media-cdn.tripadvisor.com/media/photo-m/1280/16/23/bb/54/hotel-white-himal.jpg" alt="" class="img-fluid d-block mx-auto mb-3"/>\
+                    <h2><b> <a href="#" class="text-dark">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</a></b></h2>\
+                    <p class="font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>\
+                    <ul class="list-inline small">\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>\
+                    </ul>\
+                    <button class="btn btn-success align-content-center" type = "button" style="font-size:14px">Book Date <i class="fa fa-calendar"></i></button>\
+                    <p colspan="2"> <h6>Phone N.o: 9809800820</h6></p>\
+                    <p colspan="2"><h6> Price: <br />' + (feature.properties['price'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</h6></p>\
+                <button type = "button" class="btn btn-primary align-content-center" > Book Now</button>\
+                    </div>\
+                </div>';
+            layer.bindPopup(popupContent, { maxHeight: 500 });
+        }
+
+        function style_Hotel4_advance_2_0() {
+            return {
+                pane: 'pane_Hotel4_advance_2',
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/accommodation_hotel2.svg',
+                    iconSize: [30.4, 30.4]
+                }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Hotel4_advance_2');
+        map.getPane('pane_Hotel4_advance_2').style.zIndex = 402;
+        map.getPane('pane_Hotel4_advance_2').style['mix-blend-mode'] = 'normal';
+        var layer_Hotel4_advance_2 = new L.geoJson(json_Hotel4_advance_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Hotel4_advance_2',
+            layerName: 'layer_Hotel4_advance_2',
+            pane: 'pane_Hotel4_advance_2',
+            onEachFeature: pop_Hotel4_advance_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Hotel4_advance_2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Hotel4_advance_2);
+        map.addLayer(layer_Hotel4_advance_2);
+        function pop_Hotel5_advance_3(feature, layer) {
+            var popupContent = '<div class="card rounded shadow-sm border-0 align-content-center">\
+                <div class="card-body p-4"><img src="https://media-cdn.tripadvisor.com/media/photo-m/1280/16/23/bb/54/hotel-white-himal.jpg" alt="" class="img-fluid d-block mx-auto mb-3"/>\
+                    <h2><b> <a href="#" class="text-dark">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</a></b></h2>\
+                    <p class="font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>\
+                    <ul class="list-inline small">\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>\
+                    </ul>\
+                    <button class="btn btn-success align-content-center" type = "button" style="font-size:14px">Book Date <i class="fa fa-calendar"></i></button>\
+                    <p colspan="2"> <h6>Phone N.o: 9809800820</h6></p>\
+                    <p colspan="2"><h6> Price: <br />' + (feature.properties['price'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</h6></p>\
+                <button type = "button" class="btn btn-primary align-content-center" > Book Now</button>\
+                    </div>\
+                </div>';
+            layer.bindPopup(popupContent, { maxHeight: 500 });
+        }
+
+        function style_Hotel5_advance_3_0() {
+            return {
+                pane: 'pane_Hotel5_advance_3',
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/accommodation_hotel2.svg',
+                    iconSize: [30.4, 30.4]
+                }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Hotel5_advance_3');
+        map.getPane('pane_Hotel5_advance_3').style.zIndex = 403;
+        map.getPane('pane_Hotel5_advance_3').style['mix-blend-mode'] = 'normal';
+        var layer_Hotel5_advance_3 = new L.geoJson(json_Hotel5_advance_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Hotel5_advance_3',
+            layerName: 'layer_Hotel5_advance_3',
+            pane: 'pane_Hotel5_advance_3',
+            onEachFeature: pop_Hotel5_advance_3,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Hotel5_advance_3_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Hotel5_advance_3);
+        map.addLayer(layer_Hotel5_advance_3);
+        function pop_Hotel1_advance_4(feature, layer) {
+            var popupContent = '<div class="card rounded shadow-sm border-0 align-content-center">\
+                <div class="card-body p-4"><img src="https://media-cdn.tripadvisor.com/media/photo-m/1280/16/23/bb/54/hotel-white-himal.jpg" alt="" class="img-fluid d-block mx-auto mb-3"/>\
+                    <h2><b> <a href="#" class="text-dark">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</a></b></h2>\
+                    <p class="font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>\
+                    <ul class="list-inline small">\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>\
+                    </ul>\
+                    <button class="btn btn-success align-content-center" type = "button" style="font-size:14px">Book Date <i class="fa fa-calendar"></i></button>\
+                    <p colspan="2"> <h6>Phone N.o: 9809800820</h6></p>\
+                    <p colspan="2"><h6> Price: <br />' + (feature.properties['price'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</h6></p>\
+                <button type = "button" class="btn btn-primary align-content-center" > Book Now</button>\
+                    </div>\
+                </div>';
+            layer.bindPopup(popupContent, { maxHeight: 500 });
+        }
+
+        function style_Hotel1_advance_4_0() {
+            return {
+                pane: 'pane_Hotel1_advance_4',
+                rotationAngle: -0.0523599,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/accommodation_hotel2.svg',
+                    iconSize: [30.4, 30.4]
+                }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Hotel1_advance_4');
+        map.getPane('pane_Hotel1_advance_4').style.zIndex = 404;
+        map.getPane('pane_Hotel1_advance_4').style['mix-blend-mode'] = 'normal';
+        var layer_Hotel1_advance_4 = new L.geoJson(json_Hotel1_advance_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Hotel1_advance_4',
+            layerName: 'layer_Hotel1_advance_4',
+            pane: 'pane_Hotel1_advance_4',
+            onEachFeature: pop_Hotel1_advance_4,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Hotel1_advance_4_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Hotel1_advance_4);
+        map.addLayer(layer_Hotel1_advance_4);
+        function pop_Hotels_Advance_5(feature, layer) {
+            var popupContent = '<div class="card rounded shadow-sm border-0 align-content-center">\
+                <div class="card-body p-4"><img src="https://media-cdn.tripadvisor.com/media/photo-m/1280/16/23/bb/54/hotel-white-himal.jpg" alt="" class="img-fluid d-block mx-auto mb-3"/>\
+                    <h2><b> <a href="#" class="text-dark">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</a></b></h2>\
+                    <p class="font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>\
+                    <ul class="list-inline small">\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>\
+                    </ul>\
+                    <button class="btn btn-success align-content-center" type = "button" style="font-size:14px">Book Date <i class="fa fa-calendar"></i></button>\
+                    <p colspan="2"> <h6>Phone N.o: 9809800820</h6></p>\
+                    <p colspan="2"><h6> Price: <br />' + (feature.properties['price'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</h6></p>\
+                <button type = "button" class="btn btn-primary align-content-center" > Book Now</button>\
+                    </div>\
+                </div>';
+            layer.bindPopup(popupContent, { maxHeight: 500 });
+        }
+
+        function style_Hotels_Advance_5_0() {
+            return {
+                pane: 'pane_Hotels_Advance_5',
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/accommodation_hotel2.svg',
+                    iconSize: [31.919999999999998, 31.919999999999998]
+                }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Hotels_Advance_5');
+        map.getPane('pane_Hotels_Advance_5').style.zIndex = 405;
+        map.getPane('pane_Hotels_Advance_5').style['mix-blend-mode'] = 'normal';
+        var layer_Hotels_Advance_5 = new L.geoJson(json_Hotels_Advance_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Hotels_Advance_5',
+            layerName: 'layer_Hotels_Advance_5',
+            pane: 'pane_Hotels_Advance_5',
+            onEachFeature: pop_Hotels_Advance_5,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Hotels_Advance_5_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Hotels_Advance_5);
+        map.addLayer(layer_Hotels_Advance_5);
+        function pop_EBC_Village_Lobuche_6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+        }
+
+        function style_EBC_Village_Lobuche_6_0() {
+            return {
+                pane: 'pane_EBC_Village_Lobuche_6',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,158,23,0.47843137254901963)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_EBC_Village_Lobuche_6');
+        map.getPane('pane_EBC_Village_Lobuche_6').style.zIndex = 406;
+        map.getPane('pane_EBC_Village_Lobuche_6').style['mix-blend-mode'] = 'normal';
+        var layer_EBC_Village_Lobuche_6 = new L.geoJson(json_EBC_Village_Lobuche_6, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_EBC_Village_Lobuche_6',
+            layerName: 'layer_EBC_Village_Lobuche_6',
+            pane: 'pane_EBC_Village_Lobuche_6',
+            onEachFeature: pop_EBC_Village_Lobuche_6,
+            style: style_EBC_Village_Lobuche_6_0,
+        });
+        bounds_group.addLayer(layer_EBC_Village_Lobuche_6);
+        map.addLayer(layer_EBC_Village_Lobuche_6);
+        function pop_EBC_Village_GorakShep_7(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+        }
+
+        function style_EBC_Village_GorakShep_7_0() {
+            return {
+                pane: 'pane_EBC_Village_GorakShep_7',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,127,0,0.4823529411764706)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_EBC_Village_GorakShep_7');
+        map.getPane('pane_EBC_Village_GorakShep_7').style.zIndex = 407;
+        map.getPane('pane_EBC_Village_GorakShep_7').style['mix-blend-mode'] = 'normal';
+        var layer_EBC_Village_GorakShep_7 = new L.geoJson(json_EBC_Village_GorakShep_7, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_EBC_Village_GorakShep_7',
+            layerName: 'layer_EBC_Village_GorakShep_7',
+            pane: 'pane_EBC_Village_GorakShep_7',
+            onEachFeature: pop_EBC_Village_GorakShep_7,
+            style: style_EBC_Village_GorakShep_7_0,
+        });
+        bounds_group.addLayer(layer_EBC_Village_GorakShep_7);
+        map.addLayer(layer_EBC_Village_GorakShep_7);
+        function pop_Hotel10_advance_8(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['desc'] !== null ? autolinker.link(feature.properties['desc'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['image'] !== null ? autolinker.link(feature.properties['image'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+        }
+
+        function style_Hotel10_advance_8_0() {
+            return {
+                pane: 'pane_Hotel10_advance_8',
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/accommodation_hotel2.svg',
+                    iconSize: [30.4, 30.4]
+                }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Hotel10_advance_8');
+        map.getPane('pane_Hotel10_advance_8').style.zIndex = 408;
+        map.getPane('pane_Hotel10_advance_8').style['mix-blend-mode'] = 'normal';
+        var layer_Hotel10_advance_8 = new L.geoJson(json_Hotel10_advance_8, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Hotel10_advance_8',
+            layerName: 'layer_Hotel10_advance_8',
+            pane: 'pane_Hotel10_advance_8',
+            onEachFeature: pop_Hotel10_advance_8,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Hotel10_advance_8_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Hotel10_advance_8);
+        map.addLayer(layer_Hotel10_advance_8);
+        function pop_Hotel11_advance_9(feature, layer) {
+            var popupContent = '<div class="card rounded shadow-sm border-0 align-content-center">\
+                <div class="card-body p-4"><img src="https://media-cdn.tripadvisor.com/media/photo-m/1280/16/23/bb/54/hotel-white-himal.jpg" alt="" class="img-fluid d-block mx-auto mb-3"/>\
+                    <h2><b> <a href="#" class="text-dark">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</a></b></h2>\
+                    <p class="font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>\
+                    <ul class="list-inline small">\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>\
+                    </ul>\
+                    <button class="btn btn-success align-content-center" type = "button" style="font-size:14px">Book Date <i class="fa fa-calendar"></i></button>\
+                    <p colspan="2"> <h6>Phone N.o: 9809800820</h6></p>\
+                    <p colspan="2"><h6> Price: <br />' + (feature.properties['price'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</h6></p>\
+                <button type = "button" class="btn btn-primary align-content-center" > Book Now</button>\
+                    </div>\
+                </div>';
+            layer.bindPopup(popupContent, { maxHeight: 500 });
+        }
+
+        function style_Hotel11_advance_9_0() {
+            return {
+                pane: 'pane_Hotel11_advance_9',
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/accommodation_hotel2.svg',
+                    iconSize: [30.4, 30.4]
+                }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Hotel11_advance_9');
+        map.getPane('pane_Hotel11_advance_9').style.zIndex = 409;
+        map.getPane('pane_Hotel11_advance_9').style['mix-blend-mode'] = 'normal';
+        var layer_Hotel11_advance_9 = new L.geoJson(json_Hotel11_advance_9, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Hotel11_advance_9',
+            layerName: 'layer_Hotel11_advance_9',
+            pane: 'pane_Hotel11_advance_9',
+            onEachFeature: pop_Hotel11_advance_9,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Hotel11_advance_9_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Hotel11_advance_9);
+        map.addLayer(layer_Hotel11_advance_9);
+        function pop_Hotel12_advance_10(feature, layer) {
+            var popupContent = '<div class="card rounded shadow-sm border-0 align-content-center">\
+                <div class="card-body p-4"><img src="https://media-cdn.tripadvisor.com/media/photo-m/1280/16/23/bb/54/hotel-white-himal.jpg" alt="" class="img-fluid d-block mx-auto mb-3"/>\
+                    <h2><b> <a href="#" class="text-dark">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</a></b></h2>\
+                    <p class="font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>\
+                    <ul class="list-inline small">\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>\
+                    </ul>\
+                    <button class="btn btn-success align-content-center" type = "button" style="font-size:14px">Book Date <i class="fa fa-calendar"></i></button>\
+                    <p colspan="2"> <h6>Phone N.o: 9809800820</h6></p>\
+                    <p colspan="2"><h6> Price: <br />' + (feature.properties['price'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</h6></p>\
+                <button type = "button" class="btn btn-primary align-content-center" > Book Now</button>\
+                    </div>\
+                </div>';
+            layer.bindPopup(popupContent, { maxHeight: 500 });
+        }
+
+        function style_Hotel12_advance_10_0() {
+            return {
+                pane: 'pane_Hotel12_advance_10',
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/accommodation_hotel2.svg',
+                    iconSize: [30.4, 30.4]
+                }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Hotel12_advance_10');
+        map.getPane('pane_Hotel12_advance_10').style.zIndex = 410;
+        map.getPane('pane_Hotel12_advance_10').style['mix-blend-mode'] = 'normal';
+        var layer_Hotel12_advance_10 = new L.geoJson(json_Hotel12_advance_10, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Hotel12_advance_10',
+            layerName: 'layer_Hotel12_advance_10',
+            pane: 'pane_Hotel12_advance_10',
+            onEachFeature: pop_Hotel12_advance_10,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Hotel12_advance_10_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Hotel12_advance_10);
+        map.addLayer(layer_Hotel12_advance_10);
+        function pop_Hotel13_advance_11(feature, layer) {
+            var popupContent = '<div class="card rounded shadow-sm border-0 align-content-center">\
+                <div class="card-body p-4"><img src="https://media-cdn.tripadvisor.com/media/photo-m/1280/16/23/bb/54/hotel-white-himal.jpg" alt="" class="img-fluid d-block mx-auto mb-3"/>\
+                    <h2><b> <a href="#" class="text-dark">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</a></b></h2>\
+                    <p class="font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>\
+                    <ul class="list-inline small">\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>\
+                    </ul>\
+                    <button class="btn btn-success align-content-center" type = "button" style="font-size:14px">Book Date <i class="fa fa-calendar"></i></button>\
+                    <p colspan="2"> <h6>Phone N.o: 9809800820</h6></p>\
+                    <p colspan="2"><h6> Price: <br />' + (feature.properties['price'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</h6></p>\
+                <button type = "button" class="btn btn-primary align-content-center" > Book Now</button>\
+                    </div>\
+                </div>';
+            layer.bindPopup(popupContent, { maxHeight: 500 });
+        }
+
+        function style_Hotel13_advance_11_0() {
+            return {
+                pane: 'pane_Hotel13_advance_11',
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/accommodation_hotel2.svg',
+                    iconSize: [30.4, 30.4]
+                }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Hotel13_advance_11');
+        map.getPane('pane_Hotel13_advance_11').style.zIndex = 411;
+        map.getPane('pane_Hotel13_advance_11').style['mix-blend-mode'] = 'normal';
+        var layer_Hotel13_advance_11 = new L.geoJson(json_Hotel13_advance_11, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Hotel13_advance_11',
+            layerName: 'layer_Hotel13_advance_11',
+            pane: 'pane_Hotel13_advance_11',
+            onEachFeature: pop_Hotel13_advance_11,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Hotel13_advance_11_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Hotel13_advance_11);
+        map.addLayer(layer_Hotel13_advance_11);
+        function pop_EBC_Village_Namche_12(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Place'] !== null ? autolinker.link(feature.properties['Place'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Tour'] !== null ? autolinker.link(feature.properties['Tour'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+        }
+
+        function style_EBC_Village_Namche_12_0() {
+            return {
+                pane: 'pane_EBC_Village_Namche_12',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,127,0,0.49019607843137253)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_EBC_Village_Namche_12');
+        map.getPane('pane_EBC_Village_Namche_12').style.zIndex = 412;
+        map.getPane('pane_EBC_Village_Namche_12').style['mix-blend-mode'] = 'normal';
+        var layer_EBC_Village_Namche_12 = new L.geoJson(json_EBC_Village_Namche_12, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_EBC_Village_Namche_12',
+            layerName: 'layer_EBC_Village_Namche_12',
+            pane: 'pane_EBC_Village_Namche_12',
+            onEachFeature: pop_EBC_Village_Namche_12,
+            style: style_EBC_Village_Namche_12_0,
+        });
+        bounds_group.addLayer(layer_EBC_Village_Namche_12);
+        map.addLayer(layer_EBC_Village_Namche_12);
+        function pop_Hotel2_advance_13(feature, layer) {
+            var popupContent = '<div class="card rounded shadow-sm border-0 align-content-center">\
+                <div class="card-body p-4"><img src="https://media-cdn.tripadvisor.com/media/photo-m/1280/16/23/bb/54/hotel-white-himal.jpg" alt="" class="img-fluid d-block mx-auto mb-3"/>\
+                    <h2><b> <a href="#" class="text-dark">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</a></b></h2>\
+                    <p class="font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>\
+                    <ul class="list-inline small">\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>\
+                    </ul>\
+                    <button class="btn btn-success align-content-center" type = "button" style="font-size:14px">Book Date <i class="fa fa-calendar"></i></button>\
+                    <p colspan="2"> <h6>Phone N.o: 9809800820</h6></p>\
+                    <p colspan="2"><h6> Price: <br />' + (feature.properties['price'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</h6></p>\
+                <button type = "button" class="btn btn-primary align-content-center" > Book Now</button>\
+                    </div>\
+                </div>';
+            layer.bindPopup(popupContent, { maxHeight: 500 });
+        }
+
+        function style_Hotel2_advance_13_0() {
+            return {
+                pane: 'pane_Hotel2_advance_13',
+                rotationAngle: -0.0523599,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/accommodation_hotel2.svg',
+                    iconSize: [30.4, 30.4]
+                }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Hotel2_advance_13');
+        map.getPane('pane_Hotel2_advance_13').style.zIndex = 413;
+        map.getPane('pane_Hotel2_advance_13').style['mix-blend-mode'] = 'normal';
+        var layer_Hotel2_advance_13 = new L.geoJson(json_Hotel2_advance_13, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Hotel2_advance_13',
+            layerName: 'layer_Hotel2_advance_13',
+            pane: 'pane_Hotel2_advance_13',
+            onEachFeature: pop_Hotel2_advance_13,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Hotel2_advance_13_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Hotel2_advance_13);
+        map.addLayer(layer_Hotel2_advance_13);
+        function pop_Hotel3_advance_14(feature, layer) {
+            var popupContent = '<div class="card rounded shadow-sm border-0 align-content-center">\
+                <div class="card-body p-4"><img src="https://media-cdn.tripadvisor.com/media/photo-m/1280/16/23/bb/54/hotel-white-himal.jpg" alt="" class="img-fluid d-block mx-auto mb-3"/>\
+                    <h2><b> <a href="#" class="text-dark">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</a></b></h2>\
+                    <p class="font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>\
+                    <ul class="list-inline small">\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>\
+                    </ul>\
+                    <button class="btn btn-success align-content-center" type = "button" style="font-size:14px">Book Date <i class="fa fa-calendar"></i></button>\
+                    <p colspan="2"> <h6>Phone N.o: 9809800820</h6></p>\
+                    <p colspan="2"><h6> Price: <br />' + (feature.properties['price'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</h6></p>\
+                <button type = "button" class="btn btn-primary align-content-center" > Book Now</button>\
+                    </div>\
+                </div>';
+            layer.bindPopup(popupContent, { maxHeight: 500 });
+        }
+
+        function style_Hotel3_advance_14_0() {
+            return {
+                pane: 'pane_Hotel3_advance_14',
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/accommodation_hotel2.svg',
+                    iconSize: [30.4, 30.4]
+                }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Hotel3_advance_14');
+        map.getPane('pane_Hotel3_advance_14').style.zIndex = 414;
+        map.getPane('pane_Hotel3_advance_14').style['mix-blend-mode'] = 'normal';
+        var layer_Hotel3_advance_14 = new L.geoJson(json_Hotel3_advance_14, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Hotel3_advance_14',
+            layerName: 'layer_Hotel3_advance_14',
+            pane: 'pane_Hotel3_advance_14',
+            onEachFeature: pop_Hotel3_advance_14,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Hotel3_advance_14_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Hotel3_advance_14);
+        map.addLayer(layer_Hotel3_advance_14);
+        function pop_EBC_Village_Phakding_15(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Place'] !== null ? autolinker.link(feature.properties['Place'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TOUR'] !== null ? autolinker.link(feature.properties['TOUR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+        }
+
+        function style_EBC_Village_Phakding_15_0() {
+            return {
+                pane: 'pane_EBC_Village_Phakding_15',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,127,0,0.5137254901960784)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_EBC_Village_Phakding_15');
+        map.getPane('pane_EBC_Village_Phakding_15').style.zIndex = 415;
+        map.getPane('pane_EBC_Village_Phakding_15').style['mix-blend-mode'] = 'normal';
+        var layer_EBC_Village_Phakding_15 = new L.geoJson(json_EBC_Village_Phakding_15, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_EBC_Village_Phakding_15',
+            layerName: 'layer_EBC_Village_Phakding_15',
+            pane: 'pane_EBC_Village_Phakding_15',
+            onEachFeature: pop_EBC_Village_Phakding_15,
+            style: style_EBC_Village_Phakding_15_0,
+        });
+        bounds_group.addLayer(layer_EBC_Village_Phakding_15);
+        map.addLayer(layer_EBC_Village_Phakding_15);
+        function pop_EBC_Village_Pheriche_16(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Place'] !== null ? autolinker.link(feature.properties['Place'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+        }
+
+        function style_EBC_Village_Pheriche_16_0() {
+            return {
+                pane: 'pane_EBC_Village_Pheriche_16',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,127,0,0.4823529411764706)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_EBC_Village_Pheriche_16');
+        map.getPane('pane_EBC_Village_Pheriche_16').style.zIndex = 416;
+        map.getPane('pane_EBC_Village_Pheriche_16').style['mix-blend-mode'] = 'normal';
+        var layer_EBC_Village_Pheriche_16 = new L.geoJson(json_EBC_Village_Pheriche_16, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_EBC_Village_Pheriche_16',
+            layerName: 'layer_EBC_Village_Pheriche_16',
+            pane: 'pane_EBC_Village_Pheriche_16',
+            onEachFeature: pop_EBC_Village_Pheriche_16,
+            style: style_EBC_Village_Pheriche_16_0,
+        });
+        bounds_group.addLayer(layer_EBC_Village_Pheriche_16);
+        map.addLayer(layer_EBC_Village_Pheriche_16);
+        function pop_Hotel8_advance_17(feature, layer) {
+            var popupContent = '<div class="card rounded shadow-sm border-0 align-content-center">\
+                <div class="card-body p-4"><img src="https://media-cdn.tripadvisor.com/media/photo-m/1280/16/23/bb/54/hotel-white-himal.jpg" alt="" class="img-fluid d-block mx-auto mb-3"/>\
+                    <h2><b> <a href="#" class="text-dark">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</a></b></h2>\
+                    <p class="font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>\
+                    <ul class="list-inline small">\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>\
+                    </ul>\
+                    <button class="btn btn-success align-content-center" type = "button" style="font-size:14px">Book Date <i class="fa fa-calendar"></i></button>\
+                    <p colspan="2"> <h6>Phone N.o: 9809800820</h6></p>\
+                    <p colspan="2"><h6> Price: <br />' + (feature.properties['price'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</h6></p>\
+                <button type = "button" class="btn btn-primary align-content-center" > Book Now</button>\
+                    </div>\
+                </div>';
+            layer.bindPopup(popupContent, { maxHeight: 500 });
+        }
+
+        function style_Hotel8_advance_17_0() {
+            return {
+                pane: 'pane_Hotel8_advance_17',
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/accommodation_hotel2.svg',
+                    iconSize: [30.4, 30.4]
+                }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Hotel8_advance_17');
+        map.getPane('pane_Hotel8_advance_17').style.zIndex = 417;
+        map.getPane('pane_Hotel8_advance_17').style['mix-blend-mode'] = 'normal';
+        var layer_Hotel8_advance_17 = new L.geoJson(json_Hotel8_advance_17, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Hotel8_advance_17',
+            layerName: 'layer_Hotel8_advance_17',
+            pane: 'pane_Hotel8_advance_17',
+            onEachFeature: pop_Hotel8_advance_17,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Hotel8_advance_17_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Hotel8_advance_17);
+        map.addLayer(layer_Hotel8_advance_17);
+        function pop_Hotel9_advance_18(feature, layer) {
+            var popupContent = '<div class="card rounded shadow-sm border-0 align-content-center">\
+                <div class="card-body p-4"><img src="https://media-cdn.tripadvisor.com/media/photo-m/1280/16/23/bb/54/hotel-white-himal.jpg" alt="" class="img-fluid d-block mx-auto mb-3"/>\
+                    <h2><b> <a href="#" class="text-dark">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</a></b></h2>\
+                    <p class="font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>\
+                    <ul class="list-inline small">\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>\
+                    </ul>\
+                    <button class="btn btn-success align-content-center" type = "button" style="font-size:14px">Book Date <i class="fa fa-calendar"></i></button>\
+                    <p colspan="2"> <h6>Phone N.o: 9809800820</h6></p>\
+                    <p colspan="2"><h6> Price: <br />' + (feature.properties['price'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</h6></p>\
+                <button type = "button" class="btn btn-primary align-content-center" > Book Now</button>\
+                    </div>\
+                </div>';
+            layer.bindPopup(popupContent, { maxHeight: 500 });
+        }
+
+        function style_Hotel9_advance_18_0() {
+            return {
+                pane: 'pane_Hotel9_advance_18',
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/accommodation_hotel2.svg',
+                    iconSize: [30.4, 30.4]
+                }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Hotel9_advance_18');
+        map.getPane('pane_Hotel9_advance_18').style.zIndex = 418;
+        map.getPane('pane_Hotel9_advance_18').style['mix-blend-mode'] = 'normal';
+        var layer_Hotel9_advance_18 = new L.geoJson(json_Hotel9_advance_18, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Hotel9_advance_18',
+            layerName: 'layer_Hotel9_advance_18',
+            pane: 'pane_Hotel9_advance_18',
+            onEachFeature: pop_Hotel9_advance_18,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Hotel9_advance_18_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Hotel9_advance_18);
+        map.addLayer(layer_Hotel9_advance_18);
+        function pop_EBC_Village_Tengoche_19(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Place'] !== null ? autolinker.link(feature.properties['Place'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Tour'] !== null ? autolinker.link(feature.properties['Tour'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+        }
+
+        function style_EBC_Village_Tengoche_19_0() {
+            return {
+                pane: 'pane_EBC_Village_Tengoche_19',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,127,0,0.49019607843137253)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_EBC_Village_Tengoche_19');
+        map.getPane('pane_EBC_Village_Tengoche_19').style.zIndex = 419;
+        map.getPane('pane_EBC_Village_Tengoche_19').style['mix-blend-mode'] = 'normal';
+        var layer_EBC_Village_Tengoche_19 = new L.geoJson(json_EBC_Village_Tengoche_19, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_EBC_Village_Tengoche_19',
+            layerName: 'layer_EBC_Village_Tengoche_19',
+            pane: 'pane_EBC_Village_Tengoche_19',
+            onEachFeature: pop_EBC_Village_Tengoche_19,
+            style: style_EBC_Village_Tengoche_19_0,
+        });
+        bounds_group.addLayer(layer_EBC_Village_Tengoche_19);
+        map.addLayer(layer_EBC_Village_Tengoche_19);
+        function pop_Hotel6_advance_20(feature, layer) {
+            var popupContent = '<div class="card rounded shadow-sm border-0 align-content-center">\
+                <div class="card-body p-4"><img src="https://media-cdn.tripadvisor.com/media/photo-m/1280/16/23/bb/54/hotel-white-himal.jpg" alt="" class="img-fluid d-block mx-auto mb-3"/>\
+                    <h2><b> <a href="#" class="text-dark">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</a></b></h2>\
+                    <p class="font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>\
+                    <ul class="list-inline small">\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>\
+                    </ul>\
+                    <button class="btn btn-success align-content-center" type = "button" style="font-size:14px">Book Date <i class="fa fa-calendar"></i></button>\
+                    <p colspan="2"> <h6>Phone N.o: 9809800820</h6></p>\
+                    <p colspan="2"><h6> Price: <br />' + (feature.properties['price'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</h6></p>\
+                <button type = "button" class="btn btn-primary align-content-center" > Book Now</button>\
+                    </div>\
+                </div>';
+            layer.bindPopup(popupContent, { maxHeight: 500 });
+        }
+
+        function style_Hotel6_advance_20_0() {
+            return {
+                pane: 'pane_Hotel6_advance_20',
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/accommodation_hotel2.svg',
+                    iconSize: [30.4, 30.4]
+                }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Hotel6_advance_20');
+        map.getPane('pane_Hotel6_advance_20').style.zIndex = 420;
+        map.getPane('pane_Hotel6_advance_20').style['mix-blend-mode'] = 'normal';
+        var layer_Hotel6_advance_20 = new L.geoJson(json_Hotel6_advance_20, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Hotel6_advance_20',
+            layerName: 'layer_Hotel6_advance_20',
+            pane: 'pane_Hotel6_advance_20',
+            onEachFeature: pop_Hotel6_advance_20,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Hotel6_advance_20_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Hotel6_advance_20);
+        map.addLayer(layer_Hotel6_advance_20);
+        function pop_Hotel7_advance_21(feature, layer) {
+            var popupContent = '<div class="card rounded shadow-sm border-0 align-content-center">\
+                <div class="card-body p-4"><img src="https://media-cdn.tripadvisor.com/media/photo-m/1280/16/23/bb/54/hotel-white-himal.jpg" alt="" class="img-fluid d-block mx-auto mb-3"/>\
+                    <h2><b> <a href="#" class="text-dark">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</a></b></h2>\
+                    <p class="font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>\
+                    <ul class="list-inline small">\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>\
+                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>\
+                    </ul>\
+                    <button class="btn btn-success align-content-center" type = "button" style="font-size:14px">Book Date <i class="fa fa-calendar"></i></button>\
+                    <p colspan="2"> <h6>Phone N.o: 9809800820</h6></p>\
+                    <p colspan="2"><h6> Price: <br />' + (feature.properties['price'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</h6></p>\
+                <button type = "button" class="btn btn-primary align-content-center" > Book Now</button>\
+                    </div>\
+                </div>';
+            layer.bindPopup(popupContent, { maxHeight: 500 });
+        }
+
+        function style_Hotel7_advance_21_0() {
+            return {
+                pane: 'pane_Hotel7_advance_21',
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/accommodation_hotel2.svg',
+                    iconSize: [30.4, 30.4]
+                }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Hotel7_advance_21');
+        map.getPane('pane_Hotel7_advance_21').style.zIndex = 421;
+        map.getPane('pane_Hotel7_advance_21').style['mix-blend-mode'] = 'normal';
+        var layer_Hotel7_advance_21 = new L.geoJson(json_Hotel7_advance_21, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Hotel7_advance_21',
+            layerName: 'layer_Hotel7_advance_21',
+            pane: 'pane_Hotel7_advance_21',
+            onEachFeature: pop_Hotel7_advance_21,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Hotel7_advance_21_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Hotel7_advance_21);
+        map.addLayer(layer_Hotel7_advance_21);
+        function pop_LuklatoPhakdingAdvanced_22(feature, layer) {
+        }
+
+        function style_LuklatoPhakdingAdvanced_22_0() {
+            return {
+                pane: 'pane_LuklatoPhakdingAdvanced_22',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 8.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        function style_LuklatoPhakdingAdvanced_22_1() {
+            return {
+                pane: 'pane_LuklatoPhakdingAdvanced_22',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '10,5',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        function style_LuklatoPhakdingAdvanced_22_2() {
+            return {
+                pane: 'pane_LuklatoPhakdingAdvanced_22',
+                interactive: true,
+            }
+        }
+        function style_LuklatoPhakdingAdvanced_22_3() {
+            return {
+                pane: 'pane_LuklatoPhakdingAdvanced_22',
+                interactive: true,
+            }
+        }
+        function style_LuklatoPhakdingAdvanced_22_4() {
+            return {
+                pane: 'pane_LuklatoPhakdingAdvanced_22',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_LuklatoPhakdingAdvanced_22');
+        map.getPane('pane_LuklatoPhakdingAdvanced_22').style.zIndex = 422;
+        map.getPane('pane_LuklatoPhakdingAdvanced_22').style['mix-blend-mode'] = 'normal';
+        var layer_LuklatoPhakdingAdvanced_22 = new L.geoJson.multiStyle(json_LuklatoPhakdingAdvanced_22, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_LuklatoPhakdingAdvanced_22',
+            layerName: 'layer_LuklatoPhakdingAdvanced_22',
+            pane: 'pane_LuklatoPhakdingAdvanced_22',
+            onEachFeature: pop_LuklatoPhakdingAdvanced_22,
+            styles: [style_LuklatoPhakdingAdvanced_22_0, style_LuklatoPhakdingAdvanced_22_1, style_LuklatoPhakdingAdvanced_22_2, style_LuklatoPhakdingAdvanced_22_3, style_LuklatoPhakdingAdvanced_22_4,]
+        });
+        bounds_group.addLayer(layer_LuklatoPhakdingAdvanced_22);
+        map.addLayer(layer_LuklatoPhakdingAdvanced_22);
+        function pop_PhakdingtoNamcheBazarAdvanced_23(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+        }
+
+        function style_PhakdingtoNamcheBazarAdvanced_23_0() {
+            return {
+                pane: 'pane_PhakdingtoNamcheBazarAdvanced_23',
+                opacity: 1,
+                color: 'rgba(253,191,111,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_PhakdingtoNamcheBazarAdvanced_23');
+        map.getPane('pane_PhakdingtoNamcheBazarAdvanced_23').style.zIndex = 423;
+        map.getPane('pane_PhakdingtoNamcheBazarAdvanced_23').style['mix-blend-mode'] = 'normal';
+        var layer_PhakdingtoNamcheBazarAdvanced_23 = new L.geoJson(json_PhakdingtoNamcheBazarAdvanced_23, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_PhakdingtoNamcheBazarAdvanced_23',
+            layerName: 'layer_PhakdingtoNamcheBazarAdvanced_23',
+            pane: 'pane_PhakdingtoNamcheBazarAdvanced_23',
+            onEachFeature: pop_PhakdingtoNamcheBazarAdvanced_23,
+            style: style_PhakdingtoNamcheBazarAdvanced_23_0,
+        });
+        bounds_group.addLayer(layer_PhakdingtoNamcheBazarAdvanced_23);
+        map.addLayer(layer_PhakdingtoNamcheBazarAdvanced_23);
+        function pop_NamcheBazartoTengboche_24(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+        }
+
+        function style_NamcheBazartoTengboche_24_0() {
+            return {
+                pane: 'pane_NamcheBazartoTengboche_24',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_NamcheBazartoTengboche_24');
+        map.getPane('pane_NamcheBazartoTengboche_24').style.zIndex = 424;
+        map.getPane('pane_NamcheBazartoTengboche_24').style['mix-blend-mode'] = 'normal';
+        var layer_NamcheBazartoTengboche_24 = new L.geoJson(json_NamcheBazartoTengboche_24, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_NamcheBazartoTengboche_24',
+            layerName: 'layer_NamcheBazartoTengboche_24',
+            pane: 'pane_NamcheBazartoTengboche_24',
+            onEachFeature: pop_NamcheBazartoTengboche_24,
+            style: style_NamcheBazartoTengboche_24_0,
+        });
+        bounds_group.addLayer(layer_NamcheBazartoTengboche_24);
+        map.addLayer(layer_NamcheBazartoTengboche_24);
+        function pop_TengbochetoPhericheAdvanced_25(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+        }
+
+        function style_TengbochetoPhericheAdvanced_25_0() {
+            return {
+                pane: 'pane_TengbochetoPhericheAdvanced_25',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_TengbochetoPhericheAdvanced_25');
+        map.getPane('pane_TengbochetoPhericheAdvanced_25').style.zIndex = 425;
+        map.getPane('pane_TengbochetoPhericheAdvanced_25').style['mix-blend-mode'] = 'normal';
+        var layer_TengbochetoPhericheAdvanced_25 = new L.geoJson(json_TengbochetoPhericheAdvanced_25, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_TengbochetoPhericheAdvanced_25',
+            layerName: 'layer_TengbochetoPhericheAdvanced_25',
+            pane: 'pane_TengbochetoPhericheAdvanced_25',
+            onEachFeature: pop_TengbochetoPhericheAdvanced_25,
+            style: style_TengbochetoPhericheAdvanced_25_0,
+        });
+        bounds_group.addLayer(layer_TengbochetoPhericheAdvanced_25);
+        map.addLayer(layer_TengbochetoPhericheAdvanced_25);
+        function pop_PherichetoLobucheAdvanced_26(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+        }
+
+        function style_PherichetoLobucheAdvanced_26_0() {
+            return {
+                pane: 'pane_PherichetoLobucheAdvanced_26',
+                opacity: 1,
+                color: 'rgba(51,160,44,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_PherichetoLobucheAdvanced_26');
+        map.getPane('pane_PherichetoLobucheAdvanced_26').style.zIndex = 426;
+        map.getPane('pane_PherichetoLobucheAdvanced_26').style['mix-blend-mode'] = 'normal';
+        var layer_PherichetoLobucheAdvanced_26 = new L.geoJson(json_PherichetoLobucheAdvanced_26, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_PherichetoLobucheAdvanced_26',
+            layerName: 'layer_PherichetoLobucheAdvanced_26',
+            pane: 'pane_PherichetoLobucheAdvanced_26',
+            onEachFeature: pop_PherichetoLobucheAdvanced_26,
+            style: style_PherichetoLobucheAdvanced_26_0,
+        });
+        bounds_group.addLayer(layer_PherichetoLobucheAdvanced_26);
+        map.addLayer(layer_PherichetoLobucheAdvanced_26);
+        function pop_LobuchetoGorakShep_27(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+        }
+
+        function style_LobuchetoGorakShep_27_0() {
+            return {
+                pane: 'pane_LobuchetoGorakShep_27',
+                opacity: 1,
+                color: 'rgba(199,53,68,0.4627450980392157)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_LobuchetoGorakShep_27');
+        map.getPane('pane_LobuchetoGorakShep_27').style.zIndex = 427;
+        map.getPane('pane_LobuchetoGorakShep_27').style['mix-blend-mode'] = 'normal';
+        var layer_LobuchetoGorakShep_27 = new L.geoJson(json_LobuchetoGorakShep_27, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_LobuchetoGorakShep_27',
+            layerName: 'layer_LobuchetoGorakShep_27',
+            pane: 'pane_LobuchetoGorakShep_27',
+            onEachFeature: pop_LobuchetoGorakShep_27,
+            style: style_LobuchetoGorakShep_27_0,
+        });
+        bounds_group.addLayer(layer_LobuchetoGorakShep_27);
+        map.addLayer(layer_LobuchetoGorakShep_27);
+        setBounds();
+    </script>
+</body>
+
+</html>

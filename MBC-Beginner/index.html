@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+<<<<<<< HEAD
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,6 +53,123 @@
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+=======
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="css/leaflet.css">
+    <link rel="stylesheet" href="css/L.Control.Locate.min.css">
+    <link rel="stylesheet" href="css/qgis2web.css">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="css/MarkerCluster.css">
+    <link rel="stylesheet" href="css/MarkerCluster.Default.css">
+    <link href="/dist/output.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script src="myscripts.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="/dist/output.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href=' http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+    <style>
+        * {
+            font-size: 18px;
+            font-family: 'Roboto Condensed';
+        }
+
+        body {
+            background-color: lavender;
+            /* position: relative; */
+        }
+
+        #map {
+            width: 100%;
+            height: 90vh;
+            /* position: relative; */
+        }
+
+        .butn1 {
+            width: 100%;
+            text-align: center;
+            top: 10%;
+            background-color: transparent;
+            /* position: absolute; */
+        }
+    </style>
+    <title></title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="../index.html"><img src="images/images1.png" height="40" alt="MDB Logo"
+                loading="lazy" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="butn1" id="butn1">
+                <div class="btn-group content-center" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-secondary "><a href="../MBC-Beginner/index.html"
+                            class="text-dark">Beginner</a></button>
+                    <button type="button" class="btn btn-secondary"><a href="../MBC-Advance/index.html"
+                            class="text-light">Advanced</a></button>
+                    <button type="button" class="btn btn-secondary"><a href="../MBC-Expert/index.html"
+                            class="text-light">Expert</a></button>
+                </div>
+            </div>
+            <div class="navbar-nav">
+                <a class="nav-link text-white px-3" href="../login.html">Login </a>
+            </div>
+        </div>
+    </nav>
+    <div id="map">
+    </div>
+    <script src="js/qgis2web_expressions.js"></script>
+    <script src="js/leaflet.js"></script>
+    <script src="js/multi-style-layer.js"></script>
+    <script src="js/leaflet.rotatedMarker.js"></script>
+    <script src="js/leaflet.pattern.js"></script>
+    <script src="js/leaflet-hash.js"></script>
+    <script src="js/Autolinker.min.js"></script>
+    <script src="js/rbush.min.js"></script>
+    <script src="js/labelgun.min.js"></script>
+    <script src="js/labels.js"></script>
+    <script src="data/MBC_Village_Pokhara_1.js"></script>
+    <script src="data/MBC_Village_Dhiprang_2.js"></script>
+    <script src="data/MBC_Village_Kharapani_3.js"></script>
+    <script src="data/MBC_Village_BharabhuriGaon_4.js"></script>
+    <script src="data/Beginnerpokharatochitapani_5.js"></script>
+    <script src="data/Begineerchitapanitochaura_6.js"></script>
+    <script src="data/Begineerchauratokharapani_7.js"></script>
+    <script src="data/Begineerkharapanitobharabhurigaon_8.js"></script>
+    <script src="data/Begineerpoint1_9.js"></script>
+    <script src="data/Begineerpoint2_10.js"></script>
+    <script src="data/Begineerpoint3_11.js"></script>
+    <script src="data/Begineerpoint4_12.js"></script>
+    <script src="data/MBC_Village_Chaura_13.js"></script>
+    <script src="data/MBC_Village_Chitapani_14.js"></script>
+    <script>
+        var map = L.map('map', {
+            zoomControl: true, maxZoom: 28, minZoom: 1
+        }).fitBounds([[28.350651594431156, 83.89762630099443], [28.425231269751805, 84.06288424705257]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({ truncate: { length: 30, location: 'smart' } });
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
@@ -74,7 +192,11 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
+<<<<<<< HEAD
             layer.bindPopup(popupContent, {maxHeight: 400});
+=======
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
         }
 
         function style_MBC_Village_Pokhara_1_0() {
@@ -85,7 +207,11 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
+<<<<<<< HEAD
                 weight: 1.0, 
+=======
+                weight: 1.0,
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -112,7 +238,11 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
+<<<<<<< HEAD
             layer.bindPopup(popupContent, {maxHeight: 400});
+=======
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
         }
 
         function style_MBC_Village_Dhiprang_2_0() {
@@ -123,7 +253,11 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
+<<<<<<< HEAD
                 weight: 1.0, 
+=======
+                weight: 1.0,
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -150,7 +284,11 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
+<<<<<<< HEAD
             layer.bindPopup(popupContent, {maxHeight: 400});
+=======
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
         }
 
         function style_MBC_Village_Kharapani_3_0() {
@@ -161,7 +299,11 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
+<<<<<<< HEAD
                 weight: 1.0, 
+=======
+                weight: 1.0,
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -188,7 +330,11 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
+<<<<<<< HEAD
             layer.bindPopup(popupContent, {maxHeight: 400});
+=======
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
         }
 
         function style_MBC_Village_BharabhuriGaon_4_0() {
@@ -199,7 +345,11 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
+<<<<<<< HEAD
                 weight: 1.0, 
+=======
+                weight: 1.0,
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -277,7 +427,11 @@
             layerName: 'layer_Beginnerpokharatochitapani_5',
             pane: 'pane_Beginnerpokharatochitapani_5',
             onEachFeature: pop_Beginnerpokharatochitapani_5,
+<<<<<<< HEAD
             styles: [style_Beginnerpokharatochitapani_5_0,style_Beginnerpokharatochitapani_5_1,style_Beginnerpokharatochitapani_5_2,style_Beginnerpokharatochitapani_5_3,style_Beginnerpokharatochitapani_5_4,]
+=======
+            styles: [style_Beginnerpokharatochitapani_5_0, style_Beginnerpokharatochitapani_5_1, style_Beginnerpokharatochitapani_5_2, style_Beginnerpokharatochitapani_5_3, style_Beginnerpokharatochitapani_5_4,]
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
         });
         bounds_group.addLayer(layer_Beginnerpokharatochitapani_5);
         map.addLayer(layer_Beginnerpokharatochitapani_5);
@@ -287,7 +441,11 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
+<<<<<<< HEAD
             layer.bindPopup(popupContent, {maxHeight: 400});
+=======
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
         }
 
         function style_Begineerchitapanitochaura_6_0() {
@@ -323,7 +481,11 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
+<<<<<<< HEAD
             layer.bindPopup(popupContent, {maxHeight: 400});
+=======
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
         }
 
         function style_Begineerchauratokharapani_7_0() {
@@ -359,7 +521,11 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
+<<<<<<< HEAD
             layer.bindPopup(popupContent, {maxHeight: 400});
+=======
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
         }
 
         function style_Begineerkharapanitobharabhurigaon_8_0() {
@@ -446,7 +612,11 @@
             layerName: 'layer_Begineerpoint1_9',
             pane: 'pane_Begineerpoint1_9',
             onEachFeature: pop_Begineerpoint1_9,
+<<<<<<< HEAD
             styles: [style_Begineerpoint1_9_0,style_Begineerpoint1_9_1,style_Begineerpoint1_9_2,style_Begineerpoint1_9_3,style_Begineerpoint1_9_4,]
+=======
+            styles: [style_Begineerpoint1_9_0, style_Begineerpoint1_9_1, style_Begineerpoint1_9_2, style_Begineerpoint1_9_3, style_Begineerpoint1_9_4,]
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
         });
         bounds_group.addLayer(layer_Begineerpoint1_9);
         map.addLayer(layer_Begineerpoint1_9);
@@ -456,7 +626,11 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
+<<<<<<< HEAD
             layer.bindPopup(popupContent, {maxHeight: 400});
+=======
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
         }
 
         function style_Begineerpoint2_10_0() {
@@ -492,7 +666,11 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
+<<<<<<< HEAD
             layer.bindPopup(popupContent, {maxHeight: 400});
+=======
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
         }
 
         function style_Begineerpoint3_11_0() {
@@ -528,7 +706,11 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
+<<<<<<< HEAD
             layer.bindPopup(popupContent, {maxHeight: 400});
+=======
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
         }
 
         function style_Begineerpoint4_12_0() {
@@ -564,7 +746,11 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
+<<<<<<< HEAD
             layer.bindPopup(popupContent, {maxHeight: 400});
+=======
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
         }
 
         function style_MBC_Village_Chaura_13_0() {
@@ -575,7 +761,11 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
+<<<<<<< HEAD
                 weight: 1.0, 
+=======
+                weight: 1.0,
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -602,7 +792,11 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
+<<<<<<< HEAD
             layer.bindPopup(popupContent, {maxHeight: 400});
+=======
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
         }
 
         function style_MBC_Village_Chitapani_14_0() {
@@ -613,7 +807,11 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
+<<<<<<< HEAD
                 weight: 1.0, 
+=======
+                weight: 1.0,
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,127,0,1.0)',
@@ -635,6 +833,13 @@
         bounds_group.addLayer(layer_MBC_Village_Chitapani_14);
         map.addLayer(layer_MBC_Village_Chitapani_14);
         setBounds();
+<<<<<<< HEAD
         </script>
     </body>
 </html>
+=======
+    </script>
+</body>
+
+</html>
+>>>>>>> fe6844a41f79869fc906abe273db7b84b2445634

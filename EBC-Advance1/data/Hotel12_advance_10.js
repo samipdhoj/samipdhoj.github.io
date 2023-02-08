@@ -1,0 +1,1 @@
+var json_Hotel12_advance_10 = {"type":"FeatureCollection","name":"Hotel12_advance_10","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"13","name":"jully hotel","desc":"9856432778","image":"13.png","price":"1900"},"geometry":{"type":"Point","coordinates":[86.828102825022299,27.980268861933965]}}]}
