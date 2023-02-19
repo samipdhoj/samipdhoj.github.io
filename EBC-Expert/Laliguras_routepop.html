@@ -1,6 +1,5 @@
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta charset="utf-8">
@@ -182,8 +181,8 @@
             width: 100%;
         }
     </style>
-    <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
-    <script src="https://js.arcgis.com/4.25/"></script>
+
+  <script src="https://js.arcgis.com/4.25/"></script>
   <script>
 require([
     "esri/config",
@@ -560,201 +559,8 @@ ImageShower(Namche_bazar, 3500, "https://raw.githubusercontent.com/Isha-Karn/SQL
 
 });
   </script>
-</head>
-
-<body>
-    <div class="butn1" id="butn1">
-        <div class="btn-group content-center" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-secondary "><a href="../EBC-Begineer/index.html"
-                    class="text-light">Beginner</a></button>
-            <button type="button" class="btn btn-secondary"><a href="../EBC-Advance1/index.html"
-                    class="text-light">Advanced</a></button>
-            <button type="button" class="btn btn-secondary"><a href="../EBC-Expert/index.html"
-                    class="text-dark">Expert</a></button>
-        </div>
-    </div>
-    <nav class="navbar navbar-expand navbar-light bg-dark ">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
-            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="../index.html"><img src="images/images1.png" height="38" alt="MDB Logo"
-                    loading="lazy" /></a>
-            <ul class="navbar-nav mr-auto mt-sm-1 mt-lg-1">
-                <li class="nav-item active">
-                </li>
-            </ul>
-            <!-- <a class="nav-link nav-item active bg-dark" href="#">Home </a> -->
-            <!-- <a class="nav-link text-white px-3" href="#">About us </a>
-        <a class="nav-link text-white px-3" href="#">Offerings </a> -->
-            <a class="nav-link text-white px-3" href="" data-toggle="modal" data-target="#modalLoginForm">Login</a>
-        </div>
-    </nav>
+  </head>
+  <body>
     <div id="viewDiv"></div>
-    <div id="ColCard">
-        <div class="container accordion" id="myAccordion" >
-            <div class="card" style="background-color: rgb(255, 255, 255) !important;">
-                <div class="card-header" style="background-color: rgba(0, 174, 255, 0.52) !important;" id="item1Header">
-                    <h5 class="mb-0" >
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" color="white"
-                            data-target="#expandable1" aria-expanded="false" aria-controls="expandable1" style="h5{color:white}">
-                            Leg 1
-                        </button>
-                    </h5>
-                </div>
-                <div id="expandable1" class="collapse" aria-labelledby="item1Header" data-parent="#myAccordion">
-                    <div class="card-body">
-                        <div class="row p-2">
-                            <div class="column">Start</div>
-                            <div class="column">Lukla (2860 m)</div>
-                        </div>
-                        <div class="row p-2">
-                            <div class="column">End</div>
-                            <div class="column">Nachipang (2730 m)</div>
-                        </div>
-                        <div class="row p-2">
-                            <div class="column">Distance</div>
-                            <div class="column">15.2 km</div>
-                        </div>
-                        <div class="row p-2">
-                            <div class="column">Elevation</div>
-                            <div class="column">7 km 8.2 km</div>
-                        </div>
-                        <div class="row p-2">
-                            <div class="column">Staying @</div>
-                            <div class="column">Nachipang lodge <button type="button">Booked</button>
-                            </div>
-                        </div>
-                        <div class="row p-2">
-                            <div class="column">Duration</div>
-                            <div class="column">6 hrs</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header" id="item2Header" style="background-color: rgba(0, 174, 255, 0.52) !important;">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" type="button" data-toggle="collapse"  data-target="#expandable2"
-                            aria-expanded="true" aria-controls="expandable2">
-                            Leg 2
-                        </button>
-                    </h5>
-                </div>
-                <div id="expandable2" class="collapse show" aria-labelledby="item2Header" data-parent="#myAccordion">
-                    <div class="card-body">
-                        <div class="row p-2">
-                            <div class="column">Start</div>
-                            <div class="column">Lukla (2860 m)</div>
-                        </div>
-                        <div class="row p-2">
-                            <div class="column">End</div>
-                            <div class="column">Nachipang (2730 m)</div>
-                        </div>
-                        <div class="row p-2">
-                            <div class="column">Distance</div>
-                            <div class="column">15.2 km</div>
-                        </div>
-                        <div class="row p-2">
-                            <div class="column">Elevation</div>
-                            <div class="column">7 km 8.2 km</div>
-                        </div>
-                        <div class="row p-2">
-                            <div class="column">Staying @</div>
-                            <div class="column">Nachipang lodge <button type="button">Booked</button></div>
-                        </div>
-                        <div class="row p-2">
-                            <div class="column">Duration</div>
-                            <div class="column">6 hrs</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header" id="item3Header" style="background-color: rgba(0, 174, 255, 0.52) !important;">
-                    <h5 class="mb-0">
-                        <button class="btn
-                                                                              btn-link
-                                                                              collapsed" type="button"
-                            data-toggle="collapse" data-target="#expandable3" aria-expanded="false"
-                            aria-controls="expandable3">
-                            Leg 3
-                        </button>
-                    </h5>
-                </div>
-                <div id="expandable3" class="collapse" aria-labelledby="item3Header" data-parent="#myAccordion">
-                    <div class="card-body">
-                        <div class="row p-2">
-                            <div class="column">Start</div>
-                            <div class="column">Lukla (2860 m)</div>
-                        </div>
-                        <div class="row p-2">
-                            <div class="column">End</div>
-                            <div class="column">Nachipang (2730 m)</div>
-                        </div>
-                        <div class="row p-2">
-                            <div class="column">Distance</div>
-                            <div class="column">15.2 km</div>
-                        </div>
-                        <div class="row p-2">
-                            <div class="column">Elevation</div>
-                            <div class="column">7 km 8.2 km</div>
-                        </div>
-                        <div class="row p-2">
-                            <div class="column">Staying @</div>
-                            <div class="column">Nachipang lodge <button type="button">Booked</button></div>
-                        </div>
-                        <div class="row p-2">
-                            <div class="column">Duration</div>
-                            <div class="column">6 hrs</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header" id="item4Header" style="background-color: rgba(0, 174, 255, 0.52) !important;">
-                    <h5 class="mb-0">
-                        <button class="btn
-                                                                              btn-link
-                                                                              collapsed" type="button"
-                            data-toggle="collapse" data-target="#expandable4" aria-expanded="false"
-                            aria-controls="expandable4">
-                            Leg 4
-                        </button>
-                    </h5>
-                </div>
-                <div id="expandable4" class="collapse" aria-labelledby="item4Header" data-parent="#myAccordion">
-                    <div class="card-body">
-                        <div class="row p-2">
-                            <div class="column">Start</div>
-                            <div class="column">Lukla (2860 m)</div>
-                        </div>
-                        <div class="row p-2">
-                            <div class="column">End</div>
-                            <div class="column">Nachipang (2730 m)</div>
-                        </div>
-                        <div class="row p-2">
-                            <div class="column">Distance</div>
-                            <div class="column">15.2 km</div>
-                        </div>
-                        <div class="row p-2">
-                            <div class="column">Elevation</div>
-                            <div class="column">7 km 8.2 km</div>
-                        </div>
-                        <div class="row p-2">
-                            <div class="column">Staying @</div>
-                            <div class="column">Nachipang lodge <button type="button">Booked</button></div>
-                        </div>
-                        <div class="row p-2">
-                            <div class="column">Duration</div>
-                            <div class="column">6 hrs</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-
+  </body>
 </html>
