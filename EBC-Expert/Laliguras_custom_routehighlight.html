@@ -1,0 +1,778 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link href="style.css" rel="stylesheet">
+  <script src="myscripts.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="/dist/output.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href=' http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="./index.css">
+  <style>
+    .column {
+      float: left;
+      width: 50%;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    * {
+      font-size: 18px;
+      font-family: 'Roboto Condensed';
+    }
+
+    body {
+      background-color: lavender;
+      /* position: relative; */
+    }
+
+    #map {
+      width: 100%;
+      height: 80vh;
+      /* position: relative; */
+    }
+
+    .btn1 {
+      height: 30px !important;
+    }
+
+    .butn1 {
+      position: absolute;
+      /* top: 140px; */
+      /* justify-content: center; */
+      top: 10%;
+      left: 40%;
+      padding: 0px;
+      z-index: 100;
+    }
+
+    #Difficulty {
+      text-decoration: underline green 3px;
+      position: absolute;
+      top: 140px;
+      left: -3px;
+      padding: 10px;
+      z-index: 400;
+    }
+
+    #BeginnerButton {
+      height: 40px !important;
+      width: 200px;
+      position: absolute;
+      top: 190px;
+      left: 15px;
+      padding: 10px;
+      z-index: 400;
+    }
+
+    #AdvanceButton {
+      height: 40px !important;
+      width: 200px;
+      position: absolute;
+      top: 250px;
+      left: 15px;
+      padding: 10px;
+      z-index: 400;
+    }
+
+    #ExpertButton {
+      height: 40px !important;
+      width: 200px;
+      position: absolute;
+      top: 310px;
+      left: 15px;
+      padding: 10px;
+      z-index: 400;
+    }
+
+    #box {
+      background-color: rgba(178, 208, 177, 0.564);
+      color: rgba(0, 0, 0, 0.561);
+      height: 230px;
+      width: 248px;
+      position: absolute;
+      top: 140px;
+      left: 5px;
+      padding: 10px;
+      z-index: 400;
+    }
+
+    #myAccordion {
+      height: 230px;
+      width: 388px;
+      position: absolute;
+      top: 140px;
+      right: 5px;
+      padding: 10px;
+      z-index: 400;
+    }
+
+    #card-header {
+      color: aqua;
+      background-color: aqua;
+    }
+
+    @media only screen and (max-width: 1080px) {
+      #myAccordion {
+        height: 400px;
+        position: absolute;
+        top: 60%;
+        padding-left: 10px;
+        padding-right: 10px;
+        z-index: 400;
+        left: 5px;
+        overflow-x: scroll;
+        font-size: xx-small;
+      }
+
+      #box {
+        font-size: 16px;
+        background-color: rgba(178, 208, 177, 0.564);
+        height: 218px;
+        width: 218px;
+        position: absolute;
+        top: 140px;
+        left: 5px;
+        padding: 2px;
+        z-index: 400;
+      }
+
+      .butn1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        /* top: 140px; */
+        justify-content: center;
+        top: 9%;
+        right: 35%;
+        /* left: 15%; */
+        /* padding: 10px; */
+        /* z-index: 400; */
+      }
+    }
+  </style>
+  <title>Laliguras Routemap</title>
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 98%;
+      width: 100%;
+    }
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.25/"></script>
+  <script>
+    require([
+      "esri/config",
+      "esri/Map",
+      "esri/views/SceneView",
+      "esri/layers/ElevationLayer",
+      "esri/layers/ImageryLayer",
+      "esri/PopupTemplate",
+      "esri/widgets/Track",
+      "esri/Graphic",
+      "esri/layers/GraphicsLayer",
+      "esri/symbols/SimpleLineSymbol",
+      "esri/geometry/SpatialReference",
+      "esri/rest/route",
+      "esri/rest/support/RouteParameters",
+      "esri/rest/support/FeatureSet",
+      "esri/geometry/Point",
+      "esri/symbols/PictureMarkerSymbol",
+      "esri/geometry/Polyline",
+      "esri/symbols/SimpleMarkerSymbol",
+      "esri/symbols/SimpleLineSymbol",
+      "esri/symbols/TextSymbol",
+      "esri/widgets/ElevationProfile"
+      , "esri/widgets/ElevationProfile/ElevationProfileViewModel"
+
+    ], function (
+      esriConfig
+      , Map
+      , SceneView
+      , ElevationLayer
+      , ImageryLayer
+      , PopupTemplate
+      , Track
+      , Graphic
+      , GraphicsLayer
+      , SimpleLineSymbol
+      , SpatialReference
+      , route
+      , RouteParameters
+      , FeatureSet
+      , Point
+      , PictureMarkerSymbol
+      , Polyline
+      , SimpleMarkerSymbol
+      , SimpleLineSymbol
+      , TextSymbol
+      , ElevationProfile
+      , ElevationProfileViewModel
+
+    ) {
+
+      esriConfig.apiKey = "AAPK0ab1ad9de14c4ec2827bc685240befc2oqSFsxEpdS40T8c6J3R2ES1fu2HdkNKAbQogfMbd6O1DaqWhQjmD_DsO0PZOnMaM";
+
+      var map = new Map({
+        basemap: "satellite",
+        ground: "world-elevation",
+        maxScale: 100
+      });
+
+      var view = new SceneView({
+        container: "viewDiv",
+        map: map,
+        camera: {
+          position: {
+            x: 86.71263,
+            y: 27.59723,
+            z: 5500
+          },
+          tilt: 75
+        },
+        constraints: {
+          tilt: {
+            max: 75
+          }
+        }
+      });
+
+      var elevationLayer = new ElevationLayer({
+        url: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
+      });
+      map.add(elevationLayer);
+
+      var imageryLayer = new ImageryLayer({
+        url: "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"
+      });
+      map.add(imageryLayer);
+
+      var routeUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World";
+
+      function trailElevation() {
+        var elevationProfile = new ElevationProfile({
+          view: view,
+          sourceElevationLayer: {
+            elevationAttribute: "ELEVATION"
+          },
+          height: "300px",
+          width: "100%",
+          dockEnabled: false,
+          position: "top-right"
+        });
+        view.ui.add(elevationProfile, "bottom-left");
+
+      }
+
+      function router(from, to, color = [255, 0, 0], layer) {
+        if (layer == undefined) {
+          layer = new GraphicsLayer();
+        }
+        var location1 = new Point({
+          x: from[0],
+          y: from[1],
+          spatialReference: { wkid: 4326 }
+        });
+
+        var location2 = new Point({
+          x: to[0],
+          y: to[1],
+          spatialReference: { wkid: 4326 }
+        });
+
+        var graphics = [
+          new Graphic({
+            geometry: location1,
+            symbol: {
+              type: "simple-marker",
+              color: "black",
+              size: "8px"
+            }
+          }),
+          new Graphic({
+            geometry: location2,
+            symbol: {
+              type: "simple-marker",
+              color: "black",
+              size: "8px"
+            }
+          })
+        ];
+
+        view.graphics.addMany(graphics);
+
+        var routeParams = new RouteParameters({
+          stops: new FeatureSet({
+            features: graphics
+          }),
+          returnDirections: true
+        });
+
+        //   function RouteFunction() {
+        //    document.getElementById("expandable2");
+        // }
+
+
+
+        route.solve(routeUrl, routeParams)
+          .then(function (data) {
+            var routeSymbol = new SimpleLineSymbol({
+              color: color,
+              width: 3
+            });
+
+            var highLight = new SimpleLineSymbol({
+              color: '#ff0000',
+              width: 3
+            });
+
+            var routeGraphic = new Graphic({
+              geometry: data.routeResults[0].route.geometry,
+              symbol: routeSymbol,
+              popupTemplate: null
+            });
+
+            layer.add(routeGraphic);
+            map.add(layer);
+
+            
+
+            view.on("click", function (event) {
+                view.hitTest(event).then(function (response) {
+                  var feature = response.results[0].graphic;
+                  if (feature === routeGraphic) {
+                    feature.symbol = highLight;
+                    graphicsLayer.refresh();
+                  } else {
+                    routeGraphic.symbol = routeSymbol;
+                    graphicsLayer.refresh();
+                  }
+                });
+            });
+          });
+      }
+
+      function popupMaster(place, name, elevation, image_url) {
+        var location = new Point({
+          x: place[0],
+          y: place[1],
+          spatialReference: { wkid: 4326 }
+        });
+
+        var graphics = [
+          new Graphic({
+            geometry: location,
+            attributes: {
+              name: name,
+              elevation: elevation,
+              image: image_url
+            },
+            symbol: {
+              type: "simple-marker",
+              color: "white",
+              size: "8px"
+            }
+          })
+        ];
+
+        var popupTemplate = new PopupTemplate({
+          title: "{name}",
+          content: '<img src ={image} width="200" height="150"> <p>Elevation: {elevation} ft</p>'
+        });
+
+        graphics.forEach(function (graphic) {
+          graphic.popupTemplate = popupTemplate;
+        });
+        view.graphics.addMany(graphics);
+      }
+
+      function ImageShower(place, elevation, image_url) {
+        var location = new Point({
+          x: place[0],
+          y: place[1],
+          z: elevation,
+          spatialReference: { wkid: 4326 }
+        });
+
+        var markerSymbol = new PictureMarkerSymbol({
+          url: image_url,
+          height: 64,
+          width: 64,
+          minScale: 2000,
+          maxScale: 2500
+        });
+
+        var markerGraphic = new Graphic({
+          geometry: location,
+          symbol: markerSymbol
+        });
+        view.graphics.add(markerGraphic);
+      }
+
+      function LocationShower(place, elevation, name) {
+        var textSymbol = {
+          type: "text",
+          color: [70, 150, 230],
+          haloColor: [255, 255, 255],
+          haloSize: 1,
+          text: name,
+          xoffset: 0,
+          yoffset: 0,
+          zoffset: 1000,
+          font: {
+            size: 16,
+            family: "sans-serif",
+            weight: "bold"
+          }
+        };
+
+        var locatson = new Point({
+          x: place[0],
+          y: place[1],
+          z: elevation,
+          spatialReference: { wkid: 4326 }
+        });
+
+        var graphik = new Graphic({
+          geometry: locatson,
+          symbol: textSymbol
+        });
+
+        view.graphics.add(graphik);
+      }
+
+      function stand(place, elevation) {
+
+        var location = new Point({
+          x: place[0],
+          y: place[1],
+          z: 3000,
+          spatialReference: { wkid: 4326 }
+        });
+
+        var lineSymbol = new SimpleLineSymbol({
+          color: [0, 0, 0],
+          width: 8,
+          style: "solid"
+        });
+
+        var lineGraphic = new Graphic({
+          geometry: {
+            type: "polyline",
+            paths: [[[location.x, location.y, 0], [location.x, location.y, elevation]]]
+          },
+          symbol: lineSymbol
+        });
+
+        view.graphics.addMany([lineGraphic]);
+
+      }
+
+      Lukla = [86.73191, 27.68723];
+      Nachipang = [86.71474, 27.71];
+      Phakding = [86.71263, 27.74018];
+      Toktok = [86.71047, 27.75334];
+      Jorsalle = [86.72206, 27.77898];
+      Namche_bazar = [86.70976, 27.8031];
+
+      red = [255, 0, 0];
+      green = [0, 255, 0];
+      blue = [0, 0, 255];
+      purple = [255, 0, 255];
+      yellow = [255, 255, 0];
+
+      var elevationProfile;
+
+      function myfunction() {
+              alert("Lukla to Nachipang");
+            }
+
+      // trailElevation();
+      view.when(function (event) {
+
+        // If you want to display in same layer, declare the layer here, and pass to the function
+
+        router(Lukla, Nachipang, blue, myFunction());
+        router(Nachipang, Phakding, blue);
+        router(Phakding, Toktok, blue);
+        router(Toktok, Jorsalle, blue);
+        router(Jorsalle, Namche_bazar, blue);
+
+        popupMaster(Lukla, 'Lukla', 10600, "https://raw.githubusercontent.com/Isha-Karn/SQL_Learning/master/Phakding.jpg");
+        popupMaster(Nachipang, 'Nachipang', 10600, "https://raw.githubusercontent.com/Isha-Karn/SQL_Learning/master/Phakding.jpg");
+        popupMaster(Phakding, 'Phakding', 10600, "https://raw.githubusercontent.com/Isha-Karn/SQL_Learning/master/Phakding.jpg");
+        popupMaster(Toktok, 'Toktok', 10600, "https://raw.githubusercontent.com/Isha-Karn/SQL_Learning/master/Phakding.jpg");
+        popupMaster(Jorsalle, 'Jorsalle', 10600, "https://raw.githubusercontent.com/Isha-Karn/SQL_Learning/master/Phakding.jpg");
+        popupMaster(Namche_bazar, 'Namche_bazar', 10600, "https://raw.githubusercontent.com/Isha-Karn/SQL_Learning/master/Phakding.jpg");
+
+      });
+
+      setTimeout(function () {
+
+        LocationShower(Lukla, 3200, "Lukla");
+        stand(Lukla, 3200)
+
+        LocationShower(Nachipang, 2900, "Nachhipang");
+        stand(Nachipang, 2900)
+
+        LocationShower(Phakding, 3000, "Phakding");
+        stand(Phakding, 3000)
+
+        LocationShower(Toktok, 3000, "Toktok");
+        stand(Toktok, 3000)
+
+        LocationShower(Jorsalle, 3000, "Jorsalle");
+        stand(Jorsalle, 3000)
+
+        LocationShower(Namche_bazar, 4000, "Namche bazar");
+        stand(Namche_bazar, 4000)
+
+      }, 5000);
+
+      ImageShower(Namche_bazar, 3500, "https://raw.githubusercontent.com/Isha-Karn/SQL_Learning/master/laliguras-removebg-preview.png")
+
+    });
+  </script>
+</head>
+
+<body>
+  <div class="butn1" id="butn1">
+    <div class="btn-group content-center" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-secondary "><a href="../EBC-Begineer/index.html"
+          class="text-light">Beginner</a></button>
+      <button type="button" class="btn btn-secondary"><a href="../EBC-Advance1/index.html"
+          class="text-light">Advanced</a></button>
+      <button type="button" class="btn btn-secondary"><a href="../EBC-Expert/index.html"
+          class="text-dark">Expert</a></button>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand navbar-light bg-dark ">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+      aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="../index.html"><img src="images/images1.png" height="38" alt="MDB Logo"
+          loading="lazy" /></a>
+      <ul class="navbar-nav mr-auto mt-sm-1 mt-lg-1">
+        <li class="nav-item active">
+        </li>
+      </ul>
+      <!-- <a class="nav-link nav-item active bg-dark" href="#">Home </a> -->
+      <!-- <a class="nav-link text-white px-3" href="#">About us </a>
+        <a class="nav-link text-white px-3" href="#">Offerings </a> -->
+      <!-- <a class="nav-link text-white px-3" href="#" onclick="myfunction()" return false;>Login</a> -->
+      <script>
+        function myFunction() {
+              var div = document.getElementById("expandable1");
+              // Do something with the div, for example:
+              div.style.color = "black";
+            }
+      </script>
+      <input type="button" onclick="myfunction()" value="Display">
+    </div>
+  </nav>
+  <div id="ColCard">
+    <div class="container accordion" id="myAccordion">
+      <div class="card" style="color: rgb(251, 160, 25) !important; ">
+        <div class="card-header" style="background-color: rgb(255, 255, 255) !important;" id="item1Header">
+          <h5 class="mb-0">
+            <button class="btn btn1 btn-link collapsed" type="button" data-toggle="collapse" color="white"
+              aria-expanded="true" data-target="#expandable1" aria-controls="expandable1">
+              <div
+                style="color:rgb(252, 247, 247); background-color: rgba(0, 174, 255, 0.52); width: 300px; height: 30px !important;">
+                Leg 1</div>
+            </button>
+          </h5>
+        </div>
+        <div id="expandable1" class="collapse show" aria-labelledby="item1Header" data-parent="#myAccordion">
+          <div class="card-body">
+            <div class="row p-0 p-lg-1">
+              <div class="column">Start</div>
+              <div class="column">Lukla (2860 m)</div>
+            </div>
+            <div class="row p-0 p-lg-1">
+              <div class="column">End</div>
+              <div class="column">Nachipang (2730 m)</div>
+            </div>
+            <div class="row p-0 p-lg-1">
+              <div class="column">Distance</div>
+              <div class="column">15.2 km</div>
+            </div>
+            <div class="row p-0 p-lg-1">
+              <div class="column">Elevation</div>
+              <div class="column">7 km 8.2 km</div>
+            </div>
+            <!-- <div class="row p-0 p-lg-1">
+                            <div class="column">Staying @</div>
+                            <div class="column">Nachipang lodge <button type="button">Booked</button>
+                            </div>
+                        </div> -->
+            <div class="row p-0 p-lg-1">
+              <div class="column">Duration</div>
+              <div class="column">6 hrs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="color: rgb(251, 160, 25) !important; ">
+        <div class="card-header" id="item2Header" style="background-color: rgb(255, 255, 255) !important;">
+          <h5 class="mb-0">
+            <button class="btn btn1 btn-link" type="button" data-toggle="collapse" data-target="#expandable2" onclick=""
+              aria-controls="expandable2">
+              <div
+                style="color:rgb(252, 247, 247); background-color: rgba(0, 174, 255, 0.52); width: 300px; height: 30px !important;">
+                Leg 2</div>
+            </button>
+          </h5>
+        </div>
+        <div id="expandable2" class="collapse" aria-labelledby="item2Header" data-parent="#myAccordion">
+          <div class="card-body">
+            <div class="row p-0 p-lg-1">
+              <div class="column">Start</div>
+              <div class="column">Lukla (2860 m)</div>
+            </div>
+            <div class="row p-0 p-lg-1">
+              <div class="column">End</div>
+              <div class="column">Nachipang (2730 m)</div>
+            </div>
+            <div class="row p-0 p-lg-1">
+              <div class="column">Distance</div>
+              <div class="column">15.2 km</div>
+            </div>
+            <div class="row p-0 p-lg-1">
+              <div class="column">Elevation</div>
+              <div class="column">7 km 8.2 km</div>
+            </div>
+            <!-- <div class="row p-0 p-lg-1">
+                            <div class="column">Staying @</div>
+                            <div class="column">Nachipang lodge <button type="button">Booked</button></div>
+                        </div> -->
+            <div class="row p-0 p-lg-1">
+              <div class="column">Duration</div>
+              <div class="column">6 hrs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="color: rgb(251, 160, 25) !important; ">
+        <div class="card-header" id="item3Header" style="background-color: rgb(255, 255, 255) !important;">
+          <h5 class="mb-0">
+            <button class="btn btn1
+                                                                              btn-link
+                                                                              collapsed" type="button"
+              data-toggle="collapse" data-target="#expandable3" aria-expanded="false" aria-controls="expandable3">
+              <div
+                style="color:rgb(252, 247, 247); background-color: rgba(0, 174, 255, 0.52); width: 300px; height: 30px !important;">
+                Leg 3</div>
+            </button>
+          </h5>
+        </div>
+
+        <div id="expandable3" class="collapse" aria-labelledby="item3Header" data-parent="#myAccordion">
+          <div class="card-body">
+            <div class="row p-0 p-lg-1">
+              <div class="column">Start</div>
+              <div class="column">Lukla (2860 m)</div>
+            </div>
+            <div class="row p-0 p-lg-1">
+              <div class="column">End</div>
+              <div class="column">Nachipang (2730 m)</div>
+            </div>
+            <div class="row p-0 p-lg-1">
+              <div class="column">Distance</div>
+              <div class="column">15.2 km</div>
+            </div>
+            <div class="row p-0 p-lg-1">
+              <div class="column">Elevation</div>
+              <div class="column">7 km 8.2 km</div>
+            </div>
+            <!-- <div class="row p-0 p-lg-1">
+                            <div class="column">Staying @</div>
+                            <div class="column">Nachipang lodge <button type="button">Booked</button></div>
+                        </div> -->
+            <div class="row p-0 p-lg-1">
+              <div class="column">Duration</div>
+              <div class="column">6 hrs</div>
+            </div>
+          </div>
+
+        </div>
+        <div class="card" style="color: rgb(251, 160, 25) !important; ">
+          <div class="card-header" style="background-color: rgb(255, 255, 255) !important;" id="item1Header">
+            <h5 class="mb-0">
+              <button class="btn btn1 btn-link collapsed" type="button" data-toggle="collapse" color="white"
+                aria-expanded="true" data-target="#expandable4" aria-controls="expandable4">
+                <div
+                  style="color:rgb(252, 247, 247); background-color: rgba(0, 174, 255, 0.52); width: 300px; height: 30px !important;">
+                  Leg 4</div>
+              </button>
+            </h5>
+          </div>
+          <div id="expandable4" class="collapse" aria-labelledby="item1Header" data-parent="#myAccordion">
+            <div class="card-body">
+              <div class="row p-0 p-lg-1">
+                <div class="column">Start</div>
+                <div class="column">Lukla (2860 m)</div>
+              </div>
+              <div class="row p-0 p-lg-1">
+                <div class="column">End</div>
+                <div class="column">Nachipang (2730 m)</div>
+              </div>
+              <div class="row p-0 p-lg-1">
+                <div class="column">Distance</div>
+                <div class="column">15.2 km</div>
+              </div>
+              <div class="row p-0 p-lg-1">
+                <div class="column">Elevation</div>
+                <div class="column">7 km 8.2 km</div>
+              </div>
+              <!-- <div class="row p-0 p-lg-1">
+                              <div class="column">Staying @</div>
+                              <div class="column">Nachipang lodge <button type="button">Booked</button>
+                              </div>
+                          </div> -->
+              <div class="row p-0 p-lg-1">
+                <div class="column">Duration</div>
+                <div class="column">6 hrs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="viewDiv"></div>
+</body>
+
+</html>

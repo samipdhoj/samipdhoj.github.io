@@ -128,7 +128,7 @@ function trailElevation(){
 
   }
   
-  function router(from, to, color = [255, 0, 0], layer) {
+  function router(from, to, color = [255, 0, 0], expandable2, layer) {
   if (layer == undefined) {
     layer = new GraphicsLayer();
   }
@@ -343,9 +343,9 @@ view.when(function(event){
 
   // If you want to display in same layer, declare the layer here, and pass to the function
   router(Lukla, Nachipang, blue);
-  router(Nachipang, Phakding, blue);
+  router(Nachipang, Phakding, red);
   router(Phakding, Toktok, blue);
-  router(Toktok, Jorsalle, blue);
+  router(Toktok, Jorsalle, orange);
   router(Jorsalle, Namche_bazar, blue);
 
   popupMaster(Lukla, 'Lukla', 10600, "https://raw.githubusercontent.com/Isha-Karn/SQL_Learning/master/Phakding.jpg");

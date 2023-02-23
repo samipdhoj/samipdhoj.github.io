@@ -131,7 +131,6 @@
             color: aqua;
             background-color: aqua;
         }
-
         @media only screen and (max-width: 1080px) {
             #myAccordion {
                 height: 400px;
@@ -231,9 +230,7 @@
             , TextSymbol
             , ElevationProfile
             , ElevationProfileViewModel
-
         ) {
-
             esriConfig.apiKey = "AAPK0ab1ad9de14c4ec2827bc685240befc2oqSFsxEpdS40T8c6J3R2ES1fu2HdkNKAbQogfMbd6O1DaqWhQjmD_DsO0PZOnMaM";
 
             var map = new Map({
@@ -335,7 +332,6 @@
                             color: green,
                             width: 5
                         });
-
                         var routeGraphic = new Graphic({
                             geometry: data.routeResults[0].route.geometry,
                             symbol: routeSymbol,
@@ -344,24 +340,22 @@
                                 content: "<b>Distance:</b> {distance}<br><b>Time:</b> {time}"
                             }
                         });
-
                         var checkDiv = setInterval(function () {
-
-                            var my_div_width = $("#expandable2"); // find width
-
+                            var my_div_width = $("#expandable2").width(); // find width
                             if (my_div_width > 0) {
                                 clearInterval(checkDiv);
                                 aTestFunction();
                             }
-                        }, 10); // check after 10ms every time
-
+                        }, 10);
+                        
                         function aTestFunction() {
-                            return "expandable2";
+                            return "asd";
                         }
-
+                        function asd(){
+                            console.log("working")
+                        }
                         layer.add(routeGraphic);
                         map.add(layer);
-
                         view.on("click", //checkDiv
                             function (event) {
                                 view.hitTest(event).then(function (response) {
@@ -399,18 +393,15 @@
                         }
                     })
                 ];
-
                 var popupTemplate = new PopupTemplate({
                     title: "{name}",
                     content: '<img src ={image} width="200" height="150"> <p>Elevation: {elevation} ft</p>'
                 });
-
                 graphics.forEach(function (graphic) {
                     graphic.popupTemplate = popupTemplate;
                 });
                 view.graphics.addMany(graphics);
             }
-
             function ImageShower(place, elevation, image_url) {
                 var location = new Point({
                     x: place[0],
@@ -468,7 +459,6 @@
             }
 
             function stand(place, elevation) {
-
                 var location = new Point({
                     x: place[0],
                     y: place[1],
