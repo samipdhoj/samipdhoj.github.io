@@ -6,7 +6,7 @@
 html,
 body {
   background-color: #40b4a600;
-  position: static;
+  /* position: static; */
 }
 
 .homebackground {
@@ -47,9 +47,7 @@ body {
   left: 50%;
 }
 
-.fader {
-  transform: rotate(90deg);
-}
+
 
 .btn1 {
   background-color: DodgerBlue; /* Blue background */
@@ -142,7 +140,6 @@ body {
   font-size: 16px; /* Set a font size */
   cursor: pointer; /* Mouse pointer on hover */
   position: absolute;
-  animation: 1s ease-out 0s 1 slideInFromUp;
   top: 55%;
   left: 85%;
 }

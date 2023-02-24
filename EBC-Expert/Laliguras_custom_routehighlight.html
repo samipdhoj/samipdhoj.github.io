@@ -607,8 +607,7 @@
           }
           )
         });
-    }
-
+    } 
     function popupMaster(place, name, elevation, image_url) {
       var location = new Point({
         x: place[0],
@@ -743,6 +742,7 @@
 
     function displayMessage() {
             document.getElementById("expandable2");
+            alert("no")
           }
           // get reference to button
           var btn = document.getElementById("expandable2");
@@ -763,8 +763,7 @@
         alert('Lukla To Nachiipang')
     )}
       // If you want to display in same layer, declare the layer here, and pass to the function
-
-      router(Lukla, Nachipang, blue, displayMessage());
+      router(Lukla, Nachipang, blue);
       router(Nachipang, Phakding, blue);
       router(Phakding, Toktok, blue);
       router(Toktok, Jorsalle, blue);
