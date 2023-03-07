@@ -120,11 +120,10 @@
 
     #myAccordion {
       height: 400px;
-      width: 450px;
+      width: 350px;
       position: absolute;
       top: 120px;
       right: 5px;
-      padding: 30px;
       z-index: 400;
     }
 
@@ -200,7 +199,7 @@
       height: 5%
     }
   </style>
-  <script src='database.txt'></script>
+  <script src='database.js'></script>
   <script>
     var pathName = "Lukla-EBC"
     var difficulty = "Advanced";
@@ -236,23 +235,23 @@
       // desc = "Start:&nbsp&nbsp&nbsp" + place0 + "&nbsp" + place0elv + "m" + "<br>End:&nbsp&nbsp&nbsp" + place1 + "&nbsp" + place1elv + "m" + "<br>Distance:&nbsp&nbsp" + distance + "&nbspkm" + "<br>Elevation:&nbsp&nbsp" + "up&nbsp" + up + "m" + "&nbsp" + "down&nbsp" + down + "m" + "<br>Duration:&nbsp&nbsp&nbsp" + duration + "hrs" + "<br>Staying@:&nbsp&nbsp&nbsp" + place1 + "&nbsplodge"
 
       desc = `
-            <div class="row p-2 p-lg-1">
+            <div class="row p-lg-1">
               <div class="column">Start</div>
               <div class="column"> ${place0} (${place0elv} m)</div>
             </div>
-            <div class="row p-2 p-lg-1">
+            <div class="row p-lg-1">
               <div class="column">End</div>
               <div class="column">${place1} (${place1elv} m)</div>
             </div>
-            <div class="row p-2 p-lg-1">
+            <div class="row p-lg-1">
               <div class="column">Distance</div>
               <div class="column">${distance} km</div>
             </div>
-            <div class="row p-2 p-lg-1">
+            <div class="row p-lg-1">
               <div class="column">Elevation</div>
               <div class="column">↗${up}m  ↘${down}m</div>
             </div>
-            <div class="row p-2 p-lg-1">
+            <div class="row p-lg-1">
               <div class="column">Duration</div>
               <div class="column">${duration} hrs</div>
             </div>
@@ -621,10 +620,11 @@
           <div id="leg3Detail"></div>
           <button id="leg4" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-bottom:0px; border-width: 7px;" onClick="vanillaReact(4, pathName, difficulty, 6.6,742,525.3,1.7)">Leg 4</button>
           <div id="leg4Detail"></div>
-          <button id="leg5" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-bottom:0px; border-width: 7px;" onClick="vanillaReact(5, pathName, difficulty, 107,1126,260,4)">Leg 5</button>
+          <button id="leg5" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-width: 7px;" onClick="vanillaReact(5, pathName, difficulty, 107,1126,260,4)">Leg 5</button>
           <div id="leg5Detail"></div>
-          <button id="leg6" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-bottom:0px; border-width: 7px;" onClick="vanillaReact(6, pathName, difficulty, 7.1,619.5,308.6,2)">Leg 6</button>
-          <div id="leg6Detail"></div>
+          <!-- <button id="leg6" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-bottom:0px; border-width: 7px;" onClick="vanillaReact(6, pathName, difficulty, 7.1,619.5,308.6,2)">Leg 6</button>
+          <div id="leg6Detail"></div> -->
+        </div>
         </div>
       </div>
     </div>
