@@ -30,7 +30,11 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="./index.css">
   <style>
-    .column {
+    .esri-view .esri-view-surface--inset-outline:focus::after {
+      outline: none !important;
+    }
+
+    ‍‍‍ .column {
       float: left;
       width: 50%;
       padding-left: 20px;
@@ -249,7 +253,7 @@
             </div>
             <div class="row p-lg-1">
               <div class="column">Elevation</div>
-              <div class="column">↗${up}m  ↘${down}m</div>
+              <div class="column">↗ ${up}m &nbsp; &nbsp; ↘ ${down}m</div>
             </div>
             <div class="row p-lg-1">
               <div class="column">Duration</div>
@@ -499,7 +503,6 @@
         map.add(graphicsLayerz);
 
         // view.graphics.addMany([lineGraphic]);
-
       }
 
       function ImageShower(placeName, elevation, image_url) {
@@ -592,7 +595,7 @@
       <!-- <a class="nav-link nav-item active bg-dark" href="#">Home </a> -->
       <!-- <a class="nav-link text-white px-3" href="#">About us </a>
         <a class="nav-link text-white px-3" href="#">Offerings </a> -->
-        <a class="nav-link text-white px-3" href="" data-toggle="modal" data-target="#modalLoginForm">Login</a>
+      <a class="nav-link text-white px-3" href="" data-toggle="modal" data-target="#modalLoginForm">Login</a>
       <!-- <input type="button" onclick="myfunction()" value="Login" id="modalLoginForm"> -->
     </div>
   </nav>
@@ -604,63 +607,73 @@
       <button type="button" class="btn btn-light"><a href="../EBC-Advance1/index.html"
           class="text-dark text-decoration-none">Advanced</a></button>
       <button type="button" class="btn btn-dark"><a href="../EBC-Expert/Legs_visible.html"
-          class="text-light text-decoration-none " >Expert</a></button>
+          class="text-light text-decoration-none ">Expert</a></button>
     </div>
   </div>
-  
+
   <div id="ColCard">
     <div class="container accordion" id="myAccordion">
       <div class="card" style="color: rgb(0, 0, 0) !important; ">
         <div id="legDiv">
-          <button id="leg1" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-bottom:0px; border-width: 7px; " onClick="vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5)">Leg 1</button>
+          <button id="leg1" class="btn default"
+            style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-bottom:0px; border-width: 7px; "
+            onClick="vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5)">Leg 1</button>
           <div id="leg1Detail"></div>
-          <button id="leg2" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-bottom:0px; border-width: 7px;"  onClick="vanillaReact(2,  pathName, difficulty, 6.3,1096,445,2.5)">Leg 2</button>
+          <button id="leg2" class="btn default"
+            style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-bottom:0px; border-width: 7px;"
+            onClick="vanillaReact(2,  pathName, difficulty, 6.3,1096,445,2.5)">Leg 2</button>
           <div id="leg2Detail"></div>
-          <button id="leg3" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-bottom:0px; border-width: 7px;" onClick="vanillaReact(3, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 3</button>
+          <button id="leg3" class="btn default"
+            style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-bottom:0px; border-width: 7px;"
+            onClick="vanillaReact(3, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 3</button>
           <div id="leg3Detail"></div>
-          <button id="leg4" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-bottom:0px; border-width: 7px;" onClick="vanillaReact(4, pathName, difficulty, 6.6,742,525.3,1.7)">Leg 4</button>
+          <button id="leg4" class="btn default"
+            style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-bottom:0px; border-width: 7px;"
+            onClick="vanillaReact(4, pathName, difficulty, 6.6,742,525.3,1.7)">Leg 4</button>
           <div id="leg4Detail"></div>
-          <button id="leg5" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-width: 7px;" onClick="vanillaReact(5, pathName, difficulty, 107,1126,260,4)">Leg 5</button>
+          <button id="leg5" class="btn default"
+            style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-width: 7px;"
+            onClick="vanillaReact(5, pathName, difficulty, 107,1126,260,4)">Leg 5</button>
           <div id="leg5Detail"></div>
-          <!-- <button id="leg6" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-bottom:0px; border-width: 7px;" onClick="vanillaReact(6, pathName, difficulty, 7.1,619.5,308.6,2)">Leg 6</button>
-          <div id="leg6Detail"></div> -->
-        </div>
+          <button id="leg6" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-bottom:0px; border-width: 7px;" onClick="vanillaReact(6, pathName, difficulty, 7.1,619.5,308.6,2)">Leg 6</button>
+          <div id="leg6Detail"></div>
         </div>
       </div>
     </div>
   </div>
+  </div>
 
   <div class="modal fade text-right" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content text-center">
-                <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body mx-3">
-                    <div class="md-form mb-5">
-                        Email
-                        <i class="fa fa-envelope"></i>
-                        <input type="email" id="defaultForm-email" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
-                    </div>
-
-                    <div class="md-form mb-4">
-                        Password
-                        <i class="fa fa-lock"></i>
-                        <input type="password" id="defaultForm-pass" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
-                    </div>
-                </div>
-                <div class="modal-footer d-flex justify-content-center ">
-                    <button class="btn btn-dark">Login</button>
-                </div>
-            </div>
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content text-center">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+            Email
+            <i class="fa fa-envelope"></i>
+            <input type="email" id="defaultForm-email" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+          </div>
+
+          <div class="md-form mb-4">
+            Password
+            <i class="fa fa-lock"></i>
+            <input type="password" id="defaultForm-pass" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center ">
+          <button class="btn btn-dark">Login</button>
+        </div>
+      </div>
     </div>
+  </div>
 </body>
 
 </html>
