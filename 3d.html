@@ -1,14 +1,601 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link href="style.css" rel="stylesheet">
+  <script src="myscripts.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="/dist/output.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href=' http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="./index.css">
+  <style>
+    .column {
+      float: left;
+      width: 50%;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    * {
+      font-size: 18px;
+      font-family: 'Roboto Condensed';
+    }
+
+    body {
+      background-color: lavender;
+      /* position: relative; */
+    }
+
+    #map {
+      width: 100%;
+      height: 80vh;
+      /* position: relative; */
+    }
+
+    .btn1 {
+      height: 30px !important;
+    }
+
+    .butn1 {
+      position: absolute;
+      /* top: 140px; */
+      /* justify-content: center; */
+      top: 75px;
+      left: 40%;
+      padding: 0px;
+      z-index: 100;
+    }
+
+    #Difficulty {
+      text-decoration: underline green 3px;
+      position: absolute;
+      top: 140px;
+      left: -3px;
+      padding: 10px;
+      z-index: 400;
+    }
+
+    #BeginnerButton {
+      height: 40px !important;
+      width: 200px;
+      position: absolute;
+      top: 190px;
+      left: 15px;
+      padding: 10px;
+      z-index: 400;
+    }
+
+    #AdvanceButton {
+      height: 40px !important;
+      width: 200px;
+      position: absolute;
+      top: 250px;
+      left: 15px;
+      padding: 10px;
+      z-index: 400;
+    }
+
+    #ExpertButton {
+      height: 40px !important;
+      width: 200px;
+      position: absolute;
+      top: 310px;
+      left: 15px;
+      padding: 10px;
+      z-index: 400;
+    }
+
+    #box {
+      background-color: rgba(178, 208, 177, 0.564);
+      color: rgba(0, 0, 0, 0.561);
+      height: 230px;
+      width: 248px;
+      position: absolute;
+      top: 140px;
+      left: 5px;
+      padding: 10px;
+      z-index: 400;
+    }
+
+    #myAccordion {
+      height: 400px;
+      width: 350px;
+      position: absolute;
+      top: 120px;
+      right: 5px;
+      z-index: 400;
+    }
+
+
+    .esri-view .esri-view-surface--inset-outline:focus::after {
+      outline: none !important;
+    }
+
+    @media only screen and (max-width: 1080px) {
+      #myAccordion {
+        height: 400px;
+        width: 90%;
+        position: absolute;
+        top: 60%;
+        padding-left: 10px;
+        padding-right: 10px;
+        z-index: 400;
+        left: 5px;
+        overflow-x: scroll;
+        font-size: xx-small;
+      }
+
+      #box {
+        font-size: 16px;
+        background-color: rgba(178, 208, 177, 0.564);
+        height: 218px;
+        width: 218px;
+        position: absolute;
+        top: 140px;
+        left: 5px;
+        padding: 2px;
+        z-index: 400;
+      }
+
+      .butn1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        /* top: 140px; */
+        justify-content: center;
+        top: 75px;
+        right: 35%;
+        /* left: 15%; */
+        /* padding: 10px; */
+        /* z-index: 400; */
+      }
+    }
+  </style>
+  <title>Popup and Highlight Route</title>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.21/"></script>
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    .esri-elevation-profile.esri-component.esri-widget--panel {
+      width: 350px !important;
+    }
+
+    /* Left Side */
+    .left-side {
+      width: 80%;
+      float: left;
+    }
+
+    /* Right Side */
+    .right-side {
+      width: 10%;
+      float: right;
+      height: 5%
+    }
+  </style>
+  <script src='database.js'></script>
+  <script>
+    var pathName = "Lukla-EBC"
+    var difficulty = "Advanced";
+    var offset = 0;     // height of route from database points
+    var legNum = 0;     // used by routeOverlord to take each of the leg ids. has the total number of legs when all routes are drawn
+    var totalLegs = 0;  // Gives total number of legs beforehand
+
+    function vanillaReact(leg, pathName, difficulty, dist, up, down, dur) {
+      var distance = dist;
+      var Up = up;
+      var Down = down;
+      var duration = dur;
+      console.log(Up)
+
+      let id;
+      let desc;
+      for (var i = 1; i <= legNum; i++) {
+        id = "leg" + i.toString() + "Detail";
+        if (document.getElementById(id)) document.getElementById(id).innerHTML = ""; // Replace with expanding function
+      }
+      id = "leg" + leg.toString() + "Detail";
+      var pathLocations = giveCoordinate("source_paths", pathName, difficulty);
+      console.log(pathLocations)
+      console.log(leg)
+      var place0 = pathLocations[leg - 1];
+      var place0elv = giveCoordinate("source_locations", pathLocations[leg - 1])[2];
+
+
+      var place1 = pathLocations[leg]
+      var place1elv = giveCoordinate("source_locations", pathLocations[leg])[2];
+
+
+      // desc = "Start:&nbsp&nbsp&nbsp" + place0 + "&nbsp" + place0elv + "m" + "<br>End:&nbsp&nbsp&nbsp" + place1 + "&nbsp" + place1elv + "m" + "<br>Distance:&nbsp&nbsp" + distance + "&nbspkm" + "<br>Elevation:&nbsp&nbsp" + "up&nbsp" + up + "m" + "&nbsp" + "down&nbsp" + down + "m" + "<br>Duration:&nbsp&nbsp&nbsp" + duration + "hrs" + "<br>Staying@:&nbsp&nbsp&nbsp" + place1 + "&nbsplodge"
+
+      desc = `
+            <div class="row p-lg-1">
+              <div class="column">Start</div>
+              <div class="column"> ${place0} (${place0elv} m)</div>
+            </div>
+            <div class="row p-lg-1">
+              <div class="column">End</div>
+              <div class="column">${place1} (${place1elv} m)</div>
+            </div>
+            <div class="row p-lg-1">
+              <div class="column">Distance</div>
+              <div class="column">${distance} km</div>
+            </div>
+            <div class="row p-lg-1">
+              <div class="column">Elevation</div>
+              <div class="column">↗ ${up}m &nbsp; &nbsp; ↘ ${down}m</div>
+            </div>
+            <div class="row p-lg-1">
+              <div class="column">Duration</div>
+              <div class="column">${duration} hrs</div>
+            </div>
+          `
+
+      // Change according to data using database
+      if (document.getElementById(id)) document.getElementById(id).innerHTML = desc // Replace with expanding function
+    }
+
+    require([
+      "esri/config",
+      "esri/Map",
+      "esri/views/SceneView",
+      "esri/layers/ElevationLayer",
+      "esri/layers/ImageryLayer",
+      "esri/PopupTemplate",
+      "esri/widgets/Track",
+      "esri/Graphic",
+      "esri/layers/GraphicsLayer",
+      "esri/symbols/SimpleLineSymbol",
+      "esri/geometry/SpatialReference",
+      "esri/rest/route",
+      "esri/rest/support/RouteParameters",
+      "esri/rest/support/FeatureSet",
+      "esri/geometry/Point",
+      "esri/symbols/PictureMarkerSymbol",
+      "esri/geometry/Polyline",
+      "esri/symbols/SimpleMarkerSymbol",
+      "esri/symbols/SimpleLineSymbol",
+      "esri/symbols/TextSymbol",
+      "esri/widgets/ElevationProfile",
+      "esri/widgets/ElevationProfile/ElevationProfileViewModel",
+      "esri/layers/support/RasterFunction"
+
+    ], function (
+      esriConfig
+      , Map
+      , SceneView
+      , ElevationLayer
+      , ImageryLayer
+      , PopupTemplate
+      , Track
+      , Graphic
+      , GraphicsLayer
+      , SimpleLineSymbol
+      , SpatialReference
+      , route
+      , RouteParameters
+      , FeatureSet
+      , Point
+      , PictureMarkerSymbol
+      , Polyline
+      , SimpleMarkerSymbol
+      , SimpleLineSymbol
+      , TextSymbol
+      , ElevationProfile
+      , ElevationProfileViewModel
+      , RasterFunction
+    ) {
+
+
+      var map = new Map({
+        basemap: "satellite",
+        ground: "world-elevation",
+        maxScale: 100
+      });
+
+
+      var view = new SceneView({
+        container: "viewDiv",
+        map: map,
+        camera: {
+          position: {
+            x: 86.71263,
+            y: 27.59723,
+            z: 5500
+          },
+          tilt: 75
+        },
+        constraints: {
+          tilt: {
+            max: 75
+          }
+        }
+      });
+
+
+      var profile = new ElevationProfile({
+        view: view,
+        profiles: [{
+          type: "ground",
+          color: "#7A9BCC",
+          width: 2,
+          unit: "feet"
+        }]
+      });
+
+      //elevation profile
+      //view.ui.add(profile, "bottom-right");
+
+      var profileTask = new ElevationProfile({
+        url: "https://elevation.arcgis.com/arcgis/rest/services/Tools/ElevationSync/GPServer",
+      });
+
+      profile.set("task", profileTask);
+
+
+      view.on("click", function (event) {
+        //console.log("Clicked point coordinates:", event.mapPoint.latitude, event.mapPoint.longitude);
+      });
+
+
+      function routeOverlord(pathName, difficulty) {
+        var routeCoords = giveCoordinate("source_route");
+        var pathLocations = giveCoordinate("source_paths", pathName, difficulty);
+        totalLegs = pathLocations.length - 1;
+        for (var i = 0; i <= totalLegs; i += 1) {
+          legNum += 1;
+          var finaleRouteCoords = [];
+          var place0 = giveCoordinate("source_locations", pathLocations[i]);
+          var place1 = giveCoordinate("source_locations", pathLocations[i + 1]);
+
+          // For this project calculated according to latutude only. Needs implementation of route distance seeker.
+
+
+          var longLarge = (place0[0] - place1[0] < 0) ? place1[0] : place0[0];
+          var longSmall = (place0[0] - place1[0] > 0) ? place1[0] : place0[0];
+          var latLarge = (place0[1] - place1[1] < 0) ? place1[1] : place0[1];
+          var latSmall = (place0[1] - place1[1] > 0) ? place1[1] : place0[1];
+
+          routeCoords.forEach(coord => {
+            if ((coord[1] < latLarge && coord[1] > latSmall)) {
+              finaleRouteCoords.push([coord[0], coord[1], coord[2]]);
+            }
+          });
+          routeMaster(finaleRouteCoords, legNum); // Call continuously for different routes
+        }
+      }
+
+      function routeMaster(routeCoords, legNum) {
+
+        for (var i = 0; i < routeCoords.length; i += 1) {
+          routeCoords[i][2] += offset;
+        }
+
+        var route = new Polyline({
+          paths: [routeCoords],
+          spatialReference: {
+            wkid: 4326
+          }
+        });
+
+        profile.input = route;
+
+        var routeSymbol = new SimpleLineSymbol({
+          color: [0, 0, 255],
+          width: 3
+        });
+
+
+        var routeGraphic = new Graphic({
+          geometry: route,
+          symbol: routeSymbol,
+        });
+
+        var graphicsLayer = new GraphicsLayer();
+        graphicsLayer.add(routeGraphic);
+        map.add(graphicsLayer);
+
+        var highlightSymbol = new SimpleLineSymbol({
+          color: [255, 0, 0],
+          width: 3
+        });
+
+
+        for (var i = 1; i <= totalLegs; i++) {
+          id = 'leg' + i.toString();
+          if (document.getElementById(id)) {
+            if (i === legNum) {
+              document.getElementById(id).addEventListener("click", function () {
+                routeGraphic.symbol = highlightSymbol;
+                graphicsLayer.refresh();
+              });
+            }
+            else {
+              document.getElementById(id).addEventListener("click", function () {
+                routeGraphic.symbol = routeSymbol;
+                graphicsLayer.refresh();
+              });
+            }
+          }
+        }
+
+        view.on("click", function (event) {
+          view.hitTest(event).then(function (response) {
+            var feature = response.results[0].graphic;
+            if (feature === routeGraphic) {
+              if (document.getElementById('leg' + legNum.toString())) document.getElementById('leg' + legNum.toString()).click();
+              feature.symbol = highlightSymbol;
+              graphicsLayer.refresh();
+            } else {
+              routeGraphic.symbol = routeSymbol;
+              graphicsLayer.refresh();
+            }
+          });
+        });
+
+      }
+
+      function pathMaster(pathName, difficulty) {
+        var locations = giveCoordinate("source_paths", pathName, difficulty)
+        locations.forEach(location => {
+          stand(location, 500);
+          LocationShower(location, 500);
+        });
+
+      }
+
+      function stand(placeName, elevation) {
+        place = giveCoordinate("source_locations", placeName);
+
+        var location = new Point({
+          x: place[0],
+          y: place[1],
+          z: place[2],
+          spatialReference: { wkid: 4326 }
+        });
+
+        var lineSymbol = new SimpleLineSymbol({
+          color: [0, 0, 0],
+          width: 8,
+          style: "solid"
+        });
+
+        var lineGraphic = new Graphic({
+          geometry: {
+            type: "polyline",
+            paths: [[[location.x, location.y, 0], [location.x, location.y, location.z + elevation]]]
+          },
+          symbol: lineSymbol
+        });
+
+        var graphicsLayerz = new GraphicsLayer();
+        graphicsLayerz.add(lineGraphic);
+        map.add(graphicsLayerz);
+
+        // view.graphics.addMany([lineGraphic]);
+      }
+
+      function ImageShower(placeName, elevation, image_url) {
+        var place = giveCoordinate("source_locations", placeName);
+
+        var location = new Point({
+          x: place[0],
+          y: place[1],
+          z: elevation,
+          spatialReference: { wkid: 4326 }
+        });
+
+        var markerSymbol = new PictureMarkerSymbol({
+          url: image_url,
+          height: 64,
+          width: 64,
+          minScale: 2000,
+          maxScale: 2500
+        });
+
+        var markerGraphic = new Graphic({
+          geometry: location,
+          symbol: markerSymbol
+        });
+        view.graphics.add(markerGraphic);
+
+      }
+
+      function LocationShower(placeName, elevation) {
+        place = giveCoordinate("source_locations", placeName);
+
+        var textSymbol = {
+          type: "text",
+          color: [70, 150, 230],
+          haloColor: [255, 255, 255],
+          haloSize: 1,
+          text: placeName,
+          xoffset: 0,
+          yoffset: 0,
+          zoffset: 1000,
+          font: {
+            size: 16,
+            family: "sans-serif",
+            weight: "bold"
+          }
+        };
+
+        var locatson = new Point({
+          x: place[0],
+          y: place[1],
+          z: place[2] + elevation,
+          spatialReference: { wkid: 4326 }
+        });
+
+        var graphik = new Graphic({
+          geometry: locatson,
+          symbol: textSymbol
+        });
+
+
+        var graphicsLayerzx = new GraphicsLayer();
+        graphicsLayerzx.add(graphik);
+        map.add(graphicsLayerzx);
+      }
+
+      view.when(function (event) {
+        routeOverlord("Lukla-EBC", difficulty)
+      });
+      setTimeout(function () {
+        pathMaster("Lukla-EBC", difficulty);
+        ImageShower("EBC", 5400, "https://raw.githubusercontent.com/Isha-Karn/SQL_Learning/master/laliguras-removebg-preview.png")
+      }, 5000);
+    });
+  </script>
+
 </head>
 <body>
+    <nav class="navbar navbar-expand navbar-light bg-dark ">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <a class="navbar-brand" href="../index.html"><img src="images/images1.png" height="38" alt="MDB Logo"
+              loading="lazy" /></a>
+          <ul class="navbar-nav mr-auto mt-sm-1 mt-lg-1">
+            <li class="nav-item active">
+            </li>
+          </ul>
+        </div>
+      </nav>
     <style>
     </style>
-    <iframe src='https://my.spline.design/interactivespherescopy-97527abf294e3006387afba80accfc1a/' frameborder='0' width='100%' height='700px'></iframe>
+    <iframe src='https://momento360.com/e/u/d7023905c9ed4f8390a3bca3020d219d?utm_campaign=embed&utm_source=other&heading=-834.73&pitch=18.31&field-of-view=99&size=medium&display-plan=true' frameborder='0' width='100%' height='700px'></iframe>
 </body>
 </html>
