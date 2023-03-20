@@ -1,284 +1,116 @@
-* {
-  font-size: 18px;
-  font-family: "Segoe UI";
-}
-
-html,
+/* WIP */
 body {
-  background-color: #40b4a600;
-  /* position: static; */
-  scroll-behavior: smooth;
+  font-size: 18px;
+  font-family: "Helvetica", sans-serif;
+  font-weight: 400;
+  line-height: 120%;
 }
 
-.homebackground {
-  /* width: 100%; */
-  /* height: 1px; */
-  object-fit: cover;
-  position: static;
-}
-
-.fixbar {
-  position: absolute;
-  left: 25%;
-  border: 5px;
-  border-radius: 20px;
-  align-items: center;
-  top: 20px;
-  /* right:0 height: 30px; */
-  background: rgb(233, 44, 44);
-  /* z-index: 1; */
-}
-
-.img-size {
-  height: 30vh !important;
-  width: 40vw !important;
-  overflow: hidden;
-  object-fit: cover;
-  
-}
-
-.bgimage {
-  object-fit: fill;
-  width: 100%;
+main {
+  background: #111;
   height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-.mapmarker {
-  position: absolute;
-  top: 40%;
-  left: 50%;
+.location {
+  align-self: center;
+  padding: 10%;
+}
+.location h1 {
+  color: #bbb;
+  font-size: 300%;
+  font-weight: 900;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+.location p {
+  color: #bbb;
+  margin-bottom: 60px;
 }
 
-.btn1 {
-  background-color: DodgerBlue;
-  /* Blue background */
-  border: none;
-  /* Remove borders */
-  color: white;
-  /* White text */
-  padding: 12px 16px;
-  /* Some padding */
-  font-size: 16px;
-  /* Set a font size */
-  cursor: pointer;
-  /* Mouse pointer on hover */
-  animation: 1s ease-out 0s 1 slideInFromUp;
+.featured {
+  align-self: center;
 }
-
-/* Darker background on mouse-over */
-.btn1:hover {
-  color: rgba(243, 30, 30, 0.938);
+.featured .slider {
+  list-style: none;
+  padding: 0;
 }
-
-.btn2 {
-  background-color: DodgerBlue;
-  /* Blue background */
-  border: none;
-  /* Remove borders */
-  color: white;
-  /* White text */
-  padding: 12px 16px;
-  /* Some padding */
-  font-size: 16px;
-  /* Set a font size */
-  cursor: pointer;
-  /* Mouse pointer on hover */
-  position: absolute;
-  animation: 1s ease-out 0s 1 slideInFromUp;
-  top: 50%;
-  left: 70%;
+.featured .slider li {
+  height: 400px;
+  width: 300px;
+  border-radius: 4px;
+  background-color: #00bcd4;
+  display: flex;
 }
-
-/* Darker background on mouse-over */
-.btn2:hover {
-  color: rgb(240, 225, 13);
-}
-
-.btn3 {
-  background-color: DodgerBlue;
-  /* Blue background */
-  border: none;
-  /* Remove borders */
-  color: white;
-  /* White text */
-  padding: 12px 16px;
-  /* Some padding */
-  font-size: 16px;
-  /* Set a font size */
-  cursor: pointer;
-  /* Mouse pointer on hover */
-  position: absolute;
-  animation: 1s ease-out 0s 1 slideInFromUp;
-  top: 50%;
-  left: 40%;
-}
-
-/* Darker background on mouse-over */
-.btn3:hover {
-  color: black;
-}
-
-.btn4 {
-  background-color: DodgerBlue;
-  /* Blue background */
-  border: none;
-  /* Remove borders */
-  color: white;
-  /* White text */
-  padding: 12px 16px;
-  /* Some padding */
-  font-size: 16px;
-  /* Set a font size */
-  cursor: pointer;
-  /* Mouse pointer on hover */
-  position: absolute;
-  animation: 1s ease-out 0s 1 slideInFromUp;
-  top: 55%;
-  left: 10%;
-}
-
-/* Darker background on mouse-over */
-.btn4:hover {
-  color: black;
-}
-
-.btn5 {
-  background-color: DodgerBlue;
-  /* Blue background */
-  border: none;
-  /* Remove borders */
-  color: white;
-  /* White text */
-  padding: 12px 16px;
-  /* Some padding */
-  font-size: 16px;
-  /* Set a font size */
-  cursor: pointer;
-  /* Mouse pointer on hover */
-  position: absolute;
-  animation: 1s ease-out 0s 1 slideInFromUp;
-  top: 45%;
-  left: 25%;
-}
-
-/* Darker background on mouse-over */
-.btn5:hover {
-  color: black;
-}
-
-.btn6 {
-  background-color: DodgerBlue;
-  /* Blue background */
-  border: none;
-  /* Remove borders */
-  color: white;
-  /* White text */
-  padding: 12px 16px;
-  /* Some padding */
-  font-size: 16px;
-  /* Set a font size */
-  cursor: pointer;
-  /* Mouse pointer on hover */
-  position: absolute;
-  top: 55%;
-  left: 85%;
-}
-
-/* Darker background on mouse-over */
-.btn6:hover {
-  color: black;
-}
-
-@media only screen and (max-width: 880px) {
-  .bgimage {
-    object-fit: fill;
-    width: 100%;
-    height: 100vh;
-    margin: 0;
-  }
-
-  h3 {
-    font-size: 22px !important;
-  }
-
-  .homebackground {
-    width: 100%;
-    height: 30px;
-    /* object-fit: fill; */
-  }
-
-  h6 {
-    font-size: 12px !important;
-  }
-
-  h5 {
-    font-size: 14px !important;
-  }
-
-  .img-size {
-    height: 18vh !important;
-    width: 40vw !important;
-    overflow: hidden;
-    object-fit: cover;
-    background-size: cover;
-    width: 55vw !important;
-    
-  }
-}
-
-/* .carousel-control-prev-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
- }
-
- .carousel-control-next-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
-} */
-
-
-.text-block {
-  color: white;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  position: absolute;
+.featured .slider li h2 {
+  margin-top: auto;
+  background: #fff;
+  width: 100%;
+  padding: 20px 20px;
+  display: block;
   bottom: 0;
 }
+.featured .slider li:nth-child(n) {
+  background-color: #3599db;
+}
+.featured .slider li:nth-child(2n) {
+  background-color: #e61b77;
+}
+.featured .slider li:nth-child(3n) {
+  background-color: #00bcd4;
+}
+.featured .slider li:nth-child(4n) {
+  background-color: #f4b251;
+}
+.featured .slider li:nth-child(5n) {
+  background-color: #8e4497;
+}
 
-.transparent-text {
-  color: white;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 5px;
+/* STACKED CARDS */
+.stacked-cards {
   position: relative;
-  bottom: 0px;
-  /* text-align: center !important; */
 }
 
-.checked {
-  color: orange;
+.stacked-cards ul {
+  position: relative;
+  max-width: 60%;
+  margin: 0 auto;
+  padding-left: 0;
 }
 
-.modal {
-  height: 100vh !important;
-  width: 100vw !important;
-  /* position: relative; */
-  border: 1px solid rgb(0, 0, 0);
-  align-items: center;
-  
-}
-
-.modal-dialog {
-  /* width: 60vw !important; */
-  /* margin: 0; */
+.stacked-cards li {
+  margin-top: 5px;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px 0px #333;
+  list-style: none;
+  width: 65%;
   position: absolute;
-  top: 2.5vh;
-  /* -ms-transform: translateY(-50%);
-  transform: translateY(-50%); */
+  left: 50%;
+  transition: 0.5s ease transform;
 }
 
-/* .modal-content{
-  height: 50% !important;
-  align-items: center ;
-} */
-
-.hidden-mobile {
-  display: none;
+.stacked-cards li:after {
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
+
+.stacked-cards li img {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  z-index: 4;
+}
+
+.stacked-cards li.active {
+  cursor: default;
+  box-shadow: 0 5px 10px 0px #333;
+  transition: 0.5s ease transform;
+}/*# sourceMappingURL=style.css.map */
