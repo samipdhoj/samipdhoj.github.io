@@ -1,1 +1,0 @@
-var json_Hotel13_advance_11 = {"type":"FeatureCollection","name":"Hotel13_advance_11","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"14","name":"anmol hotel","desc":"9823456789","image":"14.png","price":"2000"},"geometry":{"type":"Point","coordinates":[86.829415167105338,27.98116181307515]}}]}

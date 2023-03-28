@@ -334,7 +334,7 @@
   <script src='database.js'></script>
   <script>
     var pathName = "Lukla-EBC"
-    var difficulty = "Expert";
+    var difficulty = "Beginner";
     var offset = 0;     // height of route from database points
     var legNum = 0;     // used by routeOverlord to take each of the leg ids. has the total number of legs when all routes are drawn
     var totalLegs = 0;  // Gives total number of legs beforehand
@@ -733,12 +733,12 @@
   <div id="viewDiv"></div>
   <div class="butn1" id="butn1">
     <div class="btn-group content-center" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-light text-decoration-none"><a href="../EBC-Begineer/Legs_visible.html"
-          class="text-dark text-decoration-none">Beginner</a></button>
+      <button type="button" class="btn btn-dark text-decoration-none"><a href="../EBC-Begineer/Legs_visible.html"
+          class="text-light text-decoration-none">Beginner</a></button>
       <button type="button" class="btn btn-light"><a href="../EBC-Advance1/Legs_visible.html"
           class="text-dark text-decoration-none">Advanced</a></button>
-      <button type="button" class="btn btn-dark"><a href="../EBC-Expert/Legs_visible.html"
-          class="text-light text-decoration-none ">Expert</a></button>
+      <button type="button" class="btn btn-light"><a href="../EBC-Expert/Legs_visible.html"
+          class="text-dark text-decoration-none ">Expert</a></button>
     </div>
   </div>
 
@@ -755,9 +755,21 @@
             onClick="vanillaReact(2,  pathName, difficulty, 6.3,1096,445,2.5)">Leg 2</button>
           <div id="leg2Detail"></div>
           <button id="leg3" class="btn default text-left"
-            style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-width: 7px;"
+            style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-bottom:0px; border-width: 7px;"
             onClick="vanillaReact(3, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 3</button>
           <div id="leg3Detail"></div>
+          <button id="leg4" class="btn default text-left"
+            style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-bottom:0px; border-width: 7px;"
+            onClick="vanillaReact(4, pathName, difficulty, 6.6,742,525.3,1.7)">Leg 4</button>
+          <div id="leg4Detail"></div>
+          <button id="leg5" class="btn default text-left"
+            style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-bottom:0px; border-width: 7px;"
+            onClick="vanillaReact(5, pathName, difficulty, 107,1126,260,4)">Leg 5</button>
+          <div id="leg5Detail"></div>
+          <button id="leg6" class="btn default text-left"
+            style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue;  border-width: 7px;"
+            onClick="vanillaReact(6, pathName, difficulty, 7.1,619.5,308.6,2)">Leg 6</button>
+          <div id="leg6Detail"></div>
         </div>
       </div>
     </div>

@@ -1,1 +1,0 @@
-var json_Hotel7_advance_21 = {"type":"FeatureCollection","name":"Hotel7_advance_21","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"8","name":"gaurav hotel","desc":"9845663478","image":"8.png","price":"1700"},"geometry":{"type":"Point","coordinates":[86.765411598301213,27.836084004168441]}}]}

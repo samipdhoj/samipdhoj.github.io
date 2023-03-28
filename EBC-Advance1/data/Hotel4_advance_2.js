@@ -1,1 +1,0 @@
-var json_Hotel4_advance_2 = {"type":"FeatureCollection","name":"Hotel4_advance_2","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"5","name":"timilsina hotel","desc":"9865887654","image":"5.png","price":"2000"},"geometry":{"type":"Point","coordinates":[86.709862954720691,27.803300048534542]}}]}

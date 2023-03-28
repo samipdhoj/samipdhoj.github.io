@@ -1728,9 +1728,9 @@ function giveCoordinate(tableName, columnValue = "", extraParam = ""){
             }
             break;
         case "source_paths":
-            var coordinates = [["Lukla-EBC","Advanced",["Lukla", "Benkar","Namche_bazar","Tengboche","Shomare","Lobuche","EBC"]],
-                                ["Lukla-EBC","Expert",["Lukla","Namche_bazar","Pheriche","EBC"]],
-                                ["Lukla-EBC","Beginner",["Lukla","Phakding","Namche_bazar","Tengboche","Pheriche","Lobuche","EBC"]],
+            var coordinates = [["Lukla-EBC","Beginner",["Lukla","Phakding","Namche_bazar","Tengboche","Pheriche","Lobuche","EBC"]],
+                                ["Lukla-EBC","Advanced",["Lukla", "Benkar","Namche_bazar","Tengboche","Shomare","Lobuche","EBC"]],
+                                ["Lukla-EBC","Expert",["Lukla","Namche_bazar","Pheriche","EBC"]]
             ];
             for (var i = 0; i < coordinates.length; i+=1){
                 if (coordinates[i][0] === columnValue && coordinates[i][1] === extraParam){

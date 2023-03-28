@@ -5,7 +5,7 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta charset="utf-8">
+  <script src="./card.js"></script>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
   <meta name="mobile-web-app-capable" content="yes">
@@ -592,7 +592,6 @@
             }
           });
         });
-
       }
 
       function pathMaster(pathName, difficulty) {
@@ -742,11 +741,11 @@
     </div>
   </div>
 
-  <div id="ColCard">
-    <div class="container accordion" id="myAccordion">
-      <div class="card" style="color: rgb(0, 0, 0) !important; ">
-        <div id="legDiv">
-          <button id="leg1" class="btn default text-left"
+  <div id="ColCard" > 
+    <div class="container accordion" style="background-color: transparent;" id="myAccordion">
+      <!-- <div class="card" style="background-color: transparent;">
+        <div id="legDiv"> -->
+          <!-- <button id="leg1" class="btn default text-left"
             style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-bottom:0px; border-width: 7px; "
             onClick="vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5)">Leg 1</button>
           <div id="leg1Detail"></div>
@@ -757,9 +756,28 @@
           <button id="leg3" class="btn default text-left"
             style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-width: 7px;"
             onClick="vanillaReact(3, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 3</button>
-          <div id="leg3Detail"></div>
-        </div>
-      </div>
+          <div id="leg3Detail"></div> -->
+
+          <main >
+            <div class="featured stacked-cards">
+              <ul class="slider">
+                <li class="item">
+                  <h2>Leg 1</h2>
+                </li>
+                <li class="item">
+                  <button id="leg2" class="btn default"
+                    style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-bottom:0px; border-width: 7px;"
+                    onClick="vanillaReact(2,  pathName, difficulty, 6.3,1096,445,2.5)">Leg 2</button>
+                  <div id="leg2Detail" class="card"></div>
+                </li>
+                <li class="item">
+                  <h2>Leg 3</h2>
+                </li>
+              </ul>
+            </div>
+          </main>
+        <!-- </div>
+      </div> -->
     </div>
   </div>
   </div>
@@ -824,7 +842,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content text-center">
         <div class="modal-header text-center" style="background-color: rgba(24, 136, 249, 0.815);">
-          <h4 class="modal-title w-100 font-weight-bold" >Top Guide For this Route</h4>
+          <h4 class="modal-title w-100 font-weight-bold">Top Guide For this Route</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -832,55 +850,57 @@
         <div class="modal-body">
           <div id="carouselExampleControls" class="carousel slide" data-interval="false">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="Card3">
-                        <img src="https://abenteuer-berg.de/wp-content/uploads/2020/12/vinayak-II.jpg" />
-                        <div class="overlay">
-                            <div class="line">
-                                <h2 class="title">Ming Sherpa</h2>
-                            </div>
-                            <div class="content">
-                                <p>Bringing unlocked me an striking ye perceive. Mr by wound hours oh happy. Me in
-                                    resolution pianoforte continuing we. Most my no spot felt by no. He he in forfeited
-                                    furniture sweetness he arranging. Me tedious so to behaved written account ferrars
-                                    moments. </p>
-                            </div>
-          <a href="../3d.html"><button class="btn btn-dark" style="background-color: rgba(44, 132, 246, 0.793);">Book</button></a>
-                        </div>
+              <div class="carousel-item active">
+                <div class="Card3">
+                  <img src="https://abenteuer-berg.de/wp-content/uploads/2020/12/vinayak-II.jpg" />
+                  <div class="overlay">
+                    <div class="line">
+                      <h2 class="title">Ming Sherpa</h2>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="container">
-                        <div class="Card3">
-                            <img src="https://www.nepalindependentguide.com/wp-content/uploads/2022/10/trek-leader.gif" />
-                            <div class="overlay">
-                                <div class="line">
-                                    <h2 class="title">Tenzhing Sherpa </h2>
-                                </div>
-                                <div class="content">
-                                    <p>Bringing unlocked me an striking ye perceive. Mr by wound hours oh happy. Me in
-                                        resolution pianoforte continuing we. Most my no spot felt by no. He he in forfeited
-                                        furniture sweetness he arranging. Me tedious so to behaved written account ferrars
-                                        moments. </p>
-                                </div>
-                                <a href="../3d.html"><button class="btn btn-dark" style="background-color: rgba(44, 132, 246, 0.793);">Book</button></a>
-                            </div>
-                          </div>
+                    <div class="content">
+                      <p>Bringing unlocked me an striking ye perceive. Mr by wound hours oh happy. Me in
+                        resolution pianoforte continuing we. Most my no spot felt by no. He he in forfeited
+                        furniture sweetness he arranging. Me tedious so to behaved written account ferrars
+                        moments. </p>
                     </div>
+                    <a href="../3d.html"><button class="btn btn-dark"
+                        style="background-color: rgba(44, 132, 246, 0.793);">Book</button></a>
+                  </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+              </div>
+              <div class="carousel-item">
+                <div class="container">
+                  <div class="Card3">
+                    <img src="https://www.nepalindependentguide.com/wp-content/uploads/2022/10/trek-leader.gif" />
+                    <div class="overlay">
+                      <div class="line">
+                        <h2 class="title">Tenzhing Sherpa </h2>
+                      </div>
+                      <div class="content">
+                        <p>Bringing unlocked me an striking ye perceive. Mr by wound hours oh happy. Me in
+                          resolution pianoforte continuing we. Most my no spot felt by no. He he in forfeited
+                          furniture sweetness he arranging. Me tedious so to behaved written account ferrars
+                          moments. </p>
+                      </div>
+                      <a href="../3d.html"><button class="btn btn-dark"
+                          style="background-color: rgba(44, 132, 246, 0.793);">Book</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
             </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
 </body>
 
