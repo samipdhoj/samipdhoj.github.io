@@ -1,6 +1,5 @@
-
 /*
-* Stacked Cards/?<.
+* Stacked Cards
 */
 
 (function () {
@@ -103,7 +102,7 @@
 
 
 
-                    el.style.zIndex = els.length * 6;
+                    el.style.zIndex = els.length * 5;
                     el.style.transform = activeTransform;
 
                     if (me.config.onClick !== undefined) {
@@ -234,9 +233,9 @@
 
             me.detectSwipeDir(regionEl, function (swipedir) {
                 var activeEl = document.querySelector(me.config.selector + " li.active");
-                if (swipedir == 'left') {
+                if (swipedir == 'up') {
                     activeEl.nextElementSibling.click();
-                } else if (swipedir == "right") {
+                } else if (swipedir == "down") {
                     activeEl.previousElementSibling.click();
                 }
             })
@@ -273,7 +272,6 @@
 
         stackedCards.prototype.scrolledIn = function (el, offset) {
             if (typeof el == 'undefined') return;
-
             var elemTop = el.getBoundingClientRect().top;
             var elemBottom = el.getBoundingClientRect().bottom;
 
@@ -283,8 +281,6 @@
         }
 
         stackedCards.prototype.detectSwipeDir = function (el, callback) {
-
-
             var touchsurface = el,
                 swipedir,
                 startX,

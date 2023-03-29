@@ -241,7 +241,7 @@
       width: 350px;
       position: absolute;
       top: 120px;
-      right: 5px;
+      right: 105px;
       z-index: 400;
     }
 
@@ -334,7 +334,7 @@
   <script src='database.js'></script>
   <script>
     var pathName = "Lukla-EBC"
-    var difficulty = "Expert";
+    var difficulty = "Advanced";
     var offset = 0;     // height of route from database points
     var legNum = 0;     // used by routeOverlord to take each of the leg ids. has the total number of legs when all routes are drawn
     var totalLegs = 0;  // Gives total number of legs beforehand
@@ -759,24 +759,42 @@
           <div id="leg3Detail"></div> -->
       <main>
         <div class="featured stacked-cards">
-          <ul class="slider">
+          <ul class="slider container">
             <li class="item">
               <button id="leg1" class="btn default"
-                style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-bottom:0px; border-width: 7px;"
+                style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
                 onClick="vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5)">Leg 1</button>
               <div id="leg1Detail" class="card"></div>
             </li>
             <li>
               <button id="leg2" class="btn default"
-                style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-bottom:0px; border-width: 7px;"
+                style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
                 onClick="vanillaReact(2,  pathName, difficulty, 6.3,1096,445,2.5)">Leg 2</button>
               <div id="leg2Detail" class="card"></div>
             </li>
             <li class="item">
               <button id="leg3" class="btn default"
-                style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-bottom:0px; border-width: 7px;"
+                style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
                 onClick="vanillaReact(3, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 3</button>
               <div id="leg3Detail" class="card"></div>
+            </li>
+            <li class="item">
+              <button id="leg4" class="btn default"
+                style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(4, pathName, difficulty, 6.6,742,525.3,1.7)">Leg 4</button>
+              <div id="leg4Detail" class="card"></div>
+            </li>
+            <li class="item">
+              <button id="leg5" class="btn default"
+                style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(5, pathName, difficulty, 107,1126,260,4)">Leg 5</button>
+              <div id="leg5Detail" class="card"></div>
+            </li>
+            <li class="item">
+              <button id="leg6" class="btn default"
+                style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(6, pathName, difficulty, 7.1,619.5,308.6,2)">Leg 6</button>
+              <div id="leg6Detail" class="card"></div>
             </li>
           </ul>
         </div>

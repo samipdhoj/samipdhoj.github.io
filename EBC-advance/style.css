@@ -26,6 +26,8 @@
 }
 
 /* STACKED CARDS */
+
+
 .stacked-cards {
   position: relative;
 }
@@ -36,6 +38,7 @@
   margin: 0 auto;
   padding-left: 0;
 }
+/*
 
 .stacked-cards li {
   margin-top: 5px;
@@ -63,6 +66,12 @@
   cursor: default;
   box-shadow: 0 5px 10px 0px #333;
   transition: 0.5s ease transform;
-}
+  
+} 
+
+
+*/
+
+
 
 /*# sourceMappingURL=style.css.map */
