@@ -17,7 +17,7 @@
         };
 
         function stackedCards(options) {
-            if (options == null) {
+            if (options == 6) {
                 options = {};
             }
 
@@ -55,12 +55,12 @@
             els[0].parentNode.style.height = parseInt(getItemHeight) + "px";
 
             // to get the active element's position, we will have to know if elements are in even/odd count
-            var lenAdjust = (els.length % 2 == 0 ? -2 : -1)
+            var lenAdjust = (els.length % 2 == 0 ? -2 : -0)
 
             // oneHalf if the centerPoint - things go left and right from here
             var oneHalf = (els.length + lenAdjust) / 2;
 
-            var activeTransform = "translate(" + -50 + "%, 0%)  scale(1)";
+            var activeTransform = "translate(" + 5 + "%, 0%)  scale(1)";
 
             this.detectSwipe();
 
@@ -102,7 +102,7 @@
 
 
 
-                    el.style.zIndex = els.length * 5;
+                    el.style.zIndex = els.length * 2;
                     el.style.transform = activeTransform;
 
                     if (me.config.onClick !== undefined) {
@@ -118,7 +118,7 @@
 
         stackedCards.prototype.reCalculateTransformsOnClick = function (nextCnt, prevCnt) {
 
-            var z = 10;
+            var z = 1;
 
             var els = this.nodelistToArray(this.els);
 
@@ -154,7 +154,7 @@
                             scale = scale + (100 / (maxCntDivisor + 1)) / 100;
                         }
 
-                        translateX = (-50 - ((prevDivisor) * (prevCnt - i)));
+                        translateX = 5;
 
                         rotate = "rotate(0deg)";
                         break;
@@ -197,7 +197,7 @@
                 switch (layout) {
                     case "slide":
                         scale = scale - (100 / (maxCntDivisor + 1)) / 100;
-                        translateX = (50 - ((nextDivisor) * (j))) * -1;
+                        translateX = 5;
                         rotate = "rotate(0deg)";
                         break;
                     case "fanOut":

@@ -29,123 +29,178 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="./index.css">
-  <script>
-    if (screen.width <= 700) {
-     document.location = "../cards/Legs_visible.html";
-}
-    </script>
   <style>
-    .Card3 {
+    @import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap");
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    .card {
+      position: absolute;
+      width: 60%;
+      height: 100%;
+      left: 0;
+      right: 0;
+      margin: auto;
+      transition: transform 0.4s ease;
+      cursor: pointer;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+      max-height: 600px;
+      height: 100%;
+      transform-style: preserve-3d;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cards {
       position: relative;
-      display: inline-block;
       width: 100%;
-      height: 400px;
+      height: 100%;
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    #item-1:checked~.cards #song-3,
+    #item-2:checked~.cards #song-1,
+    #item-3:checked~.cards #song-2 {
+      transform: translatex(-40%) scale(0.8);
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    #item-1:checked~.cards #song-2,
+    #item-2:checked~.cards #song-3,
+    #item-3:checked~.cards #song-1 {
+      transform: translatex(40%) scale(0.8);
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    #item-1:checked~.cards #song-1,
+    #item-2:checked~.cards #song-2,
+    #item-3:checked~.cards #song-3 {
+      transform: translatex(0) scale(1);
+      opacity: 1;
+      z-index: 1;
+    }
+
+    #item-1:checked~.cards #song-1 img,
+    #item-2:checked~.cards #song-2 img,
+    #item-3:checked~.cards #song-3 img {
+      box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.47);
+    }
+
+    .player {
+      background-color: #fff;
+      border-radius: 8px;
+      min-width: 320px;
+      padding: 16px 10px;
+    }
+
+    .upper-part {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      height: 36px;
       overflow: hidden;
-      background: #000;
-      box-shadow: rgba(6, 33, 63, 0.129412) 0px 1px 2px 0px;
-      -moz-transition: 0.5s;
-      -o-transition: 0.5s;
-      -webkit-transition: 0.5s;
-      transition: 0.5s;
     }
 
-    .Card3 img {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      -moz-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      -o-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-      -moz-transition: 0.5s;
-      -o-transition: 0.5s;
-      -webkit-transition: 0.5s;
-      transition: 0.5s;
+    .play-icon {
+      margin-right: 10px;
     }
 
-    .Card3:hover img {
-      top: 30%;
-      opacity: 0.5;
+    .song-info {
+      width: calc(100% - 32px);
+      display: block;
     }
 
-    .Card3 .overlay {
-      position: absolute;
-      bottom: calc(-80% + 50px);
-      left: 0px;
+    .song-info .title {
+      color: #403d40;
+      font-size: 14px;
+      line-height: 24px;
+    }
+
+    .sub-line {
+      display: flex;
+      justify-content: space-between;
       width: 100%;
-      height: 80%;
-      background: #FFF;
-      -moz-transition: 0.5s;
-      -o-transition: 0.5s;
-      -webkit-transition: 0.5s;
-      transition: 0.5s;
     }
 
-    .Card3:hover .overlay {
-      bottom: 0px;
+    .subtitle,
+    .time {
+      font-size: 12px;
+      line-height: 16px;
+      color: #c6c5c6;
     }
 
-    .Card3 .overlay .line {
+    .time {
+      font-size: 12px;
+      line-height: 16px;
+      color: #a5a5a5;
+      font-weight: 500;
+      margin-left: auto;
+    }
+
+    .progress-bar {
+      height: 3px;
       width: 100%;
-      text-align: left;
-      line-height: 50px;
-      padding: 0em 1em;
+      background-color: #e9efff;
+      border-radius: 2px;
+      overflow: hidden;
     }
 
-    .Card3 .overlay .content {
-      text-align: left;
-      padding: 1em;
+    .progress {
+      display: block;
+      position: relative;
+      width: 60%;
+      height: 100%;
+      background-color: #2992dc;
+      border-radius: 6px;
     }
 
-    @media screen and (max-width: 700px) {
-      /* --- Card3 ---- */
+    .info-area {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 30px;
+      transition: transform 0.4s ease-in;
+    }
 
-      .Card3 {
-        width: 100%;
-        height: auto;
-        margin: 1em 0em;
-      }
+    #item-2:checked~.player #test {
+      transform: translateY(0);
+    }
 
-      .Card3:hover img {
-        top: 30%;
-        opacity: 0.5;
-      }
+    #item-2:checked~.player #test {
+      transform: translateY(-40px);
+    }
 
-      .Card3 .overlay {
-        position: relative;
-        bottom: 0px;
-        left: 0px;
-        width: 100%;
-        height: 200px;
-      }
-
-      .Card3 img {
-        position: relative;
-        display: block;
-        width: 100%;
-        height: auto;
-        -webkit-transform: translate(-50%, 0%);
-        -moz-transform: translate(-50%, 0%);
-        -ms-transform: translate(-50%, 0%);
-        -o-transform: translate(-50%, 0%);
-        transform: translate(-50%, 0%);
-      }
-
-      .Card3:hover .overlay {
-        bottom: 0px;
-      }
-
-      .Card3:hover img {
-        top: 50%;
-        opacity: 1;
-      }
+    #item-3:checked~.player #test {
+      transform: translateY(-80px);
     }
   </style>
   <style>
     .column {
       float: left;
-      width: 50%;
+      width: 60%;
       padding-left: 20px;
       padding-right: 20px;
     }
@@ -243,10 +298,10 @@
 
     #myAccordion {
       height: 400px;
-      width: 350px;
+      width: 500px;
       position: absolute;
       top: 120px;
-      right: 105px;
+      right: 5px;
       z-index: 400;
     }
 
@@ -309,6 +364,9 @@
   <title>Popup and Highlight Route</title>
   <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css" />
   <script src="https://js.arcgis.com/4.21/"></script>
+  <script>$('input').on('change', function () {
+      $('body').toggleClass('blue');
+    });</script>
   <style>
     html,
     body,
@@ -339,7 +397,7 @@
   <script src='database.js'></script>
   <script>
     var pathName = "Lukla-EBC"
-    var difficulty = "Advanced";
+    var difficulty = "Beginner";
     var offset = 0;     // height of route from database points
     var legNum = 0;     // used by routeOverlord to take each of the leg ids. has the total number of legs when all routes are drawn
     var totalLegs = 0;  // Gives total number of legs beforehand
@@ -747,65 +805,50 @@
 
   <div id="ColCard">
     <div class="container accordion" style="background-color: transparent;" id="myAccordion"
-      style="width:300px !important">
-      <!-- <div class="card" style="background-color: transparent;">
-        <div id="legDiv"> -->
-      <!-- <button id="leg1" class="btn default text-left"
-            style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-bottom:0px; border-width: 7px; "
-            onClick="vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5)">Leg 1</button>
-          <div id="leg1Detail"></div>
-          <button id="leg2" class="btn default text-left"
-            style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-bottom:0px; border-width: 7px;"
-            onClick="vanillaReact(2,  pathName, difficulty, 6.3,1096,445,2.5)">Leg 2</button>
-          <div id="leg2Detail"></div>
-          <button id="leg3" class="btn default text-left"
-            style="width: 100%; background-color: rgba(10, 155, 246, 0.919); color: aliceblue; border-color: aliceblue; border-width: 7px;"
-            onClick="vanillaReact(3, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 3</button>
-          <div id="leg3Detail"></div> -->
-      <main>
-        <div class="featured stacked-cards">
-          <ul class="slider container">
-            <li class="item">
-              <button id="leg1" class="btn default"
-                style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
-                onClick="vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5)">Leg 1</button>
-              <div id="leg1Detail" class="card"></div>
-            </li>
-            <li>
-              <button id="leg2" class="btn default"
-                style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
-                onClick="vanillaReact(2,  pathName, difficulty, 6.3,1096,445,2.5)">Leg 2</button>
-              <div id="leg2Detail" class="card"></div>
-            </li>
-            <li class="item">
-              <button id="leg3" class="btn default"
-                style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
-                onClick="vanillaReact(3, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 3</button>
-              <div id="leg3Detail" class="card"></div>
-            </li>
-            <li class="item">
-              <button id="leg4" class="btn default"
-                style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
-                onClick="vanillaReact(4, pathName, difficulty, 6.6,742,525.3,1.7)">Leg 4</button>
-              <div id="leg4Detail" class="card"></div>
-            </li>
-            <li class="item">
-              <button id="leg5" class="btn default"
-                style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
-                onClick="vanillaReact(5, pathName, difficulty, 107,1126,260,4)">Leg 5</button>
-              <div id="leg5Detail" class="card"></div>
-            </li>
-            <li class="item">
-              <button id="leg6" class="btn default"
-                style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
-                onClick="vanillaReact(6, pathName, difficulty, 7.1,619.5,308.6,2)">Leg 6</button>
-              <div id="leg6Detail" class="card"></div>
-            </li>
-          </ul>
+      style="width:450px !important">
+      <div class="container">
+        <input type="radio" name="slider" id="item-1" checked>
+        <input type="radio" name="slider" id="item-2">
+        <input type="radio" name="slider" id="item-3">
+        <div class="player p-1" style="background-color: rgb(36, 139, 235);">
+          <div class="upper-part">
+            <div class="play-icon">
+            </div>
+            <div class="info-area" id="test">
+              <label class="song-info" id="song-info-1">
+                <h3>Bunker</h3>
+
+              </label>
+              <label class="song-info" id="song-info-2">
+                <h3>Words Remain</h3>
+
+              </label>
+              <label class="song-info" id="song-info-3">
+                <h3>Falling Out</h3>
+
+              </label>
+            </div>
+          </div>
         </div>
-      </main>
-      <!-- </div>
-      </div> -->
+        <div class="cards">
+
+          <label class="card" style="background-color: rgb(255, 255, 255);" for="item-1" id="song-1"
+            onClick="vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5)">
+            <div id="leg1Detail"></div>
+          </label>
+          <label class="card" style="background-color: rgb(255, 255, 255);" for="item-2" id="song-2"
+            onClick="vanillaReact(2,  pathName, difficulty, 6.3,1096,445,2.5)">
+            <div id="leg2Detail"></div>
+
+          </label>
+          <label class="card" style="background-color: rgb(255, 255, 255);" for="item-3" id="song-3"
+            onClick="vanillaReact(3, pathName, difficulty, 9.5,1481.2,1045,3)">
+            <div id="leg3Detail"></div>
+
+          </label>
+        </div>
+
+      </div>
     </div>
   </div>
   </div>

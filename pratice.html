@@ -2,172 +2,282 @@
 <html lang="en">
 
 <head>
-    <title>Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		@import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap");
+
+		* {
+			box-sizing: border-box;
+		}
+
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		body {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 30px 10px;
+			font-family: "DM Sans", sans-serif;
+			transition: background 0.4s ease-in;
+			background-color: #c394f8;
+		}
+
+		body.blue {
+			background-color: #428aa6;
+		}
+
+		input[type="radio"] {
+			display: none;
+		}
+
+		.card {
+			position: absolute;
+			width: 60%;
+			height: 100%;
+			left: 0;
+			right: 0;
+			margin: auto;
+			transition: transform 0.4s ease;
+			cursor: pointer;
+		}
+
+		.container {
+			width: 100%;
+			max-width: 800px;
+			max-height: 600px;
+			height: 100%;
+			transform-style: preserve-3d;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.cards {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			margin-bottom: 20px;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			border-radius: 10px;
+			object-fit: cover;
+		}
+
+		#item-1:checked~.cards #song-3,
+		#item-2:checked~.cards #song-1,
+		#item-3:checked~.cards #song-2 {
+			transform: translatex(-40%) scale(0.8);
+			opacity: 0.4;
+			z-index: 0;
+		}
+
+		#item-1:checked~.cards #song-2,
+		#item-2:checked~.cards #song-3,
+		#item-3:checked~.cards #song-1 {
+			transform: translatex(40%) scale(0.8);
+			opacity: 0.4;
+			z-index: 0;
+		}
+
+		#item-1:checked~.cards #song-1,
+		#item-2:checked~.cards #song-2,
+		#item-3:checked~.cards #song-3 {
+			transform: translatex(0) scale(1);
+			opacity: 1;
+			z-index: 1;
+		}
+
+		#item-1:checked~.cards #song-1 img,
+		#item-2:checked~.cards #song-2 img,
+		#item-3:checked~.cards #song-3 img {
+			box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.47);
+		}
+
+		.player {
+			background-color: #fff;
+			border-radius: 8px;
+			min-width: 320px;
+			padding: 16px 10px;
+		}
+
+		.upper-part {
+			position: relative;
+			display: flex;
+			align-items: center;
+			margin-bottom: 12px;
+			height: 36px;
+			overflow: hidden;
+		}
+
+		.play-icon {
+			margin-right: 10px;
+		}
+
+		.song-info {
+			width: calc(100% - 32px);
+			display: block;
+		}
+
+		.song-info .title {
+			color: #403d40;
+			font-size: 14px;
+			line-height: 24px;
+		}
+
+		.sub-line {
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+		}
+
+		.subtitle,
+		.time {
+			font-size: 12px;
+			line-height: 16px;
+			color: #c6c5c6;
+		}
+
+		.time {
+			font-size: 12px;
+			line-height: 16px;
+			color: #a5a5a5;
+			font-weight: 500;
+			margin-left: auto;
+		}
+
+		.progress-bar {
+			height: 3px;
+			width: 100%;
+			background-color: #e9efff;
+			border-radius: 2px;
+			overflow: hidden;
+		}
+
+		.progress {
+			display: block;
+			position: relative;
+			width: 60%;
+			height: 100%;
+			background-color: #2992dc;
+			border-radius: 6px;
+		}
+
+		.info-area {
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 30px;
+			transition: transform 0.4s ease-in;
+		}
+
+		#item-2:checked~.player #test {
+			transform: translateY(0);
+		}
+
+		#item-2:checked~.player #test {
+			transform: translateY(-40px);
+		}
+
+		#item-3:checked~.player #test {
+			transform: translateY(-80px);
+		}
+	</style>
 </head>
-<style>
-    .Card3 {
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        height: 400px;
-        margin: 3em 1em;
-        overflow: hidden;
-        background: #000;
-        box-shadow: rgba(6, 33, 63, 0.129412) 0px 1px 2px 0px;
-        -moz-transition: 0.5s;
-        -o-transition: 0.5s;
-        -webkit-transition: 0.5s;
-        transition: 0.5s;
-    }
-
-    .Card3 img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -moz-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        -o-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        -moz-transition: 0.5s;
-        -o-transition: 0.5s;
-        -webkit-transition: 0.5s;
-        transition: 0.5s;
-    }
-
-    .Card3:hover img {
-        top: 30%;
-        opacity: 0.5;
-    }
-
-    .Card3 .overlay {
-        position: absolute;
-        bottom: calc(-80% + 50px);
-        left: 0px;
-        width: 100%;
-        height: 80%;
-        background: #FFF;
-        -moz-transition: 0.5s;
-        -o-transition: 0.5s;
-        -webkit-transition: 0.5s;
-        transition: 0.5s;
-    }
-
-    .Card3:hover .overlay {
-        bottom: 0px;
-    }
-
-    .Card3 .overlay .line {
-        width: 100%;
-        text-align: left;
-        line-height: 50px;
-        padding: 0em 1em;
-    }
-
-    .Card3 .overlay .content {
-        text-align: left;
-        padding: 1em;
-    }
-
-    @media screen and (max-width: 700px) {
-        /* --- Card3 ---- */
-
-        .Card3 {
-            width: 100%;
-            height: auto;
-            margin: 1em 0em;
-        }
-
-        .Card3:hover img {
-            top: 30%;
-            opacity: 0.5;
-        }
-
-        .Card3 .overlay {
-            position: relative;
-            bottom: 0px;
-            left: 0px;
-            width: 100%;
-            height: 200px;
-        }
-
-        .Card3 img {
-            position: relative;
-            display: block;
-            width: 100%;
-            height: auto;
-            -webkit-transform: translate(-50%, 0%);
-            -moz-transform: translate(-50%, 0%);
-            -ms-transform: translate(-50%, 0%);
-            -o-transform: translate(-50%, 0%);
-            transform: translate(-50%, 0%);
-        }
-
-        .Card3:hover .overlay {
-            bottom: 0px;
-        }
-
-        .Card3:hover img {
-            top: 50%;
-            opacity: 1;
-        }
-    }
-</style>
+<script>
+	$('input').on('change', function () {
+		$('body').toggleClass('blue');
+	});
+</script>
 
 <body>
+	<div class="container">
+		<input type="radio" name="slider" id="item-1" checked>
+		<input type="radio" name="slider" id="item-2">
+		<input type="radio" name="slider" id="item-3">
+		<div class="cards">
+			<label class="card" style="background-color: rgb(255, 255, 255);" for="item-1" id="song-1">
+				<div class="row p-lg-1">
+					<div class="col-4">Start</div>
+					<div class="col"> ${place0} (${place0elv} m)</div>
+				</div>
+				<div class="row p-lg-1">
+					<div class="col-4">End</div>
+					<div class="col">${place1} (${place1elv} m)</div>
+				</div>
+				<div class="row p-lg-1">
+					<div class="col-4">Distance</div>
+					<div class="col">${distance} km</div>
+				</div>
+				<div class="row p-lg-1">
+					<div class="col-4">Elevation</div>
+					<div class="col">↗ ${up}m &nbsp; &nbsp; ↘ ${down}m</div>
+				</div>
+				<div class="row p-lg-1">
+					<div class="col-4">Duration</div>
+					<div class="col">${duration} hrs</div>
 
-    <div id="carouselExampleControls" class="carousel slide" data-interval="false">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="Card3">
-                    <img src="https://abenteuer-berg.de/wp-content/uploads/2020/12/vinayak-II.jpg" />
-                    <div class="overlay">
-                        <div class="line">
-                            <h2 class="title">Ming Sherpa</h2>
-                        </div>
-                        <div class="content">
-                            <p>Bringing unlocked me an striking ye perceive. Mr by wound hours oh happy. Me in
-                                resolution pianoforte continuing we. Most my no spot felt by no. He he in forfeited
-                                furniture sweetness he arranging. Me tedious so to behaved written account ferrars
-                                moments. </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="Card3">
-                        <img src="//pp.vk.me/c627531/v627531615/d276/Jt91wUUIWzA.jpg" />
-                        <div class="overlay">
-                            <div class="line">
-                                <h2 class="title">Card Title</h2>
-                            </div>
-                            <div class="content">
-                                <p>Bringing unlocked me an striking ye perceive. Mr by wound hours oh happy. Me in
-                                    resolution pianoforte continuing we. Most my no spot felt by no. He he in forfeited
-                                    furniture sweetness he arranging. Me tedious so to behaved written account ferrars
-                                    moments. </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-
+				</div>
+			</label>
+			<label class="card" for="item-2" id="song-2">
+				<img src="https://images.unsplash.com/photo-1559386484-97dfc0e15539?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80"
+					alt="song">
+			</label>
+			<label class="card" for="item-3" id="song-3">
+				<img src="https://images.unsplash.com/photo-1533461502717-83546f485d24?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
+					alt="song">
+			</label>
+		</div>
+		<div class="player">
+			<div class="upper-part">
+				<div class="play-icon">
+					<svg width="20" height="20" fill="#2992dc" stroke="#2992dc" stroke-linecap="round"
+						stroke-linejoin="round" stroke-width="2" class="feather feather-play" viewBox="0 0 24 24">
+						<defs />
+						<path d="M5 3l14 9-14 9V3z" />
+					</svg>
+				</div>
+				<div class="info-area" id="test">
+					<!-- <label class="song-info" id="song-info-1"> -->
+					<div class="title">Bunker</div>
+					<div class="sub-line">
+						<div class="subtitle">Balthazar</div>
+						<!-- <div class="time">4.05</div> -->
+					</div>
+					</label>
+					<!-- <label class="song-info" id="song-info-2"> -->
+					<div class="title">Words Remain</div>
+					<div class="sub-line">
+						<div class="subtitle">Moderator</div>
+						<!-- <div class="time">4.05</div> -->
+					</div>
+					</label>
+					<!-- <label class="song-info" id="song-info-3"> -->
+					<div class="title">Falling Out</div>
+					<div class="sub-line">
+						<div class="subtitle">Otzeki</div>
+						<!-- <div class="time">4.05</div> -->
+					</div>
+					</label>
+				</div>
+			</div>
+			<div class="progress-bar">
+				<span class="progress"></span>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>
