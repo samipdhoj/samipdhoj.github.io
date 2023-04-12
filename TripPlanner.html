@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registration Form with Dropdown Menu and CSV Export - Bootstrap</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Bootstrap Datepicker CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+</head>
+<style>
+    body {
+  background-image: url('./images/Everest_View.jpg');
+}
+</style>
+
+
+<body>
+    <div class="container mt-5" style="background-color: aliceblue;">
+        <h1>Trip Planner</h1>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="route">Route</label>
+                <select class="form-control" id="country" name="country">
+                    <option value="EBC">EBC</option>
+                    <option value="ABC">ABC</option>
+                    <option value="Lantang">Lantang</option>
+                    <option value="MBC">MBC</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="diff">Difficulty</label>
+                <select class="form-control" id="country" name="country">
+                    <option value="beginner">Beginner</option>
+                    <option value="advanced">Advanced</option>
+                    <option value="expert">Expert</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="email">Admin Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="person">Total Person</label>
+                <input type="number" class="form-control" id="person" name="person" min="0" max="150" step="1"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select class="form-control" id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Hotel">Hotel</label>
+                <select class="form-control" id="Hotel" name="Hotel">
+                    <option value="Ram Dai Hotel">Ram Dai Hotel</option>
+                    <option value="Shyam Bhai Hotel">Shyam Bhai Hotel</option>
+                    <option value="5 Star Hotel">5 Star Hotel</option>
+                    <option value="No Hotel">No Hotel</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Description">Description</label>
+                <input type="text" class="form-control" id="Description" name="Description" required>
+            </div>
+            <div class="form-group">
+                <label for="Trip1">Trip Start</label>
+                <input type="text" class="form-control" id="Trip1" name="Trip1" required>
+            </div>
+            <div class="container"></div>
+            <div class="form-group">
+                <label for="Trip2">Trip End</label>
+                <input type="text" class="form-control" id="Trip2" name="Trip2" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Function to convert form data to CSV
+        function convertToCSV(formData) {
+            let csv = '';
+            for (let pair of formData.entries()) {
+                csv += pair[0] + ',' + pair[1] + '\n';
+            }
+            return csv;
+        }
+
+        // Function to download CSV file
+        function downloadCSV(csv) {
+            let downloadLink = document.createElement('a');
+            let blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            let url = URL.createObjectURL(blob);
+            downloadLink.href = url;
+            downloadLink.download = 'registrations.csv';
+            downloadLink.click();
+        }
+
+        // Handle form submission
+        document.getElementById('registrationForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            let formData = new FormData(event.target);
+            let csv = convertToCSV(formData);
+            downloadCSV(csv);
+            event.target.reset();
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Datepicker JavaScript -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script>
+        // Initialize Datepicker
+        $('#Trip1').datepicker({
+            format: 'yyyy-mm-dd', // specify the date format
+            autoclose: true // close the datepicker on selecting a date
+        });
+        $('#Trip2').datepicker({
+            format: 'yyyy-mm-dd', // specify the date format
+            autoclose: true // close the datepicker on selecting a date
+        });
+    </script>
+</body>
+
+</html>

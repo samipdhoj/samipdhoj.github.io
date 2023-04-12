@@ -429,30 +429,29 @@
       // desc = "Start:&nbsp&nbsp&nbsp" + place0 + "&nbsp" + place0elv + "m" + "<br>End:&nbsp&nbsp&nbsp" + place1 + "&nbsp" + place1elv + "m" + "<br>Distance:&nbsp&nbsp" + distance + "&nbspkm" + "<br>Elevation:&nbsp&nbsp" + "up&nbsp" + up + "m" + "&nbsp" + "down&nbsp" + down + "m" + "<br>Duration:&nbsp&nbsp&nbsp" + duration + "hrs" + "<br>Staying@:&nbsp&nbsp&nbsp" + place1 + "&nbsplodge"
 
       desc = `
-      <div class=''>
-            <div class="row p-lg-1">
-              <div class="col-4">Start</div>
+      <div class='px-1' style="background-color: rgb(255, 255, 255); height: 250px;">
+            <div class="row ">
+              <div class="col-5">Start</div>
               <div class="col"> ${place0} (${place0elv} m)</div>
             </div>
             <div class="row p-lg-1">
-              <div class="col-4">End</div>
+              <div class="col-5">End</div>
               <div class="col">${place1} (${place1elv} m)</div>
             </div>
             <div class="row p-lg-1">
-              <div class="col-4">Distance</div>
+              <div class="col-5">Distance</div>
               <div class="col">${distance} km</div>
             </div>
             <div class="row p-lg-1">
-              <div class="col-4">Elevation</div>
+              <div class="col-5">Elevation</div>
               <div class="col">↗ ${up}m &nbsp; &nbsp; ↘ ${down}m</div>
             </div>
             <div class="row p-lg-1">
-              <div class="col-4">Duration</div>
+              <div class="col-5">Duration</div>
               <div class="col">${duration} hrs</div>
             </div>
             </div>
           `
-
       // Change according to data using database
       if (document.getElementById(id)) document.getElementById(id).innerHTML = desc // Replace with expanding function 
     }
@@ -805,46 +804,40 @@
 
   <div id="ColCard">
     <div class="container accordion" style="background-color: transparent;" id="myAccordion"
-      style="width:450px !important">
-      <div class="container">
+      style="width:450px !important; height: auto;">
+      <div class="container text-center">
         <input type="radio" name="slider" id="item-1" checked>
         <input type="radio" name="slider" id="item-2">
         <input type="radio" name="slider" id="item-3">
-        <div class="player p-1" style="background-color: rgb(36, 139, 235);">
+        <div class="player p-1" style="background-color: rgb(36, 139, 235); width:250px !important; height: 50px;">
           <div class="upper-part">
             <div class="play-icon">
             </div>
             <div class="info-area" id="test">
               <label class="song-info" id="song-info-1">
-                <h3>Bunker</h3>
-
+                <h4>Leg 1</h4>
               </label>
               <label class="song-info" id="song-info-2">
-                <h3>Words Remain</h3>
-
+                <h4>Leg 2</h4>
               </label>
               <label class="song-info" id="song-info-3">
-                <h3>Falling Out</h3>
-
+                <h4>Leg 3</h4>
               </label>
             </div>
           </div>
         </div>
         <div class="cards">
-
-          <label class="card" style="background-color: rgb(255, 255, 255);" for="item-1" id="song-1"
+          <label class="card" style="background-color: rgb(255, 255, 255); height: 50px;" for="item-1" id="song-1"
             onClick="vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5)">
             <div id="leg1Detail"></div>
           </label>
-          <label class="card" style="background-color: rgb(255, 255, 255);" for="item-2" id="song-2"
+          <label class="card" style="background-color: rgb(255, 255, 255); height: 50px;" for="item-2" id="song-2"
             onClick="vanillaReact(2,  pathName, difficulty, 6.3,1096,445,2.5)">
             <div id="leg2Detail"></div>
-
           </label>
-          <label class="card" style="background-color: rgb(255, 255, 255);" for="item-3" id="song-3"
+          <label class="card" style="background-color: rgb(255, 255, 255); height: 50px;" for="item-3" id="song-3"
             onClick="vanillaReact(3, pathName, difficulty, 9.5,1481.2,1045,3)">
             <div id="leg3Detail"></div>
-
           </label>
         </div>
 
