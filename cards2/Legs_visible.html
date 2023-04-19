@@ -316,17 +316,21 @@
     }
 
     @media only screen and (max-width: 1080px) {
+      .p {
+        font-size: 10px !important;
+      }
+
       #myAccordion {
         height: 400px;
-        width: 90%;
+        width: auto;
         position: absolute;
-        top: 60%;
+        top: 70%;
         padding-left: 10px;
         padding-right: 10px;
         z-index: 400;
         left: 5px;
         overflow-x: scroll;
-        font-size: xx-small;
+        font-size: 10px !important;
       }
 
       #box {
@@ -350,9 +354,6 @@
         justify-content: center;
         top: 75px;
         right: 35%;
-        /* left: 15%; */
-        /* padding: 10px; */
-        /* z-index: 400; */
       }
 
       iframe {
@@ -364,9 +365,9 @@
   <title>Popup and Highlight Route</title>
   <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css" />
   <script src="https://js.arcgis.com/4.21/"></script>
-  <script>$('input').on('change', function () {
+  <!-- <script>$('input').on('change', function () {
       $('body').toggleClass('blue');
-    });</script>
+    });</script> -->
   <style>
     html,
     body,
@@ -391,13 +392,13 @@
     .right-side {
       width: 10%;
       float: right;
-      height: 5%
+      height: 5%;
     }
   </style>
   <script src='database.js'></script>
   <script>
     var pathName = "Lukla-EBC"
-    var difficulty = "Beginner";
+    var difficulty = "Expert";
     var offset = 0;     // height of route from database points
     var legNum = 0;     // used by routeOverlord to take each of the leg ids. has the total number of legs when all routes are drawn
     var totalLegs = 0;  // Gives total number of legs beforehand
@@ -421,7 +422,6 @@
       console.log(leg)
       var place0 = pathLocations[leg - 1];
       var place0elv = giveCoordinate("source_locations", pathLocations[leg - 1])[2];
-
       var place1 = pathLocations[leg]
       var place1elv = giveCoordinate("source_locations", pathLocations[leg])[2];
 
@@ -429,26 +429,26 @@
       // desc = "Start:&nbsp&nbsp&nbsp" + place0 + "&nbsp" + place0elv + "m" + "<br>End:&nbsp&nbsp&nbsp" + place1 + "&nbsp" + place1elv + "m" + "<br>Distance:&nbsp&nbsp" + distance + "&nbspkm" + "<br>Elevation:&nbsp&nbsp" + "up&nbsp" + up + "m" + "&nbsp" + "down&nbsp" + down + "m" + "<br>Duration:&nbsp&nbsp&nbsp" + duration + "hrs" + "<br>Staying@:&nbsp&nbsp&nbsp" + place1 + "&nbsplodge"
 
       desc = `
-      <div class='px-1' style="background-color: rgb(255, 255, 255); height: 250px;">
-            <div class="row ">
-              <div class="col-5">Start</div>
-              <div class="col"> ${place0} (${place0elv} m)</div>
+      <div style="background-color: rgb(255, 255, 255); font-size:5px; height: 100px;">
+            <div class="row p-lg-1">
+              <div class="col-5" style="font-size:15px">Start</div>
+              <div class="col" style="font-size:15px"> ${place0} (${place0elv}m)</div>
             </div>
             <div class="row p-lg-1">
-              <div class="col-5">End</div>
-              <div class="col">${place1} (${place1elv} m)</div>
+              <div class="col-5" style="font-size:15px">End</div>
+              <div class="col" style="font-size:15px">${place1} (${place1elv} m)</div>
             </div>
             <div class="row p-lg-1">
-              <div class="col-5">Distance</div>
-              <div class="col">${distance} km</div>
+              <div class="col-5" style="font-size:15px">Distance</div>
+              <div class="col" style="font-size:15px">${distance}km</div>
             </div>
             <div class="row p-lg-1">
-              <div class="col-5">Elevation</div>
-              <div class="col">↗ ${up}m &nbsp; &nbsp; ↘ ${down}m</div>
+              <div class="col-5" style="font-size:15px">Elevation</div>
+              <div class="col" style="font-size:15px">↗${up}m ↘${down}m</div>
             </div>
             <div class="row p-lg-1">
-              <div class="col-5">Duration</div>
-              <div class="col">${duration} hrs</div>
+              <div class="col-5" style="font-size:15px">Duration</div>
+              <div class="col" style="font-size:15px">${duration} hrs</div>
             </div>
             </div>
           `
@@ -480,7 +480,6 @@
       "esri/widgets/ElevationProfile",
       "esri/widgets/ElevationProfile/ElevationProfileViewModel",
       "esri/layers/support/RasterFunction"
-
     ], function (
       esriConfig
       , Map
@@ -507,13 +506,11 @@
       , RasterFunction
     ) {
 
-
       var map = new Map({
         basemap: "satellite",
         ground: "world-elevation",
         maxScale: 100
       });
-
 
       var view = new SceneView({
         container: "viewDiv",
@@ -532,7 +529,6 @@
           }
         }
       });
-
 
       var profile = new ElevationProfile({
         view: view,
@@ -768,7 +764,6 @@
     });
   </script>
 </head>
-
 <body>
   <nav class="navbar navbar-expand navbar-light bg-dark ">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
@@ -782,12 +777,7 @@
         <li class="nav-item active">
         </li>
       </ul>
-      <!-- <a class="nav-link nav-item active bg-dark" href="#">Home </a> -->
-      <!-- <a class="nav-link text-white px-3" href="#">About us </a>
-        <a class="nav-link text-white px-3" href="#">Offerings </a> -->
-      <!-- <a class="nav-link text-white px-3" href="" data-toggle="modal" data-target="#modal360">360 View</a> -->
       <a class="nav-link text-white px-3" href="" data-toggle="modal" data-target="#modalLoginForm">Login</a>
-      <!-- <input type="button" onclick="myfunction()" value="Login" id="modalLoginForm"> -->
     </div>
   </nav>
   <div id="viewDiv"></div>
@@ -801,46 +791,57 @@
           class="text-light text-decoration-none ">Expert</a></button>
     </div>
   </div>
-
   <div id="ColCard">
-    <div class="container accordion" style="background-color: transparent;" id="myAccordion"
-      style="width:450px !important; height: auto;">
+    <div class="container accordion" style="background-color: transparent; height: 250px;"" id="myAccordion"
+      style="width:auto !important; ">
       <div class="container text-center">
         <input type="radio" name="slider" id="item-1" checked>
         <input type="radio" name="slider" id="item-2">
         <input type="radio" name="slider" id="item-3">
-        <div class="player p-1" style="background-color: rgb(36, 139, 235); width:250px !important; height: 50px;">
-          <div class="upper-part">
-            <div class="play-icon">
-            </div>
-            <div class="info-area" id="test">
-              <label class="song-info" id="song-info-1">
-                <h4>Leg 1</h4>
-              </label>
-              <label class="song-info" id="song-info-2">
-                <h4>Leg 2</h4>
-              </label>
-              <label class="song-info" id="song-info-3">
-                <h4>Leg 3</h4>
-              </label>
-            </div>
-          </div>
-        </div>
-        <div class="cards">
-          <label class="card" style="background-color: rgb(255, 255, 255); height: 50px;" for="item-1" id="song-1"
+        <div class="cards" >
+          <label class="card" for="item-1" id="song-1"
             onClick="vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5)">
-            <div id="leg1Detail"></div>
+            <label class="song-info" style="background-color: #2992dc; width: 100%;" id="song-info-1">
+              <h4>Leg 1</h4>
+              </label>
+              <div id="leg1Detail"></div>
           </label>
-          <label class="card" style="background-color: rgb(255, 255, 255); height: 50px;" for="item-2" id="song-2"
+          <label class="card" for="item-2" id="song-2"
             onClick="vanillaReact(2,  pathName, difficulty, 6.3,1096,445,2.5)">
-            <div id="leg2Detail"></div>
+            <label class="song-info" style="background-color: #2992dc; width: 100%;" id="song-info-1">
+              <h4>Leg 2</h4>
+              <div id="leg2Detail"></div>
+            </label>
           </label>
-          <label class="card" style="background-color: rgb(255, 255, 255); height: 50px;" for="item-3" id="song-3"
+          <label class="card" for="item-3" id="song-3"
             onClick="vanillaReact(3, pathName, difficulty, 9.5,1481.2,1045,3)">
+            <label class="song-info" style="background-color: #2992dc; width: 100%;" id="song-info-1">
+              <h4>Leg 3</h4>
+            </label>
             <div id="leg3Detail"></div>
           </label>
-        </div>
 
+
+<!--           
+          <li class="item">
+            <button id="leg4" class="btn default"
+              style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+              onClick="vanillaReact(4, pathName, difficulty, 6.6,742,525.3,1.7)">Leg 4</button>
+            <div id="leg4Detail" class="card"></div>
+          </li>
+          <li class="item">
+            <button id="leg5" class="btn default"
+              style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+              onClick="vanillaReact(5, pathName, difficulty, 107,1126,260,4)">Leg 5</button>
+            <div id="leg5Detail" class="card"></div>
+          </li>
+          <li class="item">
+            <button id="leg6" class="btn default"
+              style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+              onClick="vanillaReact(6, pathName, difficulty, 7.1,619.5,308.6,2)">Leg 6</button>
+            <div id="leg6Detail" class="card"></div>
+          </li> -->
+        </div>
       </div>
     </div>
   </div>
@@ -863,7 +864,6 @@
             <input type="email" id="defaultForm-email" class="form-control validate">
             <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
           </div>
-
           <div class="md-form mb-4">
             Password
             <i class="fa fa-lock"></i>
@@ -877,8 +877,6 @@
       </div>
     </div>
   </div>
-
-
   <div class="modal fade " id="modal360" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog mod1" role="document">
       <div class="modal-content text-center">
@@ -900,7 +898,6 @@
       </div>
     </div>
   </div>
-
   <div class="modal fade text-right" id="modalguide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true" style="top: 50px;">
     <div class="modal-dialog" role="document">
@@ -965,7 +962,5 @@
         </div>
       </div>
     </div>
-
 </body>
-
 </html>
