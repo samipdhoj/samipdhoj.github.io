@@ -2,7 +2,6 @@
 <html>
 
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
   <script src="./card.js"></script>
@@ -28,115 +27,8 @@
   <link href=' http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="./index.css">
-  <style>
-    .Card3 {
-      position: relative;
-      display: inline-block;
-      width: 100%;
-      height: 400px;
-      overflow: hidden;
-      background: #000;
-      box-shadow: rgba(6, 33, 63, 0.129412) 0px 1px 2px 0px;
-      -moz-transition: 0.5s;
-      -o-transition: 0.5s;
-      -webkit-transition: 0.5s;
-      transition: 0.5s;
-    }
-
-    .Card3 img {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      -moz-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      -o-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-      -moz-transition: 0.5s;
-      -o-transition: 0.5s;
-      -webkit-transition: 0.5s;
-      transition: 0.5s;
-    }
-
-    .Card3:hover img {
-      top: 30%;
-      opacity: 0.5;
-    }
-
-    .Card3 .overlay {
-      position: absolute;
-      bottom: calc(-80% + 50px);
-      left: 0px;
-      width: 100%;
-      height: 80%;
-      background: #FFF;
-      -moz-transition: 0.5s;
-      -o-transition: 0.5s;
-      -webkit-transition: 0.5s;
-      transition: 0.5s;
-    }
-
-    .Card3:hover .overlay {
-      bottom: 0px;
-    }
-
-    .Card3 .overlay .line {
-      width: 100%;
-      text-align: left;
-      line-height: 50px;
-      padding: 0em 1em;
-    }
-
-    .Card3 .overlay .content {
-      text-align: left;
-      padding: 1em;
-    }
-
-    @media screen and (max-width: 700px) {
-      /* --- Card3 ---- */
-
-      .Card3 {
-        width: 100%;
-        height: auto;
-        margin: 1em 0em;
-      }
-
-      .Card3:hover img {
-        top: 30%;
-        opacity: 0.5;
-      }
-
-      .Card3 .overlay {
-        position: relative;
-        bottom: 0px;
-        left: 0px;
-        width: 100%;
-        height: 200px;
-      }
-
-      .Card3 img {
-        position: relative;
-        display: block;
-        width: 100%;
-        height: auto;
-        -webkit-transform: translate(-50%, 0%);
-        -moz-transform: translate(-50%, 0%);
-        -ms-transform: translate(-50%, 0%);
-        -o-transform: translate(-50%, 0%);
-        transform: translate(-50%, 0%);
-      }
-
-      .Card3:hover .overlay {
-        bottom: 0px;
-      }
-
-      .Card3:hover img {
-        top: 50%;
-        opacity: 1;
-      }
-    }
-  </style>
+  <!-- <link rel="stylesheet" href="./index.css"> -->
+  
   <style>
     .column {
       float: left;
@@ -231,20 +123,27 @@
       width: 248px;
       position: absolute;
       top: 140px;
-      left: 5px;
-      padding: 10px;
+      /* left: 5px; */
+      /* padding: 10px; */
       z-index: 400;
     }
-
+    
     #myAccordion {
+      margin-right: 0px;
+      right: 0px;
+      align-items: center;
+      align-self: center;
+      align-content: center;
+      padding-left: 10.5%;
+      padding-right: 7.5%;
+      /* overflow-y: hidden; */
+      overflow-x: hidden;
       height: 400px;
-      width: 350px;
+      width: 400px;
       position: absolute;
       top: 120px;
-      right: 5px;
-      z-index: 400;
+      /* z-index: 400; */
     }
-
 
     .esri-view .esri-view-surface--inset-outline:focus::after {
       outline: none !important;
@@ -252,21 +151,24 @@
 
     iframe {
       height: 350px;
-      width: 400px;
+      width: 450px;
     }
 
     @media only screen and (max-width: 1080px) {
       #myAccordion {
-        height: 400px;
-        width: 90%;
+        padding-left: 40%;
+        padding-right: 40%;
+        overflow: hidden;
+        height: 200px;
+        width: 100% !important;
         position: absolute;
-        top: 60%;
-        padding-left: 10px;
-        padding-right: 10px;
+        top: 70%;
         z-index: 400;
-        left: 5px;
-        overflow-x: scroll;
         font-size: xx-small;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        right: 0px;
+        left: 0px;
       }
 
       #box {
@@ -276,8 +178,6 @@
         width: 218px;
         position: absolute;
         top: 140px;
-        left: 5px;
-        padding: 2px;
         z-index: 400;
       }
 
@@ -304,6 +204,14 @@
   <title>Popup and Highlight Route</title>
   <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css" />
   <script src="https://js.arcgis.com/4.21/"></script>
+  <script type="text/javascript">
+    function click() {
+        document.getElementById("leg1").innerHTML = "leg1Detail";
+    }
+    
+    document.querySelector("button")
+      .addEventListener("click", vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5));
+</script>
   <style>
     html,
     body,
@@ -345,12 +253,12 @@
       var Down = down;
       var duration = dur;
       console.log(Up)
-
       let id;
       let desc;
       for (var i = 1; i <= legNum; i++) {
         id = "leg" + i.toString() + "Detail";
-        if (document.getElementById(id)) document.getElementById(id).innerHTML = ""; // Replace with expanding function
+        id1 = `<div style="height:200px; @media only screen and (max-width: 1080px){height:50px !important}"></div>`;
+        if (document.getElementById(id)) document.getElementById(id).innerHTML = id1; // Replace with expanding function
       }
       id = "leg" + leg.toString() + "Detail";
       var pathLocations = giveCoordinate("source_paths", pathName, difficulty);
@@ -358,7 +266,6 @@
       console.log(leg)
       var place0 = pathLocations[leg - 1];
       var place0elv = giveCoordinate("source_locations", pathLocations[leg - 1])[2];
-
       var place1 = pathLocations[leg]
       var place1elv = giveCoordinate("source_locations", pathLocations[leg])[2];
 
@@ -366,7 +273,7 @@
       // desc = "Start:&nbsp&nbsp&nbsp" + place0 + "&nbsp" + place0elv + "m" + "<br>End:&nbsp&nbsp&nbsp" + place1 + "&nbsp" + place1elv + "m" + "<br>Distance:&nbsp&nbsp" + distance + "&nbspkm" + "<br>Elevation:&nbsp&nbsp" + "up&nbsp" + up + "m" + "&nbsp" + "down&nbsp" + down + "m" + "<br>Duration:&nbsp&nbsp&nbsp" + duration + "hrs" + "<br>Staying@:&nbsp&nbsp&nbsp" + place1 + "&nbsplodge"
 
       desc = `
-      <div class=''>
+            <div>
             <div class="row p-lg-1">
               <div class="col-4">Start</div>
               <div class="col"> ${place0} (${place0elv} m)</div>
@@ -393,7 +300,6 @@
       // Change according to data using database
       if (document.getElementById(id)) document.getElementById(id).innerHTML = desc // Replace with expanding function 
     }
-
     require([
       "esri/config",
       "esri/Map",
@@ -704,6 +610,7 @@
         ImageShower("EBC", 5400, "https://raw.githubusercontent.com/Isha-Karn/SQL_Learning/master/laliguras-removebg-preview.png")
       }, 5000);
     });
+    
   </script>
 </head>
 
@@ -736,50 +643,58 @@
   </div>
 
   <div id="ColCard">
-    <div class="container accordion" style="background-color: transparent;" id="myAccordion"
-      style="width:300px !important">
-          <main>
-            <div class="featured stacked-cards">
-              <ul class="slider container">
-                <li class="item">
-                  <button id="leg1" class="btn default"
-                    style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
-                    onClick="vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5)">Leg 1</button>
-                  <div id="leg1Detail" class="card"></div>
-                </li>
-                <li>
-                  <button id="leg2" class="btn default"
-                    style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
-                    onClick="vanillaReact(2,  pathName, difficulty, 6.3,1096,445,2.5)">Leg 2</button>
-                  <div id="leg2Detail" class="card"></div>
-                </li>
-                <li class="item">
-                  <button id="leg3" class="btn default"
-                    style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
-                    onClick="vanillaReact(3, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 3</button>
-                  <div id="leg3Detail" class="card"></div>
-                </li>
-                <li class="item">
-                  <button id="leg4" class="btn default"
-                    style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
-                    onClick="vanillaReact(4, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 4</button>
-                  <div id="leg4Detail" class="card"></div>
-                </li>
-                <li class="item">
-                  <button id="leg5" class="btn default"
-                    style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
-                    onClick="vanillaReact(5, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 5</button>
-                  <div id="leg5Detail" class="card"></div>
-                </li>
-                <li class="item">
-                  <button id="leg6" class="btn default"
-                    style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
-                    onClick="vanillaReact(6, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 6</button>
-                  <div id="leg6Detail" class="card"></div>
-                </li>
-              </ul>
-            </div>
-          </main>
+    <div class="container accordion center-align" style="background-color: transparent; width:400px !important"
+      id="myAccordion">
+      <main>
+        <div class="featured stacked-cards">
+          <ul class="slider container">
+            <li class="item">
+              <button id="leg1" class="btn default leg1"
+                style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5)"
+                onmousedown="vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5)">Leg 1</button>
+              <div id="leg1Detail" class="card"></div>
+              <!-- <div id="leg1white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+            </li>
+            <li>
+            <li class="item">
+              <button id="leg2" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(2,  pathName, difficulty, 6.3,1096,445,2.5)">Leg 2</button>
+              <div id="leg2Detail" class="card"></div>
+              <!-- <div id="leg2white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+
+            </li>
+            <li class="item">
+              <button id="leg3" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(3, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 3</button>
+              <div id="leg3Detail" class="card"></div>
+              <!-- <div id="leg3white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+
+            </li>
+            <li class="item">
+              <button id="leg4" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(4, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 4</button>
+              <div id="leg4Detail" class="card"></div>
+              <!-- <div id="leg4white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+
+            </li>
+            <li class="item">
+              <button id="leg5" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(5, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 5</button>
+              <div id="leg5Detail" class="card"></div>
+              <!-- <div id="leg5white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+
+            </li>
+            <li class="item">
+              <button id="leg6" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(6, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 6</button>
+              <div id="leg6Detail" class="card"></div>
+              <!-- <div id="leg6white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+
+            </li>
+          </ul>
+        </div>
+      </main>
     </div>
   </div>
   </div>

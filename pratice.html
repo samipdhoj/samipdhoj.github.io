@@ -1,283 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<style>
-		@import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap");
-
-		* {
-			box-sizing: border-box;
-		}
-
-		html,
-		body {
-			margin: 0;
-			padding: 0;
-			width: 100%;
-			height: 100%;
-		}
-
-		body {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: 30px 10px;
-			font-family: "DM Sans", sans-serif;
-			transition: background 0.4s ease-in;
-			background-color: #c394f8;
-		}
-
-		body.blue {
-			background-color: #428aa6;
-		}
-
-		input[type="radio"] {
-			display: none;
-		}
-
-		.card {
-			position: absolute;
-			width: 60%;
-			height: 100%;
-			left: 0;
-			right: 0;
-			margin: auto;
-			transition: transform 0.4s ease;
-			cursor: pointer;
-		}
-
-		.container {
-			width: 100%;
-			max-width: 800px;
-			max-height: 600px;
-			height: 100%;
-			transform-style: preserve-3d;
-			display: flex;
-			justify-content: center;
-			flex-direction: column;
-			align-items: center;
-		}
-
-		.cards {
-			position: relative;
-			width: 100%;
-			height: 100%;
-			margin-bottom: 20px;
-		}
-
-		img {
-			width: 100%;
-			height: 100%;
-			border-radius: 10px;
-			object-fit: cover;
-		}
-
-		#item-1:checked~.cards #song-3,
-		#item-2:checked~.cards #song-1,
-		#item-3:checked~.cards #song-2 {
-			transform: translatex(-40%) scale(0.8);
-			opacity: 0.4;
-			z-index: 0;
-		}
-
-		#item-1:checked~.cards #song-2,
-		#item-2:checked~.cards #song-3,
-		#item-3:checked~.cards #song-1 {
-			transform: translatex(40%) scale(0.8);
-			opacity: 0.4;
-			z-index: 0;
-		}
-
-		#item-1:checked~.cards #song-1,
-		#item-2:checked~.cards #song-2,
-		#item-3:checked~.cards #song-3 {
-			transform: translatex(0) scale(1);
-			opacity: 1;
-			z-index: 1;
-		}
-
-		#item-1:checked~.cards #song-1 img,
-		#item-2:checked~.cards #song-2 img,
-		#item-3:checked~.cards #song-3 img {
-			box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.47);
-		}
-
-		.player {
-			background-color: #fff;
-			border-radius: 8px;
-			min-width: 320px;
-			padding: 16px 10px;
-		}
-
-		.upper-part {
-			position: relative;
-			display: flex;
-			align-items: center;
-			margin-bottom: 12px;
-			height: 36px;
-			overflow: hidden;
-		}
-
-		.play-icon {
-			margin-right: 10px;
-		}
-
-		.song-info {
-			width: calc(100% - 32px);
-			display: block;
-		}
-
-		.song-info .title {
-			color: #403d40;
-			font-size: 14px;
-			line-height: 24px;
-		}
-
-		.sub-line {
-			display: flex;
-			justify-content: space-between;
-			width: 100%;
-		}
-
-		.subtitle,
-		.time {
-			font-size: 12px;
-			line-height: 16px;
-			color: #c6c5c6;
-		}
-
-		.time {
-			font-size: 12px;
-			line-height: 16px;
-			color: #a5a5a5;
-			font-weight: 500;
-			margin-left: auto;
-		}
-
-		.progress-bar {
-			height: 3px;
-			width: 100%;
-			background-color: #e9efff;
-			border-radius: 2px;
-			overflow: hidden;
-		}
-
-		.progress {
-			display: block;
-			position: relative;
-			width: 60%;
-			height: 100%;
-			background-color: #2992dc;
-			border-radius: 6px;
-		}
-
-		.info-area {
-			width: 100%;
-			position: absolute;
-			top: 0;
-			left: 30px;
-			transition: transform 0.4s ease-in;
-		}
-
-		#item-2:checked~.player #test {
-			transform: translateY(0);
-		}
-
-		#item-2:checked~.player #test {
-			transform: translateY(-40px);
-		}
-
-		#item-3:checked~.player #test {
-			transform: translateY(-80px);
-		}
-	</style>
 </head>
+<style>
+	body {
+	background: linear-gradient(45deg, #d2f2e2, #c8e9d8);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	font-family: Helvetica;
+}
+
+.cards-box {
+	position: relative;
+	transform: translateX(-15px);
+}
+
+.cards-box .card {
+	width: calc(18rem + 19vh);
+	max-width: 80vw;
+	background: #f7fffd;
+	border-radius: 14px;
+	cursor: pointer;
+}
+
+.cards-box .card.hide {
+	visibility: hidden;
+}
+
+.cards-box .card:not(.hide) {
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: all 0.8s cubic-bezier(0.18, 0.98, 0.45, 1);
+	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.07);
+}
+
+.cards-box .card:not(.hide)[data-slide='0'] {
+	transform: translate(0px, 0px) scale(1);
+	z-index: 6;
+	opacity: 1;
+}
+
+.cards-box .card:not(.hide)[data-slide='1'] {
+	transform: translate(15px, 15px) scale(0.975);
+	z-index: 5;
+	opacity: 0.9;
+}
+
+.cards-box .card:not(.hide)[data-slide='2'] {
+	transform: translate(30px, 30px) scale(0.95);
+	z-index: 4;
+	opacity: 0.8;
+}
+
+.cards-box .card:not(.hide)[data-slide='3'] {
+	transform: translate(45px, 45px) scale(0.925);
+	z-index: 3;
+	opacity: 0.7;
+}
+
+.cards-box .card:not(.hide)[data-slide='4'] {
+	transform: translate(60px, 60px) scale(0.9);
+	z-index: 2;
+	opacity: 0.6;
+}
+
+.cards-box .card:not(.hide)[data-slide='5'] {
+	transform: translate(75px, 75px) scale(0.875);
+	z-index: 1;
+	opacity: 0.5;
+}
+
+.cards-box .card:not(.hide)[data-slide='0'] {
+	transition: all 0.32s cubic-bezier(0.18, 0.98, 0.45, 1);
+}
+
+.content-placeholder {
+	padding: 14px 18px 20px;
+}
+
+.content-placeholder .row {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	margin-bottom: calc(.8rem + 0.4vw);
+}
+
+.content-placeholder .row .img {
+	flex-shrink: 0;
+	position: relative;
+	margin-right: 20px;
+	background: #5eebc6;
+	width: calc(56px + 2vw);
+	height: calc(56px + 2vw);
+	border-radius: 50%;
+}
+
+.content-placeholder .row .img::after {
+	content: attr(data-letter);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: calc(30px + 1vw);
+	font-weight: bold;
+	color: white;
+}
+
+.content-placeholder .row .img-text {
+	background: #a7f4e0;
+	width: 45%;
+	min-width: 145px;
+	height: 20px;
+	margin-top: -20px;
+	border-radius: 10px;
+}
+
+.content-placeholder .row .img-text::after {
+	content: "";
+	display: block;
+	width: 80%;
+	height: 10px;
+	margin-top: 30px;
+	background: #a7f4e0;
+	border-radius: 10px;
+}
+
+.content-placeholder .text {
+	background: #a7f4e0;
+	width: 90%;
+	height: 2vh;
+	min-height: 12px;
+	max-height: 14px;
+	border-radius: 10px;
+}
+
+.content-placeholder .text.text--m {
+	width: 80%;
+	margin-top: 2vh;
+	height: 2vh;
+	min-height: 12px;
+}
+
+.content-placeholder .text.text--s {
+	width: 70%;
+	margin-top: 2vh;
+	height: 2vh;
+	min-height: 12px;
+}
+
+.content-placeholder .btn {
+	width: 100%;
+	height: 50px;
+	margin-top: 20px;
+	background-color: #11d5af;
+	border-radius: 40px;
+}
+</style>
 <script>
-	$('input').on('change', function () {
-		$('body').toggleClass('blue');
+	window.onload = () => {
+	let sliderImagesBox = document.querySelectorAll('.cards-box');
+	sliderImagesBox.forEach(el => {
+		let imageNodes = el.querySelectorAll('.card:not(.hide)')
+		let arrIndexes = []; // Index array
+		(() => {
+			// The loop that added values to the arrIndexes array for the first time
+			let start = 0;
+			while (imageNodes.length > start) {
+				arrIndexes.push(start++);
+			}
+		})();
+
+		let setIndex = (arr) => {
+			for(let i = 0; i < imageNodes.length; i++) {
+				imageNodes[i].dataset.slide = arr[i] // Set indexes
+			}
+		}
+		el.addEventListener('click', () => {
+			arrIndexes.unshift(arrIndexes.pop());
+			setIndex(arrIndexes)
+		})
+		setIndex(arrIndexes) // The first indexes addition
 	});
+};
+
 </script>
-
 <body>
-	<div class="container">
-		<input type="radio" name="slider" id="item-1" checked>
-		<input type="radio" name="slider" id="item-2">
-		<input type="radio" name="slider" id="item-3">
-		<div class="cards">
-			<label class="card" style="background-color: rgb(255, 255, 255);" for="item-1" id="song-1">
-				<div class="row p-lg-1">
-					<div class="col-4">Start</div>
-					<div class="col"> ${place0} (${place0elv} m)</div>
+	<div class="cards-box">
+		<div class="card hide">
+			<div class="content-placeholder">
+				<div class="row">
+					<div class="img"></div>
+					<div class="img-text"></div>
 				</div>
-				<div class="row p-lg-1">
-					<div class="col-4">End</div>
-					<div class="col">${place1} (${place1elv} m)</div>
-				</div>
-				<div class="row p-lg-1">
-					<div class="col-4">Distance</div>
-					<div class="col">${distance} km</div>
-				</div>
-				<div class="row p-lg-1">
-					<div class="col-4">Elevation</div>
-					<div class="col">↗ ${up}m &nbsp; &nbsp; ↘ ${down}m</div>
-				</div>
-				<div class="row p-lg-1">
-					<div class="col-4">Duration</div>
-					<div class="col">${duration} hrs</div>
-
-				</div>
-			</label>
-			<label class="card" for="item-2" id="song-2">
-				<img src="https://images.unsplash.com/photo-1559386484-97dfc0e15539?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80"
-					alt="song">
-			</label>
-			<label class="card" for="item-3" id="song-3">
-				<img src="https://images.unsplash.com/photo-1533461502717-83546f485d24?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-					alt="song">
-			</label>
-		</div>
-		<div class="player">
-			<div class="upper-part">
-				<div class="play-icon">
-					<svg width="20" height="20" fill="#2992dc" stroke="#2992dc" stroke-linecap="round"
-						stroke-linejoin="round" stroke-width="2" class="feather feather-play" viewBox="0 0 24 24">
-						<defs />
-						<path d="M5 3l14 9-14 9V3z" />
-					</svg>
-				</div>
-				<div class="info-area" id="test">
-					<!-- <label class="song-info" id="song-info-1"> -->
-					<div class="title">Bunker</div>
-					<div class="sub-line">
-						<div class="subtitle">Balthazar</div>
-						<!-- <div class="time">4.05</div> -->
-					</div>
-					</label>
-					<!-- <label class="song-info" id="song-info-2"> -->
-					<div class="title">Words Remain</div>
-					<div class="sub-line">
-						<div class="subtitle">Moderator</div>
-						<!-- <div class="time">4.05</div> -->
-					</div>
-					</label>
-					<!-- <label class="song-info" id="song-info-3"> -->
-					<div class="title">Falling Out</div>
-					<div class="sub-line">
-						<div class="subtitle">Otzeki</div>
-						<!-- <div class="time">4.05</div> -->
-					</div>
-					</label>
-				</div>
+				<div class="text text--l"></div>
+				<div class="text text--m"></div>
+				<div class="text text--s"></div>
+				<div class="btn"></div>
 			</div>
-			<div class="progress-bar">
-				<span class="progress"></span>
+		</div>
+		<div class="card">
+			<div class="content-placeholder">
+				<div class="row">
+					<div class="img" data-letter=""></div>
+					<div class="img-text"></div>
+				</div>
+				<div class="text text--l"></div>
+				<div class="text text--m"></div>
+				<div class="text text--s"></div>
+				<div class="btn"></div>
+			</div>
+		</div>
+		<div class="card">
+			<div class="content-placeholder">
+				<div class="row">
+					<div class="img" data-letter="M"></div>
+					<div class="img-text"></div>
+				</div>
+				<div class="text text--l"></div>
+				<div class="text text--m"></div>
+				<div class="text text--s"></div>
+				<div class="btn"></div>
+			</div>
+		</div>
+		<div class="card">
+			<div class="content-placeholder">
+				<div class="row">
+					<div class="img" data-letter="K"></div>
+					<div class="img-text"></div>
+				</div>
+				<div class="text text--l"></div>
+				<div class="text text--m"></div>
+				<div class="text text--s"></div>
+				<div class="btn"></div>
+			</div>
+		</div>
+		<div class="card">
+			<div class="content-placeholder">
+				<div class="row">
+					<div class="img" data-letter="G"></div>
+					<div class="img-text"></div>
+				</div>
+				<div class="text text--l"></div>
+				<div class="text text--m"></div>
+				<div class="text text--s"></div>
+				<div class="btn"></div>
 			</div>
 		</div>
 	</div>
 </body>
-
 </html>

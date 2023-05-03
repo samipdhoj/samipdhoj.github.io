@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Popup and Highlight Route</title>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.21/"></script>
+
+  <!-- To replace with Panolens in future -->
+  <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
+  <script src="./card.js"></script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link href="style.css" rel="stylesheet">
+  <script src="myscripts.js"></script>
+  <link href="/dist/output.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script> -->
+  
+  <style>
+    
+    .column {
+      float: left;
+      width: 50%;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    * {
+      font-size: 18px;
+      font-family: 'Roboto Condensed';
+    }
+
+    body {
+      background-color: lavender;
+      /* position: relative; */
+    }
+
+    #map {
+      width: 100%;
+      height: 80vh;
+      /* position: relative; */
+    }
+
+    .btn1 {
+      height: 30px !important;
+    }
+
+    .butn1 {
+      position: absolute;
+      /* top: 140px; */
+      /* justify-content: center; */
+      top: 75px;
+      left: 40%;
+      padding: 0px;
+      z-index: 100;
+    }
+
+    .butn2 {
+      position: absolute;
+      /* top: 140px; */
+      /* justify-content: center; */
+      top: 75px;
+      right: 5%;
+      padding: 0px;
+      z-index: 100;
+    }
+
+    #Difficulty {
+      text-decoration: underline green 3px;
+      position: absolute;
+      top: 140px;
+      left: -3px;
+      padding: 10px;
+      z-index: 400;
+    }
+
+    #BeginnerButton {
+      height: 40px !important;
+      width: 200px;
+      position: absolute;
+      top: 190px;
+      left: 15px;
+      padding: 10px;
+      z-index: 400;
+    }
+
+    #AdvanceButton {
+      height: 40px !important;
+      width: 200px;
+      position: absolute;
+      top: 250px;
+      left: 15px;
+      padding: 10px;
+      z-index: 400;
+    }
+
+    #ExpertButton {
+      height: 40px !important;
+      width: 200px;
+      position: absolute;
+      top: 310px;
+      left: 15px;
+      padding: 10px;
+      z-index: 400;
+    }
+
+    #box {
+      background-color: rgba(178, 208, 177, 0.564);
+      color: rgba(0, 0, 0, 0.561);
+      height: 230px;
+      width: 248px;
+      position: absolute;
+      top: 140px;
+      /* left: 5px; */
+      /* padding: 10px; */
+      z-index: 400;
+    }
+    
+    #myAccordion {
+      margin-right: 0px;
+      right: 0px;
+      align-items: center;
+      align-self: center;
+      align-content: center;
+      padding-left: 10.5%;
+      padding-right: 7.5%;
+      /* overflow-y: hidden; */
+      overflow-x: hidden;
+      height: 400px;
+      width: 400px;
+      position: absolute;
+      top: 120px;
+      /* z-index: 400; */
+    }
+
+    .esri-view .esri-view-surface--inset-outline:focus::after {
+      outline: none !important;
+    }
+
+    iframe {
+      height: 350px;
+      width: 450px;
+    }
+
+    @media only screen and (max-width: 1080px) {
+      #myAccordion {
+        padding-left: 40%;
+        padding-right: 40%;
+        overflow: hidden;
+        height: 200px;
+        width: 100% !important;
+        position: absolute;
+        top: 70%;
+        z-index: 400;
+        font-size: xx-small;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        right: 0px;
+        left: 0px;
+      }
+
+      #box {
+        font-size: 16px;
+        background-color: rgba(178, 208, 177, 0.564);
+        height: 218px;
+        width: 218px;
+        position: absolute;
+        top: 140px;
+        z-index: 400;
+      }
+
+      .butn1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        /* top: 140px; */
+        justify-content: center;
+        top: 75px;
+        right: 35%;
+        /* left: 15%; */
+        /* padding: 10px; */
+        /* z-index: 400; */
+      }
+
+      iframe {
+        height: 450px;
+        width: 90%;
+      }
+    }
+  
+  </style>
+
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      position: relative;
+      z-index: 0;
+      outline: none;
+    }
+
+    #legDiv {
+      position: absolute;
+      top: 290px;
+      right: 0px;
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+      font-family: sans-serif;
+    }
+
+    table button {
+      width: 300px;
+      /* Increase button width */
+      height: 30px;
+      background-color: rgb(0, 217, 255);
+      /* Change button background color */
+      border: none;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      color: white;
+      text-align: left;
+
+    }
+
+    table td {
+      font-size: 14px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+
+    }
+  </style>
+  <script type="text/javascript">
+    function click() {
+        document.getElementById("content").innerHTML = "leg1";
+    }
+    
+    document.querySelector("button")
+      .addEventListener("click", vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5));
+</script>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.21/"></script>
+  <script src='database_get_elev.js'></script>
+  <script>
+    async function getData(url = '') {
+      const response = await fetch(url, {
+        method: 'GET'
+      });
+      return response.json();
+    }
+    let testVar = null;
+    var pathName = "Lukla-EBC"
+    var difficulty = "beginner";
+    var offset = 1.5;     // height of route from database points
+    var legNum = 0;     // used by routeOverlord to take each of the leg ids. has the total number of legs when all routes are drawn
+    var totalLegs = 0;  // Gives total number of legs beforehand
+
+    function vanillaReact(leg, pathName, difficulty, dist, up, down, dur) {
+      var distance = dist;
+      var Up = up;
+      var Down = down;
+      var duration = dur;
+      // console.log(Up)
+
+      let id;
+      let desc;
+      for (var i = 1; i <= legNum; i++) {
+        id = "leg" + i.toString() + "Detail";
+        if (document.getElementById(id)) document.getElementById(id).innerHTML = ""; // Replace with expanding function
+      }
+      id = "leg" + leg.toString() + "Detail";
+      var pathLocations = giveCoordinate("source_paths", pathName, difficulty);
+      // console.log(pathLocations)
+      // console.log(leg)
+      var place0 = pathLocations[leg - 1];
+      var place0elv = giveCoordinate("source_locations", pathLocations[leg - 1])[2];
+
+
+      var place1 = pathLocations[leg]
+      var place1elv = giveCoordinate("source_locations", pathLocations[leg])[2];
+
+
+      desc = `
+            <div>
+            <div class="row p-lg-1">
+              <div class="col-4">Start</div>
+              <div class="col"> ${place0} (${place0elv} m)</div>
+            </div>
+            <div class="row p-lg-1">
+              <div class="col-4">End</div>
+              <div class="col">${place1} (${place1elv} m)</div>
+            </div>
+            <div class="row p-lg-1">
+              <div class="col-4">Distance</div>
+              <div class="col">${distance} km</div>
+            </div>
+            <div class="row p-lg-1">
+              <div class="col-4">Elevation</div>
+              <div class="col">↗ ${up}m &nbsp; &nbsp; ↘ ${down}m</div>
+            </div>
+            <div class="row p-lg-1">
+              <div class="col-4">Duration</div>
+              <div class="col">${duration} hrs</div>
+            </div>
+            </div>
+          `
+
+
+      // Change according to data using database
+      if (document.getElementById(id)) document.getElementById(id).innerHTML = desc // Replace with expanding function
+    }
+
+    require([
+      "esri/config",
+      "esri/Map",
+      "esri/views/SceneView",
+      "esri/layers/ElevationLayer",
+      "esri/layers/ImageryLayer",
+      "esri/PopupTemplate",
+      "esri/widgets/Track",
+      "esri/Graphic",
+      "esri/layers/GraphicsLayer",
+      "esri/symbols/SimpleLineSymbol",
+      "esri/geometry/SpatialReference",
+      "esri/rest/route",
+      "esri/rest/support/RouteParameters",
+      "esri/rest/support/FeatureSet",
+      "esri/geometry/Point",
+      "esri/symbols/PictureMarkerSymbol",
+      "esri/geometry/Polyline",
+      "esri/symbols/SimpleMarkerSymbol",
+      "esri/symbols/SimpleLineSymbol",
+      "esri/symbols/TextSymbol",
+      "esri/widgets/ElevationProfile",
+      "esri/widgets/ElevationProfile/ElevationProfileViewModel",
+      "esri/layers/support/RasterFunction",
+      "esri/layers/GroupLayer"
+
+    ], function (
+      esriConfig
+      , Map
+      , SceneView
+      , ElevationLayer
+      , ImageryLayer
+      , PopupTemplate
+      , Track
+      , Graphic
+      , GraphicsLayer
+      , SimpleLineSymbol
+      , SpatialReference
+      , route
+      , RouteParameters
+      , FeatureSet
+      , Point
+      , PictureMarkerSymbol
+      , Polyline
+      , SimpleMarkerSymbol
+      , SimpleLineSymbol
+      , TextSymbol
+      , ElevationProfile
+      , ElevationProfileViewModel
+      , RasterFunction
+      , GroupLayer
+    ) {
+
+
+      var map = new Map({
+        basemap: "satellite",
+        ground: "world-elevation",
+        maxScale: 100
+      });
+
+
+      var view = new SceneView({
+        container: "viewDiv",
+        map: map,
+        environment: {
+          colorCorrection: {
+            brightness: -100,
+            contrast: -100,
+            hue: 0
+          }
+        },
+        camera: {
+          position: {
+            x: 85.40254847858832,
+            y: 28.157671819125923,
+            z: 5500
+          },
+          tilt: 75
+        },
+        constraints: {
+          tilt: {
+            max: 75
+          }
+        }
+      });
+
+      view.environment.colorCorrection = {
+        brightness: 100,
+        contrast: 0,
+        hue: 0
+      };
+      var track = new Track({
+        view: view,
+        graphic: new Graphic({
+          symbol: {
+            type: "simple-marker",
+            size: "12px",
+            color: "green",
+            outline: {
+              color: "#efefef",
+              width: "1.5px"
+            }
+          }
+        }),
+        useHeadingEnabled: false
+      });
+      view.ui.add(track, "top-left");
+
+
+
+      var profile = new ElevationProfile({
+        view: view,
+        profiles: [{
+          type: "ground",
+          color: "#7A9BCC",
+          width: 2,
+          unit: "feet"
+        }]
+      });
+
+      //elevation profile
+      //view.ui.add(profile, "bottom-left");
+
+
+      // create elevation layer
+      var profileTask = new ElevationProfile({
+        url: "https://elevation.arcgis.com/arcgis/rest/services/Tools/ElevationSync/GPServer",
+      });
+
+      profile.set("task", profileTask);
+
+      // create elevation layer
+      var elevationLayer = new ElevationLayer({
+        url: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+      });
+
+      const currentElevationInfo = {
+        mode: "relative-to-ground",
+        offset: 10
+      };
+
+      // Get longitude and latitude
+      view.on("click", function (event) {
+        // get the clicked point's coordinates
+        var point = event.mapPoint;
+        var longitude = point.longitude;
+        var latitude = point.latitude;
+        addButton(longitude, latitude);
+        // // query elevation at the clicked point
+        // elevationLayer.queryElevation(point)
+        //   .then(function(result) {
+        //     // get the elevation value from the result
+        //     var elevation = result.geometry.z;
+
+        //     // log the coordinates and elevation
+        console.log("Clicked point coordinates: ", latitude, longitude);
+        //     console.log("Elevation at clicked point: ", elevation);
+        //   })
+        //   .catch(function(error) {
+        //     console.error("Error querying elevation: ", error);
+        //   });
+      });
+
+
+      async function getData(url = '') {
+        const response = await fetch(url, {
+          method: 'GET'
+        });
+        return response.json();
+      }
+
+      function difficultyButtonMaster(difficulty) {
+        let diff = ['beginner', 'advanced', 'expert'];
+        diff.splice(diff.indexOf(difficulty), 1);
+        const difficultyBtn = document.getElementById(difficulty + "-btn");
+        difficultyBtn.addEventListener("click", () => {
+          // For turining off other difficulty routes
+          for (d of diff) {
+            console.log('Turning off layer', d + "RouteLayer")
+            if (map.findLayerById(d + "RouteLayer")) map.findLayerById(d + "RouteLayer").visible = false;
+          }
+          // For turining on required difficulty routes
+          difficultyBtn.style.backgroundColor = "red";
+          console.log('Turning on layer', difficulty + "RouteLayer");
+          map.findLayerById(difficulty + 'RouteLayer').visible = true;
+        });
+      }
+
+      function routeOverlord(pathName, difficulty) {
+        const url = 'https://laliguras-backend-service.onrender.com/route/' + pathName + '/difficulty/' + difficulty;
+        const myPromise = getData(url);
+        myPromise
+          .then((data) => {
+            testVar = data;
+
+            let groupLayerName = difficulty + "RouteLayer";
+            console.log(groupLayerName);
+            var groupLayer = new GroupLayer({
+              id: groupLayerName,
+              visible: (difficulty=="beginner")?true:false
+            });
+            map.add(groupLayer);
+
+            difficultyButtonMaster(difficulty);
+
+            for (let i in data) {
+              if (data[i]) {
+                // console.log('before',data[i].length)
+                let startLocation = data[i].shift();
+                // console.log('start',startLocation)
+                // console.log('after',data[i].length)
+                // console.log('total',data[i])
+                // for (let x of data[i]){
+                //   if (isNaN(x[0])) console.log('not a number found',x[0]);
+                //   if (isNaN(x[1])) console.log('not a number found',x[1]);
+                // }
+                routeMaster(data[i], i, groupLayerName);
+                if (i == data.length - 1) {
+                  // console.log('last ko ma xu ma')
+                  // stand(startLocation[1], [data[i].at(-1)[0], data[i].at(-1)[1]])
+                }
+                else {
+                  stand(startLocation[0], [data[i][0][0], data[i][0][1]], groupLayerName);
+                }
+              }
+            }
+            // for(let i in data){
+
+            // }
+          })
+      }
+
+      function stand(from, coord, groupLayerId) {
+        // console.log(from, to);
+        var location = new Point({
+          x: coord[0],
+          y: coord[1],
+          spatialReference: { wkid: 4326 }
+        });
+        var lineSymbol = new SimpleLineSymbol({
+          color: "#6E260E",
+          width: 5,
+          style: "solid"
+        });
+
+        elevationLayer
+          .queryElevation(location)
+          .then((result) => {
+            if (result.geometry) {
+              location = result.geometry;
+              var lineGraphic = new Graphic({
+                geometry: {
+                  type: "polyline",
+                  paths: [[[location.x, location.y, 0], [location.x, location.y, 300]]]
+                },
+                symbol: lineSymbol
+              });
+              // Loc shower
+              let locationStand = LocationShower(location, from);
+
+
+              var groupLayer = map.findLayerById(groupLayerId);
+              if (groupLayer) {
+                var graphicsLayer = new GraphicsLayer();
+                graphicsLayer.add(lineGraphic);
+                graphicsLayer.add(locationStand);
+                graphicsLayer.elevationInfo = currentElevationInfo;
+                groupLayer.add(graphicsLayer);
+                map.add(groupLayer);
+              }
+              else {
+                console.error('Group Layer not found in stand: ', groupLayerId);
+              }
+
+              // var graphicsLayer = new GraphicsLayer();
+              // graphicsLayer.add(lineGraphic);
+              // graphicsLayer.elevationInfo = currentElevationInfo;
+
+              // map.add(graphicsLayer);
+              // view.graphics.addMany([lineGraphic]);
+            }
+          })
+      }
+
+      function routeMaster(routeCoords, legNum, groupLayerId) {
+
+        // for (var i = 0; i < routeCoords.length; i += 1) {
+        //   routeCoords[i][2] = 0;
+        // }
+
+        var route = new Polyline({
+          paths: [routeCoords],
+          spatialReference: {
+            wkid: 4326
+          }
+        });
+
+        profile.input = route;
+
+        var routeSymbol = new SimpleLineSymbol({
+          color: [0, 0, 255],
+          width: 3
+        });
+
+
+        var routeGraphic = new Graphic({
+          geometry: route,
+          symbol: routeSymbol,
+        });
+        // console.log('searching gfroup layer')
+        var groupLayer = map.findLayerById(groupLayerId);
+        if (groupLayer) {
+          var graphicsLayer = new GraphicsLayer();
+          graphicsLayer.add(routeGraphic);
+          graphicsLayer.elevationInfo = currentElevationInfo;
+          groupLayer.add(graphicsLayer);
+          map.add(groupLayer);
+        }
+        else {
+          console.error('Group Layer not found in RouteMaster: ', groupLayerId);
+        }
+
+        var highlightSymbol = new SimpleLineSymbol({
+          color: [255, 0, 0],
+          width: 3
+        });
+
+
+        for (var i = 1; i <= totalLegs; i++) {
+          id = 'leg' + i.toString();
+          if (document.getElementById(id)) {
+            if (i === legNum) {
+              document.getElementById(id).addEventListener("click", function () {
+                routeGraphic.symbol = highlightSymbol;
+                graphicsLayer.refresh();
+              });
+            }
+            else {
+              document.getElementById(id).addEventListener("click", function () {
+                routeGraphic.symbol = routeSymbol;
+                graphicsLayer.refresh();
+              });
+            }
+          }
+        }
+
+        view.on("click", function (event) {
+          // map.findLayerById('beginnerRouteLayer').visible = false;
+          // map.findLayerById('advancedRouteLayer').visible = false;
+          // map.findLayerById('expertRouteLayer').visible = false;
+          view.hitTest(event).then(function (response) {
+            if (response.results[0] != undefined && response.results[0] != null && Object.hasOwn(response.results[0], 'graphic')) {
+              var feature = response.results[0].graphic;
+              if (feature === routeGraphic) {
+                if (document.getElementById('leg' + legNum.toString())) document.getElementById('leg' + legNum.toString()).click();
+                feature.symbol = highlightSymbol;
+                // graphicsLayer.refresh();
+              } else {
+                routeGraphic.symbol = routeSymbol;
+                // graphicsLayer.refresh();
+              }
+            }
+          });
+        });
+
+
+      }
+
+      function pathMaster(pathName, difficulty) {
+        var locations = giveCoordinate("source_paths", pathName, difficulty)
+        locations.forEach(location => {
+          stand(location, 500);
+          LocationShower(location, 500);
+        });
+
+      }
+
+      function stand_v0_5(placeName, elevation) {
+        const url = 'https://laliguras-backend-service.onrender.com/hotels/langtang/coordinates';
+        const myPromise = getData(url);
+        myPromise
+          .then((data) => {
+            // testVar = data;
+            for (let i in data) {
+              console.log(i)
+            }
+          })
+      }
+
+      function userStoryTeller() {
+        const url = 'https://laliguras-backend-service.onrender.com/userStory/langtang/tour_title';
+        const myPromise = getData(url);
+        myPromise
+          .then((data) => {
+            console.log('inside user story data')
+            const tourName = data.tourName;
+            const difficulty = data.difficulty;
+            const title = data.title;
+            const description = data.description;
+            for (let story of data.stories) {
+              const imageStory = story.image;
+              console.log(imageStory);
+              //   urlArray = datum.images;
+              //   console.log(datum);
+              var storyLocation = new Point({
+                x: story.coordinates[0],
+                y: story.coordinates[1],
+                z: 10,
+                spatialReference: { wkid: 4326 }
+              });
+
+              //   // for image management
+              //   let sceneArray = [];
+              //   for (let i in datum.images) {
+              //     scene = {
+              //       "title": datum.hotelCode + "_image_" + i.toString(),
+              //       "type": "equirectangular",
+              //       "panorama": datum.images[i],
+              //     }
+              //     sceneArray.push(scene);
+              //   }
+              //   scenes[datum.hotelCode] = sceneArray;
+
+              var storyMarkerSymbol = new PictureMarkerSymbol({
+                url: "https://as2.ftcdn.net/v2/jpg/01/27/07/93/1000_F_127079390_l1Y8xEoPfnjwKytbyuMX1tPd6RleGjqs.jpg",
+                height: 48,
+                width: 48,
+                minScale: 2000,
+                maxScale: 2500
+              });
+
+              //   const hotelDetailAction = {
+              //     title: "View Details",
+              //     id: datum.hotelCode + "-hotel-details",
+              //     image: "https://raw.githubusercontent.com/Isha-Karn/SQL_Learning/master/Hotel_designed.png",
+              //     execute: function (id) {
+              //       showHotelInfo(id);
+              //     }
+              //   };
+
+              //   function showHotelInfo(hotelId) {
+              //     const url = 'http://localhost:3001/hotels/langtang/' + hotelId;
+              //     const myPromise = getData(url);
+              //     // console.log('url for hotel ', url);
+              //     viewHotelDetails();
+              //     myPromise
+              //       .then((data) => {
+              //         // testVar = data;
+              //         // console.log("from showHotelInfo",data)
+              //         viewHotelDetails(data);
+              //       })
+              //   }
+
+              //   const hotelImageAction = {
+              //     title: "View 360 images",
+              //     id: datum.hotelCode + "-hotel-images",
+              //     image: "https://raw.githubusercontent.com/Isha-Karn/SQL_Learning/master/Hotel_designed.png",
+              //     execute: function (id) {
+              //       document.getElementById("floatingDiv").classList.add("show");
+              //       // console.log("finael", scenes);
+              //       console.log('passed id ', id);
+              //       panoramaViewer(scenes[id]);
+              //       console.log('passing', datum.hotelCode, scenes[datum.hotelCode]);
+              //       return Object.keys(scenes[id]).length;
+              //     }
+              //   };
+
+              let mediaInfos = []
+              for (singleImage of imageStory) {
+                mediaInfos.push({
+                  type: "image",
+                  value: {
+                    sourceURL: singleImage.imageURL
+                  },
+                  caption: singleImage.imageCaption,
+                  title: singleImage.imageTitle,
+                })
+              }
+              console.log(mediaInfos);
+              let popupTemplate = {
+                // autocasts as new PopupTemplate()
+                title: "{name}",
+                content: [
+                  {
+                    type: "text",
+                    text: "{description}"
+                  },
+                  {
+                    type: "media",
+                    mediaInfos: mediaInfos,
+                    click: function (event) {
+                      // console.log('sdfs')
+                    }
+                  }
+                ],
+                // actions: [hotelDetailAction, hotelImageAction]
+              };
+
+              //   // On popUp button click
+              //   view.popup.on("trigger-action", (event) => {
+              //     console.log(event.action.id);
+              //     let id = event.action.id;
+              //     if (id.includes("-hotel-details")) {
+              //       hotelDetailAction.execute(id.replace("-hotel-details", ""));
+              //     }
+              //     if (id.includes("-hotel-images")) {
+              //       console.log('in image');
+              //       totalNoOfImages = hotelImageAction.execute(id.replace("-hotel-images", ""));
+              //       console.log(totalNoOfImages);
+              //     }
+              //   });
+
+              var storyMarkerGraphic = new Graphic({
+                geometry: storyLocation,
+                symbol: storyMarkerSymbol,
+                attributes: {
+                  name: story.title,
+                  description: story.description,
+                  imageURL: story.imageUrl,
+                },
+                popupTemplate: popupTemplate
+              });
+
+              var graphicsLayer = new GraphicsLayer();
+              graphicsLayer.add(storyMarkerGraphic);
+              graphicsLayer.elevationInfo = currentElevationInfo;
+              map.add(graphicsLayer);
+              //   // view.graphics.add(graphicsLayer);
+            }
+
+            // console.log("Sabbai scenes haru", scenes);
+
+          })
+
+      }
+
+      function hotelIcon() {
+        const url = 'https://laliguras-backend-service.onrender.com/hotels/langtang';
+        const myPromise = getData(url);
+        let scenes = {};
+        myPromise
+          .then((data) => {
+            // testVar = data;
+            let scene = {};
+            for (let datum of data) {
+              urlArray = datum.images;
+              // console.log(datum);
+              var location = new Point({
+                x: datum.coordinates[0],
+                y: datum.coordinates[1],
+                z: 10,
+                spatialReference: { wkid: 4326 }
+              });
+
+              // for image management
+              let sceneArray = [];
+              for (let i in datum.images) {
+                scene = {
+                  "title": datum.hotelCode + "_image_" + i.toString(),
+                  "type": "equirectangular",
+                  "panorama": datum.images[i],
+                }
+                sceneArray.push(scene);
+              }
+              scenes[datum.hotelCode] = sceneArray;
+
+              var markerSymbol = new PictureMarkerSymbol({
+                url: "https://raw.githubusercontent.com/Isha-Karn/SQL_Learning/master/Hotel_Gold-removebg-preview.png",
+                height: 64,
+                width: 64,
+                minScale: 2000,
+                maxScale: 2500
+              });
+
+              const hotelDetailAction = {
+                title: "View Details",
+                id: datum.hotelCode + "-hotel-details",
+                image: "https://raw.githubusercontent.com/Isha-Karn/SQL_Learning/master/Hotel_designed.png",
+                execute: function (id) {
+                  showHotelInfo(id);
+                }
+              };
+
+              function showHotelInfo(hotelId) {
+                const url = 'https://laliguras-backend-service.onrender.com/hotels/langtang/' + hotelId;
+                const myPromise = getData(url);
+                // console.log('url for hotel ', url);
+                viewHotelDetails();
+                myPromise
+                  .then((data) => {
+                    // testVar = data;
+                    // console.log("from showHotelInfo",data)
+                    viewHotelDetails(data);
+                  })
+              }
+
+              const hotelImageAction = {
+                title: "View 360 images",
+                id: datum.hotelCode + "-hotel-images",
+                image: "https://raw.githubusercontent.com/Isha-Karn/SQL_Learning/master/Hotel_designed.png",
+                execute: function (id) {
+                  document.getElementById("floatingDiv").classList.add("show");
+                  // console.log("finael", scenes);
+                  // console.log('passed id ', id);
+                  panoramaViewer(scenes[id]);
+                  // console.log('passing', datum.hotelCode, scenes[datum.hotelCode]);
+                  return Object.keys(scenes[id]).length;
+                }
+              };
+
+              const popupTemplate = {
+                // autocasts as new PopupTemplate()
+                title: "{name}",
+                content: [
+                  {
+                    type: "fields",
+                    fieldInfos: [
+                      {
+                        fieldName: "rating",
+                        label: "Rating"
+                      },
+                      {
+                        fieldName: "elevation",
+                        label: "Elevation"
+                      },
+                      {
+                        fieldName: "contactPerson",
+                        label: "Contact Person"
+                      },
+                      {
+                        fieldName: "contactNumber",
+                        label: "Contact Number"
+                      }
+                    ]
+                  },
+                  {
+                    type: "text",
+                    text: "{description}"
+                  }
+                ],
+                actions: [hotelDetailAction, hotelImageAction]
+              };
+
+              // On popUp button click
+              view.popup.on("trigger-action", (event) => {
+                // console.log(event.action.id);
+                let id = event.action.id;
+                if (id.includes("-hotel-details")) {
+                  hotelDetailAction.execute(id.replace("-hotel-details", ""));
+                }
+                if (id.includes("-hotel-images")) {
+                  // console.log('in image');
+                  totalNoOfImages = hotelImageAction.execute(id.replace("-hotel-images", ""));
+                  // console.log(totalNoOfImages);
+                }
+              });
+
+              var markerGraphic = new Graphic({
+                geometry: location,
+                symbol: markerSymbol,
+                attributes: {
+                  name: datum.name,
+                  elevation: 5000,
+                  contactNumber: (datum.contactNumber.toString()).replaceAll(',', ' '),
+                  contactPerson: datum.contactPerson,
+                  rating: datum.rating,
+                  description: datum.description,
+                },
+                popupTemplate: popupTemplate
+              });
+
+              var graphicsLayer = new GraphicsLayer();
+              graphicsLayer.add(markerGraphic);
+              graphicsLayer.elevationInfo = currentElevationInfo;
+              map.add(graphicsLayer);
+              // view.graphics.add(graphicsLayer);
+            }
+
+            // console.log("Sabbai scenes haru", scenes);
+
+          })
+
+      }
+
+      function LocationShower(location, from) {
+        let textSymbol = {
+          type: "text",
+          color: [70, 150, 150],
+          haloColor: [255, 255, 255],
+          haloSize: 1,
+          text: from,
+          xoffset: 0,
+          yoffset: 0,
+          zoffset: 0,
+          font: {
+            size: 16,
+            family: "sans-serif",
+            weight: "bold"
+          }
+        };
+
+        let coord = new Point({
+          x: location.x,
+          y: location.y,
+          z: 300,
+          spatialReference: { wkid: 4326 }
+        });
+
+        let textGraphic = new Graphic({
+          geometry: coord,
+          symbol: textSymbol
+        });
+
+        return textGraphic;
+      }
+
+      view.when(function (event) {
+        routeOverlord("langtang", 'beginner');
+        routeOverlord("langtang", 'advanced');
+        routeOverlord("langtang", 'expert');
+      });
+
+      function viewHotelDetails(info) {
+        document.getElementById("hotelDetailText").innerHTML = '';
+        if (info) {
+          document.getElementById("hotelDetailText").innerHTML = JSON.stringify(info.description);
+        }
+        document.getElementById("hotelDetails").classList.add("show");
+
+      }
+
+      // function viewHotelImages() {
+      //   // panoramaViewer(urlArray);
+      //   document.getElementById("floatingDiv").classList.add("show");
+      // }
+
+      setTimeout(function () {
+        // userStoryTeller();
+        hotelIcon()
+      }, 3000);
+
+      window.addEventListener("load", function () {
+        var buttons = document.querySelectorAll("table button");
+        var lastClickedButton = null;
+
+        buttons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            if (lastClickedButton !== null) {
+              lastClickedButton.classList.remove("clicked");
+            }
+
+            this.classList.add("clicked");
+            lastClickedButton = this;
+
+            buttons.forEach(function (button) {
+              if (button !== this) {
+                button.style.backgroundColor = "#89CFF0";
+              }
+            }, this);
+
+            this.style.backgroundColor = "#001f3f";
+          });
+
+        });
+      });
+    });
+
+
+  </script>
+</head>
+
+<body>
+  
+  <nav class="navbar navbar-expand navbar-light bg-dark ">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+      aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="../index.html"><img src="images/images1.png" height="38" alt="MDB Logo"
+          loading="lazy" /></a>
+      <ul class="navbar-nav mr-auto mt-sm-1 mt-lg-1">
+        <li class="nav-item active">
+        </li>
+      </ul>
+      <a class="nav-link text-white px-3" href="" data-toggle="modal" data-target="#modalLoginForm">Login</a>
+    </div>
+  </nav>
+  <div id="viewDiv"></div>
+  <div class="butn1" id="butn1">
+    <div class="btn-group content-center" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-light text-decoration-none"><a href="../EBC-Begineer/Legs_visible.html"
+          class="text-dark text-decoration-none">Beginner</a></button>
+      <button type="button" class="btn btn-light"><a href="../EBC-Advance1/Legs_visible.html"
+          class="text-dark text-decoration-none">Advanced</a></button>
+      <button type="button" class="btn btn-dark"><a href="../EBC-Expert/Legs_visible.html"
+          class="text-light text-decoration-none ">Expert</a></button>
+    </div>
+  </div>
+
+  <div id="ColCard">
+    <div class="container accordion center-align" style="background-color: transparent; width:400px !important"
+      id="myAccordion">
+      <main>
+        <div class="featured stacked-cards">
+          <ul class="slider container">
+            <li class="item">
+              <button id="leg1" class="btn default leg1"
+                style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5)"
+                onmousedown="vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5)">Leg 1</button>
+              <div id="leg1Detail" class="card"></div>
+              <!-- <div id="leg1white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+            </li>
+            <li>
+            <li class="item">
+              <button id="leg2" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(2,  pathName, difficulty, 6.3,1096,445,2.5)">Leg 2</button>
+              <div id="leg2Detail" class="card"></div>
+              <!-- <div id="leg2white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+
+            </li>
+            <li class="item">
+              <button id="leg3" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(3, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 3</button>
+              <div id="leg3Detail" class="card"></div>
+              <!-- <div id="leg3white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+
+            </li>
+            <li class="item">
+              <button id="leg4" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(4, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 4</button>
+              <div id="leg4Detail" class="card"></div>
+              <!-- <div id="leg4white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+
+            </li>
+            <li class="item">
+              <button id="leg5" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(5, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 5</button>
+              <div id="leg5Detail" class="card"></div>
+              <!-- <div id="leg5white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+
+            </li>
+            <li class="item">
+              <button id="leg6" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(6, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 6</button>
+              <div id="leg6Detail" class="card"></div>
+              <!-- <div id="leg6white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+
+            </li>
+          </ul>
+        </div>
+      </main>
+    </div>
+  </div>
+  </div>
+
+  <div class="modal fade text-right" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content text-center">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+            Email
+            <i class="fa fa-envelope"></i>
+            <input type="email" id="defaultForm-email" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+          </div>
+
+          <div class="md-form mb-4">
+            Password
+            <i class="fa fa-lock"></i>
+            <input type="password" id="defaultForm-pass" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center ">
+          <button class="btn btn-dark">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade " id="modal360" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog mod1" role="document">
+      <div class="modal-content text-center">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">360 View</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container img-box">
+            <iframe frameborder="0" class="align-self-center"
+              src="https://momento360.com/e/u/d7023905c9ed4f8390a3bca3020d219d?utm_campaign=embed&utm_source=other&heading=-834.73&pitch=18.31&field-of-view=99&size=medium&display-plan=true"></iframe>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center ">
+          <a href="../3d.html"><button class="btn btn-dark">Full Screen</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade text-right" id="modalguide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true" style="top: 50px;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content text-center">
+        <div class="modal-header text-center" style="background-color: rgba(24, 136, 249, 0.815);">
+          <h4 class="modal-title w-100 font-weight-bold">Top Guide For this Route</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="carouselExampleControls" class="carousel slide" data-interval="false">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="Card3">
+                  <img src="https://abenteuer-berg.de/wp-content/uploads/2020/12/vinayak-II.jpg" />
+                  <div class="overlay">
+                    <div class="line">
+                      <h2 class="title">Ming Sherpa</h2>
+                    </div>
+                    <div class="content">
+                      <p>Bringing unlocked me an striking ye perceive. Mr by wound hours oh happy. Me in
+                        resolution pianoforte continuing we. Most my no spot felt by no. He he in forfeited
+                        furniture sweetness he arranging. Me tedious so to behaved written account ferrars
+                        moments. </p>
+                    </div>
+                    <a href="../3d.html"><button class="btn btn-dark"
+                        style="background-color: rgba(44, 132, 246, 0.793);">Book</button></a>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="container">
+                  <div class="Card3">
+                    <img src="https://www.nepalindependentguide.com/wp-content/uploads/2022/10/trek-leader.gif" />
+                    <div class="overlay">
+                      <div class="line">
+                        <h2 class="title">Tenzhing Sherpa </h2>
+                      </div>
+                      <div class="content">
+                        <p>Bringing unlocked me an striking ye perceive. Mr by wound hours oh happy. Me in
+                          resolution pianoforte continuing we. Most my no spot felt by no. He he in forfeited
+                          furniture sweetness he arranging. Me tedious so to behaved written account ferrars
+                          moments. </p>
+                      </div>
+                      <a href="../3d.html"><button class="btn btn-dark"
+                          style="background-color: rgba(44, 132, 246, 0.793);">Book</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</body>
+
+</html>

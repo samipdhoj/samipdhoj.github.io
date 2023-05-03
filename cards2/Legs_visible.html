@@ -36,6 +36,152 @@
       box-sizing: border-box;
     }
 
+    .cards-box {
+      position: relative;
+      transform: translateX(-15px);
+    }
+
+    .cards-box .card {
+      width: calc(18rem + 19vh);
+      max-width: 80vw;
+      background: #f7fffd;
+      border-radius: 14px;
+      cursor: pointer;
+    }
+
+    .cards-box .card.hide {
+      visibility: hidden;
+    }
+
+    .cards-box .card:not(.hide) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: all 0.8s cubic-bezier(0.18, 0.98, 0.45, 1);
+      box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.07);
+    }
+
+    .cards-box .card:not(.hide)[data-slide='0'] {
+      transform: translate(0px, 0px) scale(1);
+      z-index: 6;
+      opacity: 1;
+    }
+
+    .cards-box .card:not(.hide)[data-slide='1'] {
+      transform: translate(15px, 15px) scale(0.975);
+      z-index: 5;
+      opacity: 0.9;
+    }
+
+    .cards-box .card:not(.hide)[data-slide='2'] {
+      transform: translate(30px, 30px) scale(0.95);
+      z-index: 4;
+      opacity: 0.8;
+    }
+
+    .cards-box .card:not(.hide)[data-slide='3'] {
+      transform: translate(45px, 45px) scale(0.925);
+      z-index: 3;
+      opacity: 0.7;
+    }
+
+    .cards-box .card:not(.hide)[data-slide='4'] {
+      transform: translate(60px, 60px) scale(0.9);
+      z-index: 2;
+      opacity: 0.6;
+    }
+
+    .cards-box .card:not(.hide)[data-slide='5'] {
+      transform: translate(75px, 75px) scale(0.875);
+      z-index: 1;
+      opacity: 0.5;
+    }
+
+    .cards-box .card:not(.hide)[data-slide='0'] {
+      transition: all 0.32s cubic-bezier(0.18, 0.98, 0.45, 1);
+    }
+
+    .content-placeholder {
+      padding: 14px 18px 20px;
+    }
+
+    .content-placeholder .row {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      margin-bottom: calc(.8rem + 0.4vw);
+    }
+
+    .content-placeholder .row .img {
+      flex-shrink: 0;
+      position: relative;
+      margin-right: 20px;
+      background: #5eebc6;
+      width: calc(56px + 2vw);
+      height: calc(56px + 2vw);
+      border-radius: 50%;
+    }
+
+    .content-placeholder .row .img::after {
+      content: attr(data-letter);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: calc(30px + 1vw);
+      font-weight: bold;
+      color: white;
+    }
+
+    .content-placeholder .row .img-text {
+      background: #a7f4e0;
+      width: 45%;
+      min-width: 145px;
+      height: 20px;
+      margin-top: -20px;
+      border-radius: 10px;
+    }
+
+    .content-placeholder .row .img-text::after {
+      content: "";
+      display: block;
+      width: 80%;
+      height: 10px;
+      margin-top: 30px;
+      background: #a7f4e0;
+      border-radius: 10px;
+    }
+
+    .content-placeholder .text {
+      background: #a7f4e0;
+      width: 90%;
+      height: 2vh;
+      min-height: 12px;
+      max-height: 14px;
+      border-radius: 10px;
+    }
+
+    .content-placeholder .text.text--m {
+      width: 80%;
+      margin-top: 2vh;
+      height: 2vh;
+      min-height: 12px;
+    }
+
+    .content-placeholder .text.text--s {
+      width: 70%;
+      margin-top: 2vh;
+      height: 2vh;
+      min-height: 12px;
+    }
+
+    .content-placeholder .btn {
+      width: 100%;
+      height: 50px;
+      margin-top: 20px;
+      background-color: #11d5af;
+      border-radius: 40px;
+    }
 
     input[type="radio"] {
       display: none;
@@ -80,7 +226,8 @@
 
     #item-1:checked~.cards #song-3,
     #item-2:checked~.cards #song-1,
-    #item-3:checked~.cards #song-2 {
+    #item-3:checked~.cards #song-2,
+    #item-4:checked~.cards #song-3 {
       transform: translatex(-40%) scale(0.8);
       opacity: 0.4;
       z-index: 0;
@@ -88,7 +235,8 @@
 
     #item-1:checked~.cards #song-2,
     #item-2:checked~.cards #song-3,
-    #item-3:checked~.cards #song-1 {
+    #item-3:checked~.cards #song-4,
+    #item-4:checked~.cards #song-1 {
       transform: translatex(40%) scale(0.8);
       opacity: 0.4;
       z-index: 0;
@@ -96,7 +244,8 @@
 
     #item-1:checked~.cards #song-1,
     #item-2:checked~.cards #song-2,
-    #item-3:checked~.cards #song-3 {
+    #item-3:checked~.cards #song-3,
+    #item-4:checked~.cards #song-4 {
       transform: translatex(0) scale(1);
       opacity: 1;
       z-index: 1;
@@ -104,7 +253,8 @@
 
     #item-1:checked~.cards #song-1 img,
     #item-2:checked~.cards #song-2 img,
-    #item-3:checked~.cards #song-3 img {
+    #item-3:checked~.cards #song-3 img,
+    #item-4:checked~.cards #song-4 img {
       box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.47);
     }
 
@@ -195,6 +345,10 @@
 
     #item-3:checked~.player #test {
       transform: translateY(-80px);
+    }
+
+    #item-4:checked~.player #test {
+      transform: translateY(-120px);
     }
   </style>
   <style>
@@ -322,11 +476,9 @@
 
       #myAccordion {
         height: 400px;
-        width: auto;
+        width: 100% !important;
         position: absolute;
         top: 70%;
-        padding-left: 10px;
-        padding-right: 10px;
         z-index: 400;
         left: 5px;
         overflow-x: scroll;
@@ -340,8 +492,8 @@
         width: 218px;
         position: absolute;
         top: 140px;
-        left: 5px;
-        padding: 2px;
+        left: 0px;
+        /* padding: 2px; */
         z-index: 400;
       }
 
@@ -430,24 +582,24 @@
 
       desc = `
       <div style="background-color: rgb(255, 255, 255); font-size:5px; height: 100px;">
-            <div class="row p-lg-1">
-              <div class="col-5" style="font-size:15px">Start</div>
+            <div class="row">
+              <div class="col-6" style="font-size:15px">Start</div>
               <div class="col" style="font-size:15px"> ${place0} (${place0elv}m)</div>
             </div>
             <div class="row p-lg-1">
-              <div class="col-5" style="font-size:15px">End</div>
+              <div class="col-6" style="font-size:15px">End</div>
               <div class="col" style="font-size:15px">${place1} (${place1elv} m)</div>
             </div>
             <div class="row p-lg-1">
-              <div class="col-5" style="font-size:15px">Distance</div>
+              <div class="col-6" style="font-size:15px">Distance</div>
               <div class="col" style="font-size:15px">${distance}km</div>
             </div>
             <div class="row p-lg-1">
-              <div class="col-5" style="font-size:15px">Elevation</div>
+              <div class="col-6" style="font-size:15px">Elevation</div>
               <div class="col" style="font-size:15px">↗${up}m ↘${down}m</div>
             </div>
             <div class="row p-lg-1">
-              <div class="col-5" style="font-size:15px">Duration</div>
+              <div class="col-6" style="font-size:15px">Duration</div>
               <div class="col" style="font-size:15px">${duration} hrs</div>
             </div>
             </div>
@@ -764,6 +916,7 @@
     });
   </script>
 </head>
+
 <body>
   <nav class="navbar navbar-expand navbar-light bg-dark ">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
@@ -792,13 +945,9 @@
     </div>
   </div>
   <div id="ColCard">
-    <div class="container accordion" style="background-color: transparent; height: 250px;"" id="myAccordion"
-      style="width:auto !important; ">
-      <div class="container text-center">
-        <input type="radio" name="slider" id="item-1" checked>
-        <input type="radio" name="slider" id="item-2">
-        <input type="radio" name="slider" id="item-3">
-        <div class="cards" >
+    <div class=" accordion" style="background-color: transparent; height: 250px;" id="myAccordion"
+      style="width:auto !important;">
+      <!-- <div class="cards">
           <label class="card" for="item-1" id="song-1"
             onClick="vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5)">
             <label class="song-info" style="background-color: #2992dc; width: 100%;" id="song-info-1">
@@ -820,9 +969,111 @@
             </label>
             <div id="leg3Detail"></div>
           </label>
+          <label class="card" for="item-4" id="song-4"
+            onClick="vanillaReact(4, pathName, difficulty, 9.5,1481.2,1045,3)">
+            <label class="song-info" style="background-color: #2992dc; width: 100%;" id="song-info-1">
+              <h4>Leg 4</h4>
+            </label>
+            <div id="leg4Detail"></div>
+          </label> -->
 
-
-<!--           
+      <div class="cards-box">
+        <div class="card hide">
+          <div class="content-placeholder">
+            <label class="card" for="item-1" id="song-1"
+              onClick="vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5)">
+              <label class="song-info" style="background-color: #2992dc; width: 100%;" id="song-info-1">
+                <h4>Leg 1</h4>
+              </label>
+            </label>
+            <div style="background-color: rgb(255, 255, 255); font-size:5px; height: 100px;">
+              <div class="row">
+                <div class="col-6" style="font-size:15px">Start</div>
+                <div class="col" style="font-size:15px"> ${place0} (${place0elv}m)</div>
+              </div>
+              <div class="row p-lg-1">
+                <div class="col-6" style="font-size:15px">End</div>
+                <div class="col" style="font-size:15px">${place1} (${place1elv} m)</div>
+              </div>
+              <div class="row p-lg-1">
+                <div class="col-6" style="font-size:15px">Distance</div>
+                <div class="col" style="font-size:15px">${distance}km</div>
+              </div>
+              <div class="row p-lg-1">
+                <div class="col-6" style="font-size:15px">Elevation</div>
+                <div class="col" style="font-size:15px">↗${up}m ↘${down}m</div>
+              </div>
+              <div class="row p-lg-1">
+                <div class="col-6" style="font-size:15px">Duration</div>
+                <div class="col" style="font-size:15px">${duration} hrs</div>
+              </div>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="content-placeholder">
+            <div style="background-color: rgb(255, 255, 255); font-size:5px; height: 100px;">
+              <div class="row">
+                <div class="col-6" style="font-size:15px">Start</div>
+                <div class="col" style="font-size:15px"> ${place0} (${place0elv}m)</div>
+              </div>
+              <div class="row p-lg-1">
+                <div class="col-6" style="font-size:15px">End</div>
+                <div class="col" style="font-size:15px">${place1} (${place1elv} m)</div>
+              </div>
+              <div class="row p-lg-1">
+                <div class="col-6" style="font-size:15px">Distance</div>
+                <div class="col" style="font-size:15px">${distance}km</div>
+              </div>
+              <div class="row p-lg-1">
+                <div class="col-6" style="font-size:15px">Elevation</div>
+                <div class="col" style="font-size:15px">↗${up}m ↘${down}m</div>
+              </div>
+              <div class="row p-lg-1">
+                <div class="col-6" style="font-size:15px">Duration</div>
+                <div class="col" style="font-size:15px">${duration} hrs</div>
+              </div>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="card">
+          <div class="content-placeholder"><div style="background-color: rgb(255, 255, 255); font-size:5px; height: 100px;">
+                <div class="row">
+                  <div class="col-6" style="font-size:15px">Start</div>
+                  <div class="col" style="font-size:15px"> ${place0} (${place0elv}m)</div>
+                </div>
+                <div class="row p-lg-1">
+                  <div class="col-6" style="font-size:15px">End</div>
+                  <div class="col" style="font-size:15px">${place1} (${place1elv} m)</div>
+                </div>
+                <div class="row p-lg-1">
+                  <div class="col-6" style="font-size:15px">Distance</div>
+                  <div class="col" style="font-size:15px">${distance}km</div>
+                </div>
+                <div class="row p-lg-1">
+                  <div class="col-6" style="font-size:15px">Elevation</div>
+                  <div class="col" style="font-size:15px">↗${up}m ↘${down}m</div>
+                </div>
+                <div class="row p-lg-1">
+                  <div class="col-6" style="font-size:15px">Duration</div>
+                  <div class="col" style="font-size:15px">${duration} hrs</div>
+                </div>
+                </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="content-placeholder">
+            <div id="leg2Detail"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="content-placeholder">
+            <div id="leg2Detail"></div>
+          </div>
+        </div>
+      </div>
+      <!--           
           <li class="item">
             <button id="leg4" class="btn default"
               style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
@@ -841,101 +1092,79 @@
               onClick="vanillaReact(6, pathName, difficulty, 7.1,619.5,308.6,2)">Leg 6</button>
             <div id="leg6Detail" class="card"></div>
           </li> -->
-        </div>
-      </div>
     </div>
-  </div>
-  </div>
 
-  <div class="modal fade text-right" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content text-center">
-        <div class="modal-header text-center">
-          <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body mx-3">
-          <div class="md-form mb-5">
-            Email
-            <i class="fa fa-envelope"></i>
-            <input type="email" id="defaultForm-email" class="form-control validate">
-            <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+    <div class="modal fade text-right" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content text-center">
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-          <div class="md-form mb-4">
-            Password
-            <i class="fa fa-lock"></i>
-            <input type="password" id="defaultForm-pass" class="form-control validate">
-            <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+          <div class="modal-body mx-3">
+            <div class="md-form mb-5">
+              Email
+              <i class="fa fa-envelope"></i>
+              <input type="email" id="defaultForm-email" class="form-control validate">
+              <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+            </div>
+            <div class="md-form mb-4">
+              Password
+              <i class="fa fa-lock"></i>
+              <input type="password" id="defaultForm-pass" class="form-control validate">
+              <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+            </div>
           </div>
-        </div>
-        <div class="modal-footer d-flex justify-content-center ">
-          <button class="btn btn-dark">Login</button>
+          <div class="modal-footer d-flex justify-content-center ">
+            <button class="btn btn-dark">Login</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="modal fade " id="modal360" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog mod1" role="document">
-      <div class="modal-content text-center">
-        <div class="modal-header text-center">
-          <h4 class="modal-title w-100 font-weight-bold">360 View</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="container img-box">
-            <iframe frameborder="0" class="align-self-center"
-              src="https://momento360.com/e/u/d7023905c9ed4f8390a3bca3020d219d?utm_campaign=embed&utm_source=other&heading=-834.73&pitch=18.31&field-of-view=99&size=medium&display-plan=true"></iframe>
+    <div class="modal fade " id="modal360" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog mod1" role="document">
+        <div class="modal-content text-center">
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">360 View</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-        </div>
-        <div class="modal-footer d-flex justify-content-center ">
-          <a href="../3d.html"><button class="btn btn-dark">Full Screen</button></a>
+          <div class="modal-body">
+            <div class="container img-box">
+              <iframe frameborder="0" class="align-self-center"
+                src="https://momento360.com/e/u/d7023905c9ed4f8390a3bca3020d219d?utm_campaign=embed&utm_source=other&heading=-834.73&pitch=18.31&field-of-view=99&size=medium&display-plan=true"></iframe>
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center ">
+            <a href="../3d.html"><button class="btn btn-dark">Full Screen</button></a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="modal fade text-right" id="modalguide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-    aria-hidden="true" style="top: 50px;">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content text-center">
-        <div class="modal-header text-center" style="background-color: rgba(24, 136, 249, 0.815);">
-          <h4 class="modal-title w-100 font-weight-bold">Top Guide For this Route</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div id="carouselExampleControls" class="carousel slide" data-interval="false">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="Card3">
-                  <img src="https://abenteuer-berg.de/wp-content/uploads/2020/12/vinayak-II.jpg" />
-                  <div class="overlay">
-                    <div class="line">
-                      <h2 class="title">Ming Sherpa</h2>
-                    </div>
-                    <div class="content">
-                      <p>Bringing unlocked me an striking ye perceive. Mr by wound hours oh happy. Me in
-                        resolution pianoforte continuing we. Most my no spot felt by no. He he in forfeited
-                        furniture sweetness he arranging. Me tedious so to behaved written account ferrars
-                        moments. </p>
-                    </div>
-                    <a href="../3d.html"><button class="btn btn-dark"
-                        style="background-color: rgba(44, 132, 246, 0.793);">Book</button></a>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="container">
+    <div class="modal fade text-right" id="modalguide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true" style="top: 50px;">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content text-center">
+          <div class="modal-header text-center" style="background-color: rgba(24, 136, 249, 0.815);">
+            <h4 class="modal-title w-100 font-weight-bold">Top Guide For this Route</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="carouselExampleControls" class="carousel slide" data-interval="false">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
                   <div class="Card3">
-                    <img src="https://www.nepalindependentguide.com/wp-content/uploads/2022/10/trek-leader.gif" />
+                    <img src="https://abenteuer-berg.de/wp-content/uploads/2020/12/vinayak-II.jpg" />
                     <div class="overlay">
                       <div class="line">
-                        <h2 class="title">Tenzhing Sherpa </h2>
+                        <h2 class="title">Ming Sherpa</h2>
                       </div>
                       <div class="content">
                         <p>Bringing unlocked me an striking ye perceive. Mr by wound hours oh happy. Me in
@@ -948,19 +1177,39 @@
                     </div>
                   </div>
                 </div>
+                <div class="carousel-item">
+                  <div class="container">
+                    <div class="Card3">
+                      <img src="https://www.nepalindependentguide.com/wp-content/uploads/2022/10/trek-leader.gif" />
+                      <div class="overlay">
+                        <div class="line">
+                          <h2 class="title">Tenzhing Sherpa </h2>
+                        </div>
+                        <div class="content">
+                          <p>Bringing unlocked me an striking ye perceive. Mr by wound hours oh happy. Me in
+                            resolution pianoforte continuing we. Most my no spot felt by no. He he in forfeited
+                            furniture sweetness he arranging. Me tedious so to behaved written account ferrars
+                            moments. </p>
+                        </div>
+                        <a href="../3d.html"><button class="btn btn-dark"
+                            style="background-color: rgba(44, 132, 246, 0.793);">Book</button></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
               </div>
-              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
             </div>
           </div>
         </div>
       </div>
-    </div>
 </body>
+
 </html>
