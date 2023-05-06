@@ -10,14 +10,16 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <link href="style.css" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
   <link href="/dist/output.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script> -->
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href=' http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
@@ -26,7 +28,6 @@
   <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
   <script src="./card.js"></script>
-
   <style>
     .column {
       float: left;
@@ -199,6 +200,7 @@
       }
     }
   </style>
+
   <style>
     html,
     body,
@@ -207,7 +209,19 @@
       margin: 0;
       height: 100%;
       width: 100%;
+      position: relative;
     }
+    #info {
+    position: absolute;
+    z-index: 10;
+    background-color: black;
+    border: 1px solid #ccc;
+    color: #fff;
+    padding: 5px;
+    font-size: 18px;
+    top: -10em;
+    pointer-events: none;
+}
 
     .esri-elevation-profile.esri-component.esri-widget--panel {
       width: 350px !important;
@@ -226,7 +240,6 @@
       height: 5%
     }
   </style>
-
   <script src='database_get_elev.js'></script>
   <script>
     async function getData(url = '') {
@@ -253,12 +266,13 @@
       let desc;
       for (var i = 1; i <= legNum; i++) {
         id = "leg" + i.toString() + "Detail";
-        if (document.getElementById(id)) document.getElementById(id).innerHTML = ""; // Replace with expanding function
+        id1 = `<div style="height:200px; @media only screen and (max-width: 1080px){height:50px !important}"></div>`;
+        if (document.getElementById(id)) document.getElementById(id).innerHTML = id1; // Replace with expanding function
       }
       id = "leg" + leg.toString() + "Detail";
       var pathLocations = giveCoordinate("source_paths", pathName, difficulty);
-      // console.log(pathLocations)
-      // console.log(leg)
+      console.log(pathLocations)
+      console.log(leg)
       var place0 = pathLocations[leg - 1];
       var place0elv = giveCoordinate("source_locations", pathLocations[leg - 1])[2];
 
@@ -267,7 +281,30 @@
       var place1elv = giveCoordinate("source_locations", pathLocations[leg])[2];
 
 
-      desc = "Start:&nbsp&nbsp&nbsp" + place0 + "&nbsp" + place0elv + "m" + "<br>End:&nbsp&nbsp&nbsp" + place1 + "&nbsp" + place1elv + "m" + "<br>Distance:&nbsp&nbsp" + distance + "&nbspkm" + "<br>Elevation:&nbsp&nbsp" + "up&nbsp" + up + "m" + "&nbsp" + "down&nbsp" + down + "m" + "<br>Duration:&nbsp&nbsp&nbsp" + duration + "hrs" + "<br>Staying@:&nbsp&nbsp&nbsp" + place1 + "&nbsplodge"
+      desc = `
+            <div>
+            <div class="row p-lg-1">
+              <div class="col-4">Start</div>
+              <div class="col"> ${place0} (${place0elv} m)</div>
+            </div>
+            <div class="row p-lg-1">
+              <div class="col-4">End</div>
+              <div class="col">${place1} (${place1elv} m)</div>
+            </div>
+            <div class="row p-lg-1">
+              <div class="col-4">Distance</div>
+              <div class="col">${distance} km</div>
+            </div>
+            <div class="row p-lg-1">
+              <div class="col-4">Elevation</div>
+              <div class="col">↗ ${up}m &nbsp; &nbsp; ↘ ${down}m</div>
+            </div>
+            <div class="row p-lg-1">
+              <div class="col-4">Duration</div>
+              <div class="col">${duration} hrs</div>
+            </div>
+            </div>
+          `
 
 
       // Change according to data using database
@@ -331,7 +368,9 @@
       var map = new Map({
         basemap: "satellite",
         ground: "world-elevation",
-        maxScale: 100
+        maxScale: 100,
+        autoResize: true
+
       });
 
 
@@ -705,41 +744,6 @@
                 maxScale: 2500
               });
 
-              //   const hotelDetailAction = {
-              //     title: "View Details",
-              //     id: datum.hotelCode + "-hotel-details",
-              //     image: "https://raw.githubusercontent.com/Isha-Karn/SQL_Learning/master/Hotel_designed.png",
-              //     execute: function (id) {
-              //       showHotelInfo(id);
-              //     }
-              //   };
-
-              //   function showHotelInfo(hotelId) {
-              //     const url = 'http://localhost:3001/hotels/langtang/' + hotelId;
-              //     const myPromise = getData(url);
-              //     // console.log('url for hotel ', url);
-              //     viewHotelDetails();
-              //     myPromise
-              //       .then((data) => {
-              //         // testVar = data;
-              //         // console.log("from showHotelInfo",data)
-              //         viewHotelDetails(data);
-              //       })
-              //   }
-
-              //   const hotelImageAction = {
-              //     title: "View 360 images",
-              //     id: datum.hotelCode + "-hotel-images",
-              //     image: "https://raw.githubusercontent.com/Isha-Karn/SQL_Learning/master/Hotel_designed.png",
-              //     execute: function (id) {
-              //       document.getElementById("floatingDiv").classList.add("show");
-              //       // console.log("finael", scenes);
-              //       console.log('passed id ', id);
-              //       panoramaViewer(scenes[id]);
-              //       console.log('passing', datum.hotelCode, scenes[datum.hotelCode]);
-              //       return Object.keys(scenes[id]).length;
-              //     }
-              //   };
 
               let mediaInfos = []
               for (singleImage of imageStory) {
@@ -841,9 +845,9 @@
               scenes[datum.hotelCode] = sceneArray;
 
               var markerSymbol = new PictureMarkerSymbol({
-                url: "https://raw.githubusercontent.com/Isha-Karn/SQL_Learning/master/Hotel_Gold-removebg-preview.png",
-                height: 64,
-                width: 64,
+                url: "https://raw.githubusercontent.com/Isha-Karn/SQL_Learning/master/My%20project%20(1).png",
+                height: 48,
+                width: 48,
                 minScale: 2000,
                 maxScale: 2500
               });
@@ -1070,185 +1074,193 @@
       display: none
     }
   </style>
-  
 
-<nav class="navbar navbar-expand navbar-light bg-dark ">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
-    aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="../index.html"><img src="images/images1.png" height="38" alt="MDB Logo"
-        loading="lazy" /></a>
-    <ul class="navbar-nav mr-auto mt-sm-1 mt-lg-1">
-      <li class="nav-item active">
-      </li>
-    </ul>
-    <a class="nav-link text-white px-3" href="" data-toggle="modal" data-target="#modalLoginForm">Login</a>
+
+  <nav class="navbar navbar-expand navbar-light bg-dark ">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+      aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="../index.html"><img src="images/images1.png" height="38" alt="MDB Logo"
+          loading="lazy" /></a>
+      <ul class="navbar-nav mr-auto mt-sm-1 mt-lg-1">
+        <li class="nav-item active">
+        </li>
+      </ul>
+      <a class="nav-link text-white px-3" href="" data-toggle="modal" data-target="#modalLoginForm">Login</a>
+    </div>
+  </nav>
+  <div id="viewDiv"><div id="info"></div></div>
+  <div class="butn1" id="butn1">
+    <div class="btn-group content-center" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-dark text-decoration-none"><a href="../EBC-Begineer/Legs_visible.html"
+          class="text-light text-decoration-none">Beginner</a></button>
+      <button type="button" class="btn btn-light"><a href="../EBC-Advance1/Legs_visible.html"
+          class="text-dark text-decoration-none">Advanced</a></button>
+      <button type="button" class="btn btn-light"><a href="../EBC-Expert/Legs_visible.html"
+          class="text-dark text-decoration-none ">Expert</a></button>
+    </div>
   </div>
-</nav>
-<div id="viewDiv"></div>
-<div class="butn1" id="butn1">
-  <div class="btn-group content-center" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-light text-decoration-none"><a href="../EBC-Begineer/Legs_visible.html"
-        class="text-dark text-decoration-none">Beginner</a></button>
-    <button type="button" class="btn btn-light"><a href="../EBC-Advance1/Legs_visible.html"
-        class="text-dark text-decoration-none">Advanced</a></button>
-    <button type="button" class="btn btn-dark"><a href="../EBC-Expert/Legs_visible.html"
-        class="text-light text-decoration-none ">Expert</a></button>
-  </div>
-</div>
 
-<div id="ColCard">
-  <div class="container accordion center-align" style="background-color: transparent; width:400px !important"
-    id="myAccordion">
-    <main>
-      <div class="featured stacked-cards">
-        <ul class="slider container">
-          <li class="item">
-            <button id="leg1" class="btn default leg1"
-              style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
-              onClick="vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5)"
-              onmousedown="vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5)">Leg 1</button>
-            <div id="leg1Detail" class="card"></div>
-            <!-- <div id="leg1white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
-          </li>
-          <li>
-          <li class="item">
-            <button id="leg2" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
-              onClick="vanillaReact(2,  pathName, difficulty, 6.3,1096,445,2.5)">Leg 2</button>
-            <div id="leg2Detail" class="card"></div>
-            <!-- <div id="leg2white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+  <div id="ColCard">
+    <div class="container accordion center-align" style="background-color: transparent; width:400px !important"
+      id="myAccordion">
+      <main>
+        <div class="featured stacked-cards">
+          <ul class="slider container">
+            <li class="item">
+              <button id="leg1" class="btn default leg1"
+                style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(1, pathName, difficulty,11.9,1009,1167, 5)">Leg 1</button>
+              <div id="leg1Detail" class="card"></div>
+              <!-- <div id="leg1white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+            </li>
+            <li>
+            <li class="item">
+              <button id="leg2" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(2,  pathName, difficulty, 6.3,1096,445,2.5)">Leg 2</button>
+              <div id="leg2Detail" class="card"></div>
+              <!-- <div id="leg2white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
 
-          </li>
-          <li class="item">
-            <button id="leg3" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
-              onClick="vanillaReact(3, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 3</button>
-            <div id="leg3Detail" class="card"></div>
-            <!-- <div id="leg3white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+            </li>
+            <li class="item">
+              <button id="leg3" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(3, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 3</button>
+              <div id="leg3Detail" class="card"></div>
+              <!-- <div id="leg3white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
 
-          </li>
-          <li class="item">
-            <button id="leg4" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
-              onClick="vanillaReact(4, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 4</button>
-            <div id="leg4Detail" class="card"></div>
-            <!-- <div id="leg4white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+            </li>
+            <li class="item">
+              <button id="leg4" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(4, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 4</button>
+              <div id="leg4Detail" class="card"></div>
+              <!-- <div id="leg4white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
 
-          </li>
-          <li class="item">
-            <button id="leg5" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
-              onClick="vanillaReact(5, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 5</button>
-            <div id="leg5Detail" class="card"></div>
-            <!-- <div id="leg5white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+            </li>
+            <li class="item">
+              <button id="leg5" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(5, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 5</button>
+              <div id="leg5Detail" class="card"></div>
+              <!-- <div id="leg5white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
 
-          </li>
-          <li class="item">
-            <button id="leg6" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
-              onClick="vanillaReact(6, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 6</button>
-            <div id="leg6Detail" class="card"></div>
-            <!-- <div id="leg6white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+            </li>
+            <li class="item">
+              <button id="leg6" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(6, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 6</button>
+              <div id="leg6Detail" class="card"></div>
+              <!-- <div id="leg6white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
 
-          </li>
-        </ul>
-      </div>
-    </main>
-  </div>
-</div>
-</div>
+            </li>
+            <li class="item">
+              <button id="leg7" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(7, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 7</button>
+              <div id="leg7Detail" class="card"></div>
+              <!-- <div id="leg6white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
 
-<div class="modal fade text-right" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content text-center">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          Email
-          <i class="fa fa-envelope"></i>
-          <input type="email" id="defaultForm-email" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+            </li>
+            <li class="item">
+              <button id="leg8" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(8, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 8</button>
+              <div id="leg8Detail" class="card"></div>
+              <!-- <div id="leg6white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+
+            </li>
+            <li class="item">
+              <button id="leg9" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(9, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 9</button>
+              <div id="leg9Detail" class="card"></div>
+              <!-- <div id="leg6white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+
+            </li>
+            <li class="item">
+              <button id="leg10" class="btn default" style="width: 100%; background-color: rgba(10, 155, 246, 0.919);"
+                onClick="vanillaReact(10, pathName, difficulty, 9.5,1481.2,1045,3)">Leg 10</button>
+              <div id="leg10Detail" class="card"></div>
+              <!-- <div id="leg6white" style="height: 200px; background-color: rgb(255, 255, 255);"></div> -->
+
+            </li>
+          </ul>
         </div>
+      </main>
+    </div>
+  </div>
+  </div>
 
-        <div class="md-form mb-4">
-          Password
-          <i class="fa fa-lock"></i>
-          <input type="password" id="defaultForm-pass" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+  <div class="modal fade text-right" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content text-center">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-      </div>
-      <div class="modal-footer d-flex justify-content-center ">
-        <button class="btn btn-dark">Login</button>
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+            Email
+            <i class="fa fa-envelope"></i>
+            <input type="email" id="defaultForm-email" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+          </div>
+
+          <div class="md-form mb-4">
+            Password
+            <i class="fa fa-lock"></i>
+            <input type="password" id="defaultForm-pass" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center ">
+          <button class="btn btn-dark">Login</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
-<div class="modal fade " id="modal360" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog mod1" role="document">
-    <div class="modal-content text-center">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">360 View</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="container img-box">
-          <iframe frameborder="0" class="align-self-center"
-            src="https://momento360.com/e/u/d7023905c9ed4f8390a3bca3020d219d?utm_campaign=embed&utm_source=other&heading=-834.73&pitch=18.31&field-of-view=99&size=medium&display-plan=true"></iframe>
+  <div class="modal fade " id="modal360" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog mod1" role="document">
+      <div class="modal-content text-center">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">360 View</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-      </div>
-      <div class="modal-footer d-flex justify-content-center ">
-        <a href="../3d.html"><button class="btn btn-dark">Full Screen</button></a>
+        <div class="modal-body">
+          <div class="container img-box">
+            <iframe frameborder="0" class="align-self-center"
+              src="https://momento360.com/e/u/d7023905c9ed4f8390a3bca3020d219d?utm_campaign=embed&utm_source=other&heading=-834.73&pitch=18.31&field-of-view=99&size=medium&display-plan=true"></iframe>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center ">
+          <a href="../3d.html"><button class="btn btn-dark">Full Screen</button></a>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="modal fade text-right" id="modalguide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true" style="top: 50px;">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content text-center">
-      <div class="modal-header text-center" style="background-color: rgba(24, 136, 249, 0.815);">
-        <h4 class="modal-title w-100 font-weight-bold">Top Guide For this Route</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div id="carouselExampleControls" class="carousel slide" data-interval="false">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="Card3">
-                <img src="https://abenteuer-berg.de/wp-content/uploads/2020/12/vinayak-II.jpg" />
-                <div class="overlay">
-                  <div class="line">
-                    <h2 class="title">Ming Sherpa</h2>
-                  </div>
-                  <div class="content">
-                    <p>Bringing unlocked me an striking ye perceive. Mr by wound hours oh happy. Me in
-                      resolution pianoforte continuing we. Most my no spot felt by no. He he in forfeited
-                      furniture sweetness he arranging. Me tedious so to behaved written account ferrars
-                      moments. </p>
-                  </div>
-                  <a href="../3d.html"><button class="btn btn-dark"
-                      style="background-color: rgba(44, 132, 246, 0.793);">Book</button></a>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="container">
+  <div class="modal fade text-right" id="modalguide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true" style="top: 50px;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content text-center">
+        <div class="modal-header text-center" style="background-color: rgba(24, 136, 249, 0.815);">
+          <h4 class="modal-title w-100 font-weight-bold">Top Guide For this Route</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="carouselExampleControls" class="carousel slide" data-interval="false">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
                 <div class="Card3">
-                  <img src="https://www.nepalindependentguide.com/wp-content/uploads/2022/10/trek-leader.gif" />
+                  <img src="https://abenteuer-berg.de/wp-content/uploads/2020/12/vinayak-II.jpg" />
                   <div class="overlay">
                     <div class="line">
-                      <h2 class="title">Tenzhing Sherpa </h2>
+                      <h2 class="title">Ming Sherpa</h2>
                     </div>
                     <div class="content">
                       <p>Bringing unlocked me an striking ye perceive. Mr by wound hours oh happy. Me in
@@ -1261,30 +1273,49 @@
                   </div>
                 </div>
               </div>
+              <div class="carousel-item">
+                <div class="container">
+                  <div class="Card3">
+                    <img src="https://www.nepalindependentguide.com/wp-content/uploads/2022/10/trek-leader.gif" />
+                    <div class="overlay">
+                      <div class="line">
+                        <h2 class="title">Tenzhing Sherpa </h2>
+                      </div>
+                      <div class="content">
+                        <p>Bringing unlocked me an striking ye perceive. Mr by wound hours oh happy. Me in
+                          resolution pianoforte continuing we. Most my no spot felt by no. He he in forfeited
+                          furniture sweetness he arranging. Me tedious so to behaved written account ferrars
+                          moments. </p>
+                      </div>
+                      <a href="../3d.html"><button class="btn btn-dark"
+                          style="background-color: rgba(44, 132, 246, 0.793);">Book</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
 
 
-  <div id="Buttons">
-    <!-- <button id = 'delete' >Delete</button> -->
-    <button id='beginner-btn'>Beginner</button>
-    <button id='advanced-btn'>Advanced</button>
-    <button id='expert-btn'>Expert</button>
-    <!-- <button id='showStoryBtn'>showStoryBtn</button> -->
-    <!-- <script>
+    <div id="Buttons">
+      <!-- <button id = 'delete' >Delete</button> -->
+      <button id='beginner-btn'>Beginner</button>
+      <button id='advanced-btn'>Advanced</button>
+      <button id='expert-btn'>Expert</button>
+      <!-- <button id='showStoryBtn'>showStoryBtn</button> -->
+      <!-- <script>
       const showStoryBtn = document.getElementById('showStoryBtn');
       const storyUI = document.getElementById('right');
       showStoryBtn.addEventListener('click', function () {
@@ -1297,83 +1328,83 @@
       });
     </script> -->
 
-  </div>
-  <div class="container">
-    <div id="viewDiv" class="left"></div>
-    <div class="right" id="right">
+    </div>
+    <div class="container">
+      <div id="viewDiv" class="left"></div>
+      <div class="right" id="right">
 
-      <div id="storyUI">
-        <H1>User Story</H1>
-        <div id="storyMenu">
-          <button id="addLocation" onclick="locationGetter = true;">Add Point</button><br>
-          <div id="locationContainer"></div><br>
+        <div id="storyUI">
+          <H1>User Story</H1>
+          <div id="storyMenu">
+            <button id="addLocation" onclick="locationGetter = true;">Add Point</button><br>
+            <div id="locationContainer"></div><br>
 
+          </div>
+          <h2>Title</h2>
+          <input id="storyTitle" type="text"></input>
+          <h2>Description</h2>
+          <textarea name="storyDesc" id="storyDesc" cols="50" rows="10"></textarea>
         </div>
-        <h2>Title</h2>
-        <input id="storyTitle" type="text"></input>
-        <h2>Description</h2>
-        <textarea name="storyDesc" id="storyDesc" cols="50" rows="10"></textarea>
       </div>
     </div>
-  </div>
-  <script>
-    // User Story Scripts
-    let locationGetter = false;
-    function addButton(longitude, latitude) {
-      if (locationGetter && longitude && latitude) {
-        const newButton = document.createElement('button');
-        newButton.innerHTML = `Longitude: ${longitude}, Latitude: ${latitude}`;
+    <script>
+      // User Story Scripts
+      let locationGetter = false;
+      function addButton(longitude, latitude) {
+        if (locationGetter && longitude && latitude) {
+          const newButton = document.createElement('button');
+          newButton.innerHTML = `Longitude: ${longitude}, Latitude: ${latitude}`;
 
-        const buttonsContainer = document.getElementById('locationContainer');
-        buttonsContainer.appendChild(newButton);
-        buttonsContainer.appendChild(document.createElement("br"));
-        locationGetter = false;
+          const buttonsContainer = document.getElementById('locationContainer');
+          buttonsContainer.appendChild(newButton);
+          buttonsContainer.appendChild(document.createElement("br"));
+          locationGetter = false;
+        }
       }
-    }
 
     // add event listener to the button
 
-  </script>
+    </script>
 
-  <div id='elevationHaru'>
-  </div>
+    <div id='elevationHaru'>
+    </div>
 
-  <div id="floatingDiv" name='360imageshower'>
-    <button id="closeButton" style="float: right"
-      onclick='document.getElementById("floatingDiv").classList.remove("show")'>Close</button>
-    <button id="nextImage" onclick='index = (index+1) % totalNoOfImages; pv.loadScene(index);'>Next</button>
-    <button id="previousImage"
-      onclick='index = Math.abs((index-1) % totalNoOfImages); pv.loadScene(index)'>Previous</button>
-  </div>
-  <div id="hotelDetails" name='hotelDetails' class="floatingDiv">
-    <button id="closeButton" style="float: right"
-      onclick='document.getElementById("hotelDetails").classList.remove("show")'>Close</button>
-    <div id="hotelDetailText"></div>
-  </div>
+    <div id="floatingDiv" name='360imageshower'>
+      <button id="closeButton" style="float: right"
+        onclick='document.getElementById("floatingDiv").classList.remove("show")'>Close</button>
+      <button id="nextImage" onclick='index = (index+1) % totalNoOfImages; pv.loadScene(index);'>Next</button>
+      <button id="previousImage"
+        onclick='index = Math.abs((index-1) % totalNoOfImages); pv.loadScene(index)'>Previous</button>
+    </div>
+    <div id="hotelDetails" name='hotelDetails' class="floatingDiv">
+      <button id="closeButton" style="float: right"
+        onclick='document.getElementById("hotelDetails").classList.remove("show")'>Close</button>
+      <div id="hotelDetailText"></div>
+    </div>
 
-  <script>
-    // Script for panorama
-    let urlArray = [];
-    let imgIndex = 0;
-    let pv = null;
-    let totalNoOfImages = 0;
-    let index = 0;
-    function panoramaViewer(scenes) {
-      pv = pannellum.viewer('floatingDiv', {
-        "autoLoad": true,
-        "default": {
-          "firstScene": 0,
-          "author": "Ishan Shrestha",
-          "sceneFadeDuration": 1000
-        },
+    <script>
+      // Script for panorama
+      let urlArray = [];
+      let imgIndex = 0;
+      let pv = null;
+      let totalNoOfImages = 0;
+      let index = 0;
+      function panoramaViewer(scenes) {
+        pv = pannellum.viewer('floatingDiv', {
+          "autoLoad": true,
+          "default": {
+            "firstScene": 0,
+            "author": "Ishan Shrestha",
+            "sceneFadeDuration": 1000
+          },
 
-        "scenes": scenes
-      });
-      pv.loadScene(0);
-    }
+          "scenes": scenes
+        });
+        pv.loadScene(0);
+      }
 
     // panoramaViewer("https://raw.githubusercontent.com/Isha-Karn/SQL_Learning/master/Lama_hotel_front.jpeg");
-  </script>
+    </script>
 </body>
 
 </html>

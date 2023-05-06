@@ -1,0 +1,52 @@
+.featured {
+    /* width: 500px; */
+    align-self: center;
+  }
+  
+  .featured .slider {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .featured .slider li {
+    /* height: 200px; */
+    width: 300px;
+    border-radius: 4px;
+    background-color: #00bcd4;
+    /* display: flex; */
+  }
+  
+  .featured .slider li h2 {
+    margin-top: auto;
+    background: #fff;
+    width: auto;
+    padding: 20px 20px;
+    display: block;
+    top: 0;
+  }
+  
+  /* STACKED CARDS */
+  .stacked-cards {
+    position: relative;
+  }
+  
+  .stacked-cards ul {
+    position: relative;
+    max-width: 60%;
+    margin: 0 auto;
+    padding-left: 0;
+  }
+  
+  .stacked-cards li {
+    margin-top: 5px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px 0px #333;
+    list-style: none;
+    width: 15%;
+    position: absolute;
+    left: 10%;
+    transition: 0.5s ease transform;
+  }
+  
+  /*# sourceMappingURL=style.css.map */
