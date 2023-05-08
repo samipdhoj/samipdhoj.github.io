@@ -58,7 +58,7 @@
             var lenAdjust = (els.length % 2 == 0 ? -2 : -1)
 
             // oneHalf if the centerPoint - things go left and right from here
-            var oneHalf = 0;
+            var oneHalf = (els.length + lenAdjust) / 2;
 
             var activeTransform = "translate(" + -50 + "%, 0%)  scale(1)";
 
