@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <meta charset="utf-8" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Laliguras Map</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href=' http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+  <script src="https://unpkg.com/wrld.js@1.x.x"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.21/"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="/dist/output.css" rel="stylesheet">
+
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="css/snap.css" rel="stylesheet" />
+
+  <!--jQuery-->
+  <script src="http://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+  <!--Bootstrap-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <!-- <link href="https://fonts.googleapis.com/css?family=Universe+Condensed" rel="stylesheet"> -->
+
+  <!-- To replace with Panolens in future -->
+  <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
+
+  <script type="text/javascript">
+    $(window).on('load', function () {
+      $('#myModal').modal('show');
+    });
+  </script>
+  <script>
+
+    $(function () {
+      $(".openModal").click(function () {
+        setTimeout(function () {
+          var h = $(".modal-body .first-content p").height();
+          $(".modal-body").css('height', h + 80 + 'px');
+          $(".modal-body .first-content p").css('height', h + 'px');
+        }, 250);
+      });
+      $('.first-button').on('click', function () {
+        $('.first-content').animate({ width: "toggle" }, function () {
+          $('.second-content').animate({ width: "toggle" });
+          var h = $(".modal-body .second-content p").height();
+          $(".modal-body").css('height', h + 80 + 'px');
+          $(".modal-body .second-content p").css('height', h + 'px');
+        });
+      });
+      $('.second-button').on('click', function () {
+        $('.second-content').animate({ width: "toggle" }, function () {
+          $('.first-content').animate({ width: "toggle" });
+          var h = $(".modal-body .first-content p").height();
+          $(".modal-body").css('height', h + 80 + 'px');
+          $(".modal-body .first-content p").css('height', h + 'px');
+        });
+      });
+    });
+  </script>
+
+  <style>
+    html,
+    body,
+    #mapDiv {
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      border: none !important;
+    }
+
+    .modal-backdrop {
+      z-index: -1;
+    }
+  </style>
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      position: relative;
+      z-index: 0;
+      outline: none;
+      border: none !important;
+
+    }
+
+    .difficultyButtons {
+      position: absolute;
+      top: 80px;
+      padding: 10px;
+      border: none;
+      left: 40vw;
+      z-index: 1;
+      font-family: sans-serif;
+      font-weight: 400px;
+    }
+
+    /* For leg showing card */
+    #legDiv {
+      position: absolute;
+      top: 290px;
+      right: 0px;
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+      font-family: sans-serif;
+    }
+
+
+    table button {
+      width: 300px;
+      /* Increase button width */
+      height: 30px;
+      background-color: rgb(0, 217, 255);
+      /* Change button background color */
+      border: none;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      color: rgb(223, 97, 185);
+      text-align: left;
+
+    }
+
+    table td {
+      font-size: 14px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+
+    }
+
+    .floatingDiv {
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -10%);
+      background-color: white;
+      border: 1px solid black;
+      padding: 20px;
+      z-index: 1000;
+      display: none;
+    }
+
+    .floatingDiv.show {
+      display: block;
+    }
+
+    .imageViewer360 {
+      position: fixed;
+      /* top: 50%;
+      left: 50%; */
+      height: 50vh;
+      width: 50vw;
+      transform: translate(50%, -150%);
+      background-color: white;
+      border: 1px solid black;
+      padding: 0px;
+      width: 300px;
+      z-index: 2;
+      display: none;
+
+    }
+
+    .imageViewer360.show {
+      display: block;
+    }
+
+    /* For 360 image view */
+    #panorama {
+      width: 100%;
+      height: 100%;
+    }
+
+
+    #legCardContainer {
+      position: absolute;
+      bottom: 100px;
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+      left: 50%;
+
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, 20%);
+    }
+
+    .legCardContainer {
+      position: absolute;
+      top: -60px;
+      right: 0px;
+      /* height: 20vh; */
+      /* width: 20vw; */
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+      display: block;
+    }
+
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      width: 100%;
+      max-width: 100%;
+      /* set height to fill entire viewport */
+    }
+
+    nav {
+      height: 80px;
+      background-color: #222;
+      border-bottom: 1px solid #555
+    }
+
+    .logo {
+      padding: 10px;
+      width: auto;
+      float: left;
+    }
+
+    .logo img {
+      height: 55px;
+    }
+
+    .list-item {
+      float: right;
+      margin-right: 25px;
+      margin-top: 17px;
+    }
+
+    .list-item li {
+      float: left;
+      padding: 13px 13px;
+      font-size: 18px;
+      border-radius: 3px;
+      transition: all .7s ease-in-out;
+    }
+
+    .list-item li a {
+      color: #EEE;
+    }
+
+    .list-item li:hover {
+      background-color: brown;
+    }
+  </style>
+
+  <style>
+    .leg-box {
+      width: 300px;
+      padding: 20px;
+      background-color: rgba(211, 211, 211, 0.479);
+      text-align: center;
+    }
+
+    .leg-button {
+      margin: 10px;
+      background-color: #FFC0CB;
+      border: 1px solid #FFC0CB;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
+    .leg-button.active {
+      background-color: #FF69B4;
+      border: 1px solid #FF69B4;
+      color: #ffffff;
+    }
+
+    .leg-details {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .leg-details.active {
+      display: block;
+    }
+
+    .leg-button-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .leg-button-group button {
+      background-color: #FFC0CB;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
+    .leg-details table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .leg-details th,
+    .leg-details td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid #000;
+    }
+
+    .leg-details tr:nth-child(odd) {
+      background-color: #f2f2f2;
+    }
+
+    .leg-details tr:nth-child(even) {
+      background-color: #FFC0CB;
+    }
+  </style>
+
+
+  </style>
+
+  <style name="hotelDetail">
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid #000;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+      background-color: #FFC0CB;
+    }
+  </style>
+  <script src="./arcGIS.js"></script>
+  <script src="./reactive.js"></script>
+</head>
+<style>
+  .esri-view .esri-view-surface--inset-outline:focus::after {
+    border: none;
+    outline: none !important;
+  }
+
+  .butn1 {
+    position: absolute;
+    /* top: 140px; */
+    /* justify-content: center; */
+    top: 75px;
+    left: 40%;
+    padding: 0px;
+    z-index: 100;
+  }
+
+  /*   Start global   */
+
+  * {
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: arial, tahoma;
+    list-style: none;
+    /*    outline: 1px solid brown;*/
+  }
+
+  /*   End global   */
+</style>
+
+</script>
+<script language="javascript">
+  document.getElementById("btnasd").style.visibility = "hidden";
+  document.getElementById("btnasd").style.display = "none";
+</script>
+<script>
+  $('.carousel').carousel({
+    interval: false,
+  });
+</script>
+<style>
+  .cards-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+
+  .card {
+    margin: 0 0.5em;
+    box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+    border: none;
+    border-radius: 0;
+  }
+
+  .carousel-inner {
+    padding: 1em;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    background-color: #e1e1e1;
+    width: 5vh;
+    height: 5vh;
+    /* border-radius: 50%; */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  @media (min-width: 768px) {
+    .card img {
+      height: 11em;
+    }
+  }
+</style>
+
+<body>
+  <nav style="background-color: rgba(53,59,64,255);">
+    <div class="logo">
+      <img src="./images/images1.png" />
+    </div>
+    <ul class="list-item">
+      <li><a href="#">Login</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div id="viewDiv"></div>
+    <!-- <div id="basemapGalleryDiv">
+      <div id="basemapGalleryClose" class="esri-widget--button">
+        <span class="esri-icon-close"></span>
+      </div>
+    </div> -->
+  </div>
+
+  <div id='elevationHaru'>
+  </div>
+
+  <div id="imageViewer360" class="imageViewer360">
+    <button id="closeButton" style="float: right"
+      onclick='document.getElementById("imageViewer360").classList.remove("show")'>Close</button>
+    <button id="nextImage" onclick='index = (index+1) % totalNoOfImages; pv.loadScene(index);'>Next</button>
+    <button id="previousImage"
+      onclick='index = Math.abs((index-1) % totalNoOfImages); pv.loadScene(index)'>Previous</button>
+
+    <div id="panorama"></div>
+  </div>
+
+  <div id="hotelDetails" name='hotelDetails' class="floatingDiv">
+    <button id="closeButton" style="float: right"
+      onclick='document.getElementById("hotelDetails").classList.remove("show")'>Close</button>
+    <div id="hotelDetailText"></div>
+  </div>
+
+  <div id='legCardContainer'>
+    <!-- <div id="beginnerLegCardContainer">
+      <div class="leg-box">
+        <h3> Beginner Legs</h3>
+        <div class="row">
+          <a><button id="beginner-prev-button" class="carousel-control-prev" disabled
+              style="background-color: rgba(242,243,243,255); border: none; font-weight: 800; width: 30px;">
+              < </button></a>
+          <div id="beginner-leg-buttons" class="one-half"></div>
+          <a><button id="beginner-next-button" class="carousel-control-next"
+              style="background-color: rgba(242,243,243,255); border: none; font-weight: 800; width: 30px;"></button></a>
+        </div>
+        <div>
+        </div>
+        <div id="beginner-leg-buttons" style="background-color: rgba(242,243,243,255); border: none; font-weight: 800;">
+        </div>
+        <div id="beginner-leg-details" class="leg-details">
+          <p id="beginner-leg-details-text" class="p-1" style="padding: 10px;"></p>
+        </div>
+      </div>
+    </div>
+    <div id="advancedLegCardContainer" style="display: none;">
+      <div class="leg-box">
+        <h3> Advanced Legs</h3>
+        <div class="row">
+          <a><button id="advanced-prev-button" class="carousel-control-prev" disabled
+              style="background-color: rgba(242,243,243,255); border: none; font-weight: 800; width: 30px;">
+              < </button></a>
+          <div id="advanced-leg-buttons" class="one-half"></div>
+          <a><button id="advanced-next-button" class="carousel-control-next"
+              style="background-color: rgba(242,243,243,255); border: none; font-weight: 800; width: 30px;">></button></a>
+        </div>
+        <div>
+        </div>
+        <div id="advanced-leg-buttons" style="background-color: rgba(242,243,243,255); border: none; font-weight: 800;">
+        </div>
+        <div id="advanced-leg-details" class="leg-details">
+          <p id="advanced-leg-details-text" class="p-1" style="padding: 10px;"></p>
+        </div>
+      </div>
+    </div>
+    <div id="expertLegCardContainer" style="display: none;">
+      <div class="leg-box">
+        <h3> Expert Legs</h3>
+        <div class="row">
+          <a><button id="expert-prev-button" class="carousel-control-prev" disabled
+              style="background-color: rgba(242,243,243,255); border: none; font-weight: 800; width: 30px;">
+              < </button></a>
+          <div id="expert-leg-buttons" class="one-half"></div>
+          <a><button id="expert-next-button" class="carousel-control-next"
+              style="background-color: rgba(242,243,243,255); border: none; font-weight: 800; width: 30px;">></button></a>
+        </div>
+        <div>
+        </div>
+        <div id="expert-leg-buttons" style="background-color: rgba(242,243,243,255); border: none; font-weight: 800;">
+        </div>
+        <div id="expert-leg-details" class="leg-details">
+          <p id="expert-leg-details-text" class="p-1" style="padding: 10px;"></p>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="container" style="background-color: white; width: 350px; border-radius: 10px; padding-bottom: 10px;">
+      <div id="carouselExampleControls" class="carousel slide" style="width: 469px; data-interval=" false">
+        <div class="carousel-inner" data-interval=" false">
+          <div class="carousel-item active">
+            <div class="cards-wrapper">
+              <a href=""><button href="" class="btn btn-dark"
+                  style="background-color: transparent; border: none; color: rgb(0,204,204);  width: 70px;">Leg
+                  1</button></a> &nbsp;
+              <a><button id="beginner-prev-button" class="carousel-control-prev" disabled
+                  style="background-color: rgba(242,243,243,255); border: none;  width: 30px;">
+                </button></a>
+              <a href=""><button href="" class="btn btn-primary" disabled
+                  style="padding-left: 10px; background-color: rgb(242, 242, 242); border: none; color: rgb(92,92,92); width: 70px; padding-left: 10px;">Leg
+                  2</button></a> &nbsp;
+              <a href=""><button href="" class="btn btn-primary"
+                  style=" padding-left: 10px; background-color: rgb(242, 242, 242); border: none; color: rgb(92,92,92); width: 70px;">Leg
+                  3</button></a>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="cards-wrapper">
+              <a href=""><button href="" class="btn btn-primary"
+                  style="background-color: rgb(242, 242, 242); border: none; color: rgb(92,92,92); width: 70px;">Leg
+                  4</button></a>&nbsp;
+              <button href="#" class="btn btn-primary"
+                style="background-color: rgb(242, 242, 242); border: none; color: rgb(92,92,92); width: 70px;">Leg
+                5</button>&nbsp;
+              <a href=""><button href="" class="btn btn-primary"
+                  style="background-color: rgb(242, 242, 242); border: none; color: rgb(92,92,92); width: 70px;">Leg
+                  6</button></a>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"
+            style=" color: black;">
+            <span class="carousel-control-prev-icon" aria-hidden="true" style=" color: black;"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        <div class="card container" style="background-color: transparent; color: #62626B;">
+          <div>
+            <div class="row p-lg-1">
+              <div class="col-6">Start</div>
+              <div class="col-5"> Surka</div>
+            </div>
+            <div class="row p-lg-1">
+              <div class="col-6">End</div>
+              <div class="col">Lama Hotel</div>
+            </div>
+            <div class="row p-lg-1">
+              <div class="col-6">Distance</div>
+              <div class="col">9.58km</div>
+            </div>
+            <div class="row p-lg-1">
+              <div class="col-6">Elevation</div>
+              <div class="col-4">↗2476.3m ↘1188m</div>
+            </div>
+            <div class="row p-lg-1">
+              <div class="col-6">Duration</div>
+              <div class="col">4hrs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <script name="360 view">
+    // Script for panorama
+    let imgIndex = 0;
+    let pv = null;
+    let totalNoOfImages = 0;
+    let index = 0;
+    function panoramaViewer(scenes) {
+      // console.log('inside panorama')
+      pv = pannellum.viewer('panorama', {
+        "autoLoad": true,
+        "default": {
+          "firstScene": 0,
+          "author": "Samip Dhoj Raut",
+          "sceneFadeDuration": 1000
+        },
+
+        "scenes": scenes
+      });
+      pv.loadScene(0);
+    }
+
+  </script>
+
+
+  <div id="Buttons" class="difficultyButtons">
+    <button id='beginner-btn'
+      style="background-color: white; padding: 10px; border: #EEE; border-radius: 5px; font-size: 15px;">Beginner</button>
+    <button id='advanced-btn'
+      style="background-color: white; padding: 10px; border: #EEE; border-radius: 5px; font-size: 15px;">Advanced</button>
+    <button id='expert-btn'
+      style="background-color: white; padding: 10px; border: #EEE; border-radius: 5px; font-size: 15px;">Expert</button>
+
+    <button id="overlays"
+      style="background-color: white; padding: 10px; border: #EEE; border-radius: 5px; font-size: 15px;">Hotels</button>
+    <!-- <button id="btnasd" class="col btn btn-success p-1 " data-toggle="modal" data-target="#exampleModalCenter1">Press
+      Here</button> -->
+
+    <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" style="width: 400px; align-items: center;">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="card align" style="width: 300px; padding: 10px; text-align: center; font-size: larger;">
+            <button class="button" onclick='{imageViewer360(data.images)}; showImageViewer360Div();' style=' display:block;
+                          height: 30px;
+                          width: 50px;
+                          border-radius: 50%;
+                          border: 1px solid wheat;
+                          position: relative;
+                          top:35px;
+                          float: left;
+                          left: 220px;
+                          z-index: 1000;
+                          '>360</button>
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img class="d-block w-100" style="height: 150px;"
+                    src="https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWxzfGVufDB8fDB8fHww&w=1000&q=80"
+                    alt="First slide">
+                </div>
+                <div class="carousel-item" style="height: 150px;">
+                  <img class="d-block w-100" src="./images/Everest_View.jpg" alt="Second slide">
+                </div>
+                <div class="carousel-item" style="height: 150px;">
+                  <img class="d-block w-100" src="./images/Everest_View.jpg" alt="Third slide">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            <div class="container" style="padding-top: 5px;">
+              <div class="row">
+                <span class="col-1 fa fa-star fa-2xl" style="padding-right: 1px;"></span>
+                <span class="col-1 fa fa-star fa-2xl" style="padding-right: 1px;"></span>
+                <span class="col-1 fa fa-star fa-2xl" style="padding-right: 1px;"></span>
+                <span class="col-1 fa fa-star fa-2xl" style="padding-right: 1px;"></span>
+                <span class="col-1 fa fa-star fa-2xl" style="padding-right: 1px;"></span>
+                <br>
+              </div>
+            </div>
+            <h3 style="text-align: left;">
+              <h2>Surka Lodge</h2>
+              <h6>Rs.2000/per night</h6>
+
+            </h3>
+            <div class="row p-2">
+              <span class="col fa fa-wifi " style="padding-right: 20px;"></span>
+              <!-- <span class="col fa fa-battery " style="padding-right: 20px;"></span> -->
+              <span class="col fa fa-shower " style="padding-right: 20px;"></span>
+              <span class="col fa fa-television " style="padding-right: 20px;"></span>
+              <!-- <span class="col fa fa-star" style="padding-right: 20px;"></span> -->
+              <br>
+            </div>
+            <div class="modal-footer">
+              <div class="row">
+                <button class="col btn btn-success p-1 " data-toggle="modal"
+                  data-target="#exampleModalCenter">Details</button>
+                <button class="col btn btn-success p-1" data-toggle="modal"
+                  data-target="#exampleModalCenter-1">Book</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="modal fade" id="exampleModalCenter-1" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content" style="width: 400px; align-items: center;">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <h4>Entry Date asdddddddd:
+          <input type="datetime-local" id="Test_DatetimeLocal">
+        </h4>
+        <h4>Leave Date:
+          <input type="datetime-local" id="Test_DatetimeLocal">
+        </h4>
+        <br>
+        <div class="form-check text-left" style="text-align: left;">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Pay Cash at the Counter
+          </label>
+        </div>
+        <br>
+        <div class="form-check text-left">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Credit Card
+          </label>
+        </div>
+        <br>
+        <div class="form-check text-left">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            PayPal
+          </label>
+        </div>
+        <br>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="myBtn">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content" style="width: 400px; align-items: center;">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5>Surka Lodge</h5>
+          <h5>$20 Per Night</h5>
+          <p>(cost includes dinner and breakfast)</p>
+
+          <div class="row">
+            <h5 class="col-7">Additional Services</h5>
+            <div class="row col-5">
+              <span class="col-1 fa fa-star fa-2xl" style="padding-right: 2px;"></span>
+              <span class="col-1 fa fa-star fa-2xl" style="padding-right: 2px;"></span>
+              <span class="col-1 fa fa-star fa-2xl" style="padding-right: 2px;"></span>
+              <span class="col-1 fa fa-star fa-2xl" style="padding-right: 2px;"></span>
+              <span class="col-1 fa fa-star fa-2xl" style="padding-right: 2px;"></span>
+              <br>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <span class="col-2 fa fa-wifi " style="padding-right: px;"></span>
+            <h5 class="col-7">Wifi Avaliable</h5>
+            <br>
+          </div>
+          <div class="row">
+            <span class="col-2 fa fa-wifi " style="padding-right: px;"></span>
+            <h5 class="col-8">Hot and Cold Shower</h5>
+            <br>
+          </div>
+          <div class="row">
+            <span class="col-2 fa fa-wifi " style="padding-right: px;"></span>
+            <h5 class="col-8">Electricity For Charger</h5>
+            <br>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success">Book</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

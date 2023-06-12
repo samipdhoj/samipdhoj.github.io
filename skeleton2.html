@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Laliguras Map</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <meta charset="utf-8" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.21/"></script>
+
+  <!-- <link href="https://fonts.googleapis.com/css?family=Universe+Condensed" rel="stylesheet"> -->
+
+
+  <!-- To replace with Panolens in future -->
+  <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
+
+  <style>
+    html,
+    body,
+    
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      position: relative;
+      z-index: 0;
+      outline: none;
+    }
+    #legCardContainer {
+      position: absolute;
+      bottom: 100px;
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, 20%);
+    }
+
+    /* For leg showing card */
+    #legDiv {
+      position: absolute;
+      top: 290px;
+      right: 0px;
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+      font-family: sans-serif;
+    }
+
+
+    table button {
+      width: 300px;
+      /* Increase button width */
+      height: 30px;
+      background-color: rgb(0, 217, 255);
+      /* Change button background color */
+      border: none;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      color: rgb(223, 97, 185);
+      text-align: left;
+
+    }
+
+    table td {
+      font-size: 14px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+
+    }
+
+    .floatingDiv {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      border: 1px solid black;
+      padding: 20px;
+      z-index: 1;
+      display: none;
+    }
+
+    .floatingDiv.show {
+      display: block;
+    }
+
+    .imageViewer360 {
+      position: fixed;
+      /* top: 50%;
+      left: 50%; */
+      height: 50vh;
+      width: 50vw;
+      transform: translate(50%, -150%);
+      background-color: white;
+      border: 1px solid black;
+      padding: 20px;
+      z-index: 2;
+      display: none;
+
+    }
+
+    .imageViewer360.show {
+      display: block;
+    }
+
+    /* For 360 image view */
+    #panorama {
+      width: 100%;
+      height: 100%;
+    }
+
+    .difficultyButtons {
+      position: absolute;
+      top: 10px;
+      left: 80px;
+
+      z-index: 1;
+      font-family: sans-serif;
+      font-weight: 200px;
+    }
+
+    #legCardContainer {
+      position: absolute;
+      bottom: 100px;
+      right: 80px;
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .legCardContainer {
+      position: absolute;
+      top: -60px;
+      right: 0px;
+      /* height: 20vh; */
+      /* width: 20vw; */
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+      display: block;
+    }
+
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      width: 100%;
+      max-width: 100%;
+      /* set height to fill entire viewport */
+    }
+  </style>
+
+<style>
+  .leg-box {
+    width: 300px;
+    padding: 20px;
+    background-color: rgba(211, 211, 211, 0.479);
+    text-align: center;
+  }
+
+  .leg-button {
+    margin: 10px;
+    background-color: #FFC0CB;
+    border: 1px solid #FFC0CB;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+
+  .leg-button.active {
+    background-color: #FF69B4;
+    border: 1px solid #FF69B4;
+    color: #ffffff;
+  }
+
+  .leg-details {
+    display: none;
+    margin-top: 20px;
+  }
+
+  .leg-details.active {
+    display: block;
+  }
+
+  .leg-button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  .leg-button-group button {
+    background-color: #FFC0CB;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  .leg-details table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .leg-details th,
+  .leg-details td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #000;
+  }
+
+  .leg-details tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+
+  .leg-details tr:nth-child(even) {
+    background-color: #FFC0CB;
+  }
+</style>
+
+
+  </style>
+
+  <style name="hotelDetail">
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid #000;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+      background-color: #FFC0CB;
+    }
+  </style>
+  <script src="./arcGIS.js"></script>
+  <script src="./reactive.js"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <div id="viewDiv"></div>
+
+    <!-- <div id="basemapGalleryDiv">
+      <div id="basemapGalleryClose" class="esri-widget--button">
+        <span class="esri-icon-close"></span>
+      </div>
+    </div> -->
+
+  </div>
+
+  <div id='elevationHaru'>
+  </div>
+
+  <div id="imageViewer360" class="imageViewer360">
+    <button id="closeButton" style="float: right"
+      onclick='document.getElementById("imageViewer360").classList.remove("show")'>Close</button>
+    <button id="nextImage" onclick='index = (index+1) % totalNoOfImages; pv.loadScene(index);'>Next</button>
+    <button id="previousImage"
+      onclick='index = Math.abs((index-1) % totalNoOfImages); pv.loadScene(index)'>Previous</button>
+
+    <div id="panorama"></div>
+  </div>
+
+  <div id="hotelDetails" name='hotelDetails' class="floatingDiv">
+    <button id="closeButton" style="float: right"
+      onclick='document.getElementById("hotelDetails").classList.remove("show")'>Close</button>
+    <div id="hotelDetailText"></div>
+  </div>
+
+  <div id='legCardContainer'>
+    <div id="beginnerLegCardContainer">
+      <div class="leg-box">
+        <h3> beginner Legs</h3>
+        <div>
+          <button id="beginner-prev-button" disabled>Previous</button>
+          <button id="beginner-next-button">Next</button>
+        </div>
+        <div id="beginner-leg-buttons"></div>
+        <div id="beginner-leg-details" class="leg-details">
+          <p id="beginner-leg-details-text"></p>
+        </div>
+      </div>
+    </div>
+    <div id="advancedLegCardContainer" style="display: none">
+      <div class="leg-box">
+        <h3> advanced Legs</h3>
+        <div>
+          <button id="advanced-prev-button" disabled>Previous</button>
+          <button id="advanced-next-button">Next</button>
+        </div>
+        <div id="advanced-leg-buttons"></div>
+        <div id="advanced-leg-details" class="leg-details">
+          <p id="advanced-leg-details-text"></p>
+        </div>
+      </div>
+    </div>
+    <div id="expertLegCardContainer" style="display:none">
+      <div class="leg-box">
+        <h3> Expert Legs</h3>
+        <div>
+          <button id="expert-prev-button" disabled>Previous</button>
+          <button id="expert-next-button">Next</button>
+        </div>
+        <div id="expert-leg-buttons"></div>
+        <div id="expert-leg-details" class="leg-details">
+          <p id="expert-leg-details-text"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script name="360 view">
+    // Script for panorama
+    let imgIndex = 0;
+    let pv = null;
+    let totalNoOfImages = 0;
+    let index = 0;
+    function panoramaViewer(scenes) {
+      // console.log('inside panorama')
+      pv = pannellum.viewer('panorama', {
+        "autoLoad": true,
+        "default": {
+          "firstScene": 0,
+          "author": "Samip Dhoj Raut",
+          "sceneFadeDuration": 1000
+        },
+
+        "scenes": scenes
+      });
+      pv.loadScene(0);
+    }
+  </script>
+
+
+  <div id="Buttons" class="difficultyButtons">
+    <button id='beginner-btn'>Beginner</button>
+    <button id='advanced-btn'>Advanced</button>
+    <button id='expert-btn'>Expert</button>
+    <button id="overlays">Hotels</button>  </div>
+
+  </div>
+
+
+
+</body>
+
+</html>
